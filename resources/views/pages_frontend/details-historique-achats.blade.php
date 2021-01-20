@@ -68,23 +68,23 @@ if (Cookie::get('id_user')== null)
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
                             <p>{{$user->email_user}}</p>
                             <p>221 ,Baker Street</p>
-                            <p>{{$user->telephone_user}}</p>
+                            <p>+228 {{$user->telephone_user}}</p>
                         </div>
                     </div> <br />
                     <div>
                         <table class="table table-striped table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th style="font-size:17px;">
                                        Libelle
                                     </th>
-									<th>
+									<th style="font-size:17px;">
                                         Quantite
                                     </th>
-									<th>
+									<th style="font-size:17px;">
                                         Prix Unitaire
                                     </th>
-                                    <th>
+                                    <th style="font-size:17px;">
                                         Total
                                     </th>
 
@@ -93,27 +93,27 @@ if (Cookie::get('id_user')== null)
                             <tbody>
 							@foreach($commandes as $commande)
                                 <tr>
-                                    <td>{{$commande->nom_produit}}</td>
-									<td>{{$commande->quantite_commande}}</td>
-									<td>{{$commande->prix_ht_produit}}</td>
-                                    <td>{{$commande->prix_ht_produit*$commande->quantite_commande}}</td>
+                                    <td style="font-size:17px;">{{$commande->nom_produit}}</td>
+									<td style="font-size:17px;">{{$commande->quantite_commande}}</td>
+									<td style="font-size:17px;">{{$commande->prix_ht_produit}}</td>
+                                    <td style="font-size:17px;">{{$commande->prix_ht_produit*$commande->quantite_commande}}</td>
                                 </tr>
                             @endforeach 
                                 
-                               <tr scope="col" colspan="5" rowspan="1" class="text-center">
+                               <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
 									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:17px;">TAXE</th>
 									<th colspan="2"  style="font-size:17px;"> 0 %</th>
 								</tr>
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
 								</tr>
 
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
 									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>

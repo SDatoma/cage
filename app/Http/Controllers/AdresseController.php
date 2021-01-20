@@ -42,7 +42,17 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$adresse = new Adresse();
+		
+		$adresse->ville_adresse = $request->ville;
+		$adresse->pays_adresse = $request->pays;
+		$adresse->description_adresse = $request->description;
+		$adresse->id_user = Cookie::get('id_user');
+		
+		$adresse->save();
+		
+		Session()->flash('success','Félicitation, adresse ajoutée avec succès. ');	
+		return redirect()->back();
     }
 
     /**
@@ -58,16 +68,32 @@ class AdresseController extends Controller
 	
 	public function show_adresse_client()
     { 
-		
 		$id_user= Cookie::get('id_user');
 
         $adresse = Adresse::where(['id_user' =>$id_user])->first() ;
 		
-		if($adresse == null){
-			return view('pages_frontend/nouveau_adresse',compact('adresse'));
-		}else{
-			return view('pages_frontend/adresse',compact('adresse'));
-		}
+		return view('pages_frontend/ajouter_adresse',compact('adresse'));
+		
+    }
+	
+	public function liste_adresse_client()
+    { 
+		$id_user= Cookie::get('id_user');
+
+        $adresses = Adresse::where(['id_user' =>$id_user])->get() ;
+		
+		return view('pages_frontend/nouveau_adresse',compact('adresses'));
+		
+    }
+	
+	//récuperation des adresses
+	public function modifier_adresse_client()
+    { 
+		$id_user = Cookie::get('id_user');
+
+        $adresse_client = Adresse::where(['id_user' =>$id_user])->first() ;
+		
+		return view('pages_frontend/adresse',compact('adresse_client'));
     }
 
     /**
@@ -95,11 +121,12 @@ class AdresseController extends Controller
 		$adresse->ville_adresse = $request->ville;
 		$adresse->pays_adresse = $request->pays;
 		$adresse->description_adresse = $request->description;
-		//$adresse->id_user = Cookie::get('id_user');
+		$adresse->id_user = Cookie::get('id_user');
 		
 		$adresse->save();
 		
-        return back()->with('success', 'Modification effectuée avec succè');
+		Session()->flash('success','Félicitation, informations modifiées avec succès. ');	
+		return redirect()->back();
     }
 
     /**

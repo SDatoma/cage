@@ -15,7 +15,7 @@ if (Cookie::get('id_user')== null)
 						Accueil
 						<i>|</i>
 					</li>
-					<li><a href="{{route('profil.client',[Cookie::get('id_user')])}}">Mon compte </a><i>|</i> <a href="/mes-adresses">Mes Adresses</a> <i>|</i> <a href="#">Modification</a></li>
+					<li><a href="{{route('profil.client',[Cookie::get('id_user')])}}">Mon compte </a><i>|</i> <a href="/mes-adresses">Mes Adresses</a> <i>|</i> <a href="#">Ajout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -28,7 +28,7 @@ if (Cookie::get('id_user')== null)
                             <div class="login-register-wrapper">
                                 <div class="login-register-tab-list nav">
                                     <a class="active" data-toggle="tab" href="#lg1">
-                                        <h4>Modifier mon adresse</h4>
+                                        <h4>Ajouter une adresse</h4>
                                     </a>
                                 </div>
                                 <div class="tab-content">
@@ -36,16 +36,14 @@ if (Cookie::get('id_user')== null)
 									
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000; text-align : right;">
-                                                <form class="form-horizontal" method="POST"  action="{{route('adresse.update',$adresse_client->id_adresse)}}" enctype="multipart/form-data">
-													
-													{{ method_field('PUT') }}
-													 {{ csrf_field() }}
+                                                <form class="form-horizontal" method="POST"  action="{{route('adresse.store',$adresse->id_adresse)}}" enctype="multipart/form-data">
+													{{ csrf_field() }}
 													 
-                                                    <div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" value="{{$adresse_client->ville_adresse}}" name="ville" /> </div>
+                                                    <div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" name="ville" /> </div>
                                                     <div class="col-lg-4">Pays : </div> <div class="col-lg-8"> <input required type="text" name="pays" value="TOGO" /> </div>
-                                                    <div class="col-lg-4">Description précise : </div> <div class="col-lg-8"> <input required value="{{$adresse_client->description_adresse}}" name="description" type="numeric" /> </div>
+                                                    <div class="col-lg-4">Description précise : </div> <div class="col-lg-8"> <input required name="description" type="numeric" /> </div>
                                                     <div class="button-box">
-														<button type="submit"><span>Modifier</span></button>
+														<button type="submit"><span>Ajouter</span></button>
                                                     </div>
                                                 </form>
                                             </div>
