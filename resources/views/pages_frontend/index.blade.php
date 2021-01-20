@@ -239,7 +239,7 @@ if (Cookie::get('id_user')== null)
 									<h4 class="mb">
 										<a href="{{route('detail-produit.produit', $produit->id_produit)}}" style="font-size:15px">{{$produit->nom_produit}}</a>
 									</h4>
-									       <?php
+									        <?php
                                               $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
                                              ?>
 									<div class="info-product-price">

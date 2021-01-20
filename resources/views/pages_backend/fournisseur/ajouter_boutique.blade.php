@@ -61,22 +61,12 @@
                                     <input type="text" class="form-control" placeholder="Ville" name="ville_boutique" value="{{ old('ville_boutique') }}" required>
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="number" class="form-control" placeholder="Contact 1" value="{{ old('contact_boutique1') }}" name="contact_boutique1" required>
+                                    <input type="number" class="form-control" placeholder="Contact 1 sans indicatif ( Ex. 90 00 00 00 )" value="{{ old('contact_boutique1') }}" name="contact_boutique1" required>
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="number" class="form-control" placeholder="Contact 2" value="{{ old('contact_boutique2') }}" name="contact_boutique2" >
+                                    <input type="number" class="form-control" placeholder="Contact 2 sans indicatif ( Ex. 90 00 00 00 )" value="{{ old('contact_boutique2') }}" name="contact_boutique2" >
                                 </div>
                                
-                                <!-- <div class="form-group">
-                                    <div class="radio inlineblock m-r-20">
-                                        <input type="radio" name="gender" id="male" class="with-gap" value="option1">
-                                        <label for="male">Male</label>
-                                    </div>                                
-                                    <div class="radio inlineblock">
-                                        <input type="radio" name="gender" id="Female" class="with-gap" value="option2" checked="">
-                                        <label for="Female">Female</label>
-                                    </div>
-                                </div> -->
                                 <div class="form-group form-float">
                                     <textarea name="description_boutique" cols="30" rows="5" placeholder="Description de la boutique" class="form-control no-resize" required>{{ old('description_boutique') }}</textarea>
                                 </div>

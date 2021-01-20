@@ -76,7 +76,13 @@
                                         <h3 class="product-title mb-0">{{$produit->nom_produit}}</h3>
                                         <hr>
                                         <!-- <p class="product-description">{{$produit->description_produit}}</p> -->
-                                        <p class="vote"><strong>QUANTITE</strong> : {{$produit->quantite_produit ?? '0'}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:red">{{$produit->stock_produit}}</strong></p>
+                                        <p class="vote"><strong>QUANTITE</strong> : {{$produit->quantite_produit ?? '0'}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                        @if($produit->quantite_produit>3)
+                                        <strong style="color:blue">En stock</strong>
+                                        @else
+                                        <strong style="color:red">En rupture</strong>
+                                        @endif
+                                        </p>
                                         <p class="vote"><strong>PRIX_HT</strong> : {{$produit->prix_ht_produit ?? '0'}} FCFA 
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         @if($promotion!=null)
@@ -110,16 +116,21 @@
                                     <p>{{$produit->description_produit}}</p>
                                 </div>
                                 <div class="tab-pane" id="review">
-                                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied</p>
+                                            <?php
+                                              $commentaires = \App\Models\Commentaire::where(['id_produit' =>$produit->id_produit])->get();
+                                             ?>
+                                    @if(count($commentaires)==0)
+                                    <h5 style="color:red">Aucun commentaire poster pour ce produit </h5>
+                                    @else
+                                    @foreach($commentaires as $commentaire)
                                     <ul class="row list-unstyled c_review mt-4">
                                         <li class="col-12">
                                             <div class="avatar">
-                                                <a href="javascript:void(0);"><img class="rounded" src="{{asset('css_backend/assets/images/xs/avatar2.jpg')}}" alt="user" width="60"></a>
+                                                <a href="javascript:void(0);"><img class="rounded" src="{{asset('css_backend/assets/avatar.jpg')}}" alt="user" width="60"></a>
                                             </div>                                
                                             <div class="comment-action">
-                                                <h5 class="c_name">Hossein Shams</h5>
-                                                <p class="c_msg mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. </p>
-                                                <div class="badge badge-primary">iPhone 8</div>
+                                                <h5 class="c_name">{{$commentaire->nom_commentaire}}</h5>
+                                                <p class="c_msg mb-0">{{$commentaire->resume_commentaire}}</p>
                                                 <span class="m-l-10">
                                                     <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
                                                     <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
@@ -127,28 +138,14 @@
                                                     <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
                                                     <a href="javascript:void(0);"><i class="zmdi zmdi-star-outline text-muted"></i></a>
                                                 </span>
-                                                <small class="comment-date float-sm-right">Dec 21, 2019</small>
+                                                <small class="comment-date float-sm-right"><?php setlocale(LC_TIME, "fr_FR","French");
+										        echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commentaire->date_commentaire))); ?></small>
                                             </div>                                
                                         </li>
-                                        <li class="col-12">
-                                            <div class="avatar">
-                                                <a href="javascript:void(0);"><img class="rounded" src="{{asset('css_backend/assets/images/xs/avatar3.jpg')}}" alt="user" width="60"></a>
-                                            </div>                                
-                                            <div class="comment-action">
-                                                <h5 class="c_name">Tim Hank</h5>
-                                                <p class="c_msg mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
-                                                <div class="badge badge-primary">Nokia 8</div>
-                                                <span class="m-l-10">
-                                                    <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
-                                                    <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
-                                                    <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
-                                                    <a href="javascript:void(0);"><i class="zmdi zmdi-star col-amber"></i></a>
-                                                    <a href="javascript:void(0);"><i class="zmdi zmdi-star-outline text-muted"></i></a>
-                                                </span>
-                                                <small class="comment-date float-sm-right">Dec 18, 2019</small>
-                                            </div>                                
-                                        </li>                                   
+                                        
                                     </ul>
+                                    @endforeach
+                                    @endif
                                 </div>
                                 <div class="tab-pane" id="about">
                                     <!-- <h6>Composition</h6> -->
