@@ -87,11 +87,11 @@ class AdresseController extends Controller
     }
 	
 	//récuperation des adresses
-	public function modifier_adresse_client()
+	public function modifier_adresse_client($id)
     { 
 		$id_user = Cookie::get('id_user');
 
-        $adresse_client = Adresse::where(['id_user' =>$id_user])->first() ;
+        $adresse_client = Adresse::where(['id_adresse' =>$id])->first() ;
 		
 		return view('pages_frontend/adresse',compact('adresse_client'));
     }

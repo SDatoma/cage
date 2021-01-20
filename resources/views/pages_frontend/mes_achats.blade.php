@@ -62,7 +62,7 @@ if (Cookie::get('id_user')== null)
 													<span class="item_price" style="background-color:#a12626; font-size:15px;color:#fff"><b>En attente</b> </span>
 												@endif </td>
                                                 <td class="product-name">
-													<a href="{{route('voir.detail',[$commande->id_user,$commande->reference_commande])}}">
+													<a href="{{route('voir.detail',[Cookie::get('id_user'),$commande->reference_commande])}}">
 														<button style="color:#0079ba; text-decoration: underline overline #FF3028;" title="Voir détail" data-toggle="modal" data-target="#">
 															<i class="glyphicon glyphicon-eye-open"></i> Voir détails
 														</button> 
