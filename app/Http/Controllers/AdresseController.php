@@ -51,7 +51,7 @@ class AdresseController extends Controller
 		
 		$adresse->save();
 		
-		Session()->flash('success','Félicitation, adresse ajoutée avec succès. ');	
+		Session()->flash('success','Adresse ajoutée avec succès. ');	
 		return redirect()->back();
     }
 
@@ -125,7 +125,7 @@ class AdresseController extends Controller
 		
 		$adresse->save();
 		
-		Session()->flash('success','Félicitation, informations modifiées avec succès. ');	
+		Session()->flash('success','Informations modifiées avec succès. ');	
 		return redirect()->back();
     }
 
