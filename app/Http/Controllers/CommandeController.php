@@ -53,6 +53,7 @@ class CommandeController extends Controller
     {
          // Recupration de la date du jour
          $date_jour=date('Y-m-d');
+        
          $id_user= Cookie::get('id_user');
         
          $user = User::where(['id_user' =>$id_user])->first() ;
@@ -70,12 +71,20 @@ class CommandeController extends Controller
              $i++;
          }
 
+         $dernier_numero = DB::table('commande') ->latest('numero_facture') ->first();
+          
+         if($dernier_numero==null){
+             $numero=1;
+         }else{
+            $numero=$dernier_numero->numero_facture+1;
+         }
          $commande = new Commande();
          
          $commande->reference_commande= $code;
          $commande->date_commande= $date_jour;
          $commande->etat_commande= 0;
          $commande->id_adresse= $request->id_adresse;
+         $commande->numero_facture=  $numero;
          $commande->id_user= Cookie::get('id_user');
     
          $commande->save();
@@ -157,7 +166,7 @@ class CommandeController extends Controller
         ->where('commande.reference_commande', '=', $reference_commande)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse'));
+        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse','commande'));
 
     }
  
@@ -218,7 +227,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
 
         // si la commande est deja valider
 
@@ -242,7 +251,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
 
         }
     }

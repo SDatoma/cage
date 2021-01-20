@@ -40,10 +40,7 @@
                                             <th>NOM & PRENOM</th>
                                             <th>SEXE</th>
                                             <th>ADRESSE MAIL</th>
-                                            <th>VILLE</th>
                                             <th>TELEPHONE</th>
-                                            <th>PAYS</th>
-                                            
                                         </tr>
                                     </thead>
                                     
@@ -53,10 +50,7 @@
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$user->sexe_user}}</td>
                                             <td>{{$user->email_user}}</td>
-                                            <td></td>
                                             <td>{{$user->telephone_user}}</td>
-                                            <td></td>
-                                           
                                         </tr>
                                     @endforeach  
                                     </tbody>

@@ -59,9 +59,11 @@ if (Cookie::get('id_user')== null)
                         </div>
                     </div> <br />
                     <div class="row">
-                        
+                        <?php  $annee=date('Y');
+                        $numero= $annee."/CAGE-BAT/0000".$commande->numero_facture;
+                        ?>
                         <div class="col-md-12 text-center float">
-                            <h2><u>FACTURE N° 2021/00001</u></h2> 
+                            <h2><u>FACTURE N° {{$numero}}</u></h2> 
                             </br></br></br>
                         </div>
                         <div class="col-md-6 text-left">
@@ -77,7 +79,7 @@ if (Cookie::get('id_user')== null)
                             <p> Pays : {{$adresse->pays_adresse}}</p>
                             <p> Description : {{$adresse->description_adresse}}</p>
                         </div>
-                        
+
                     </div> <br />
                     <div>
                         <table class="table table-striped table-bordered" >
