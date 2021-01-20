@@ -7,8 +7,9 @@ if (Cookie::get('id_user')== null)
 	@include('header/header_frontend_con')
 <?php } ?>
 
-<div class="header-menu ">
-                <div class="container">
+<div class="featured-section">
+		<div class="container"><br/>
+		<div class="product-sec1">
                     <div class="row mt-2">
                        
                         <div class="col-md-12">
@@ -89,11 +90,17 @@ if (Cookie::get('id_user')== null)
                         
                     </div>
                     <!-- row -->
+                
+                </div>
                 </div>
                 <!-- container -->
                
             </div>
 
-<div class="offcanvas-overlay"></div>
-
-@include('footer/footer_frontend')
+<div class="product-single-w3l"></div>
+	<footer>
+		<div class="container" style="margin-top:-70px">
+			<!-- footer second section -->
+			
+	@include('footer/footer_frontend')
+	
