@@ -39,7 +39,8 @@ if (Cookie::get('id_user')== null)
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000;">
 											<div class="button-box">
-											<a href="/ajouter-adresse">
+											@include('modals/ajout/ajouter_adresse')
+											<a href="#" data-toggle="modal" data-target="#aa">
 												<button type="submit"><span>Ajouter</span></button><br/>
 												</a>
 											</div>
@@ -59,13 +60,21 @@ if (Cookie::get('id_user')== null)
 												<td>{{$adresse->pays_adresse}}</td>
 												<td>{{$adresse->description_adresse}}</td>
 												<td>
-													<a href="{{route('client.adresse',$adresse->id_adresse)}}">
-														<button style="color:#0079ba; size: 17px; text-decoration: underline overline #FF3028;" title="Voir détail" data-toggle="modal" data-target="#">
-															<i class="glyphicon glyphicon-pencil"></i> Modifier
+													<a href="#" data-toggle="modal" data-target="#ma{{$adresse->id_adresse}}">
+														<button style="color:#0079ba; size: 17px; text-decoration: underline overline ;" title="Voir détail" data-toggle="modal" data-target="#">
+															<i class="glyphicon glyphicon-pencil"></i>  Modifier
+														</button> 
+													</a> 
+													<a href="" data-toggle="modal" data-target="#sa{{$adresse->id_adresse}}">
+														<button style="margin-left: 20px; color:#0079ba; size: 17px; text-decoration: underline overline #FF3028;" title="Voir détail" data-toggle="modal" data-target="#">
+															<i class="glyphicon glyphicon-trash"></i>  Supprimer
 														</button> 
 													</a>
 												</td>
 											</tr>
+														@include('modals/suppression/supprimer_adresse')
+														
+											@include('modals/modification/modifier_adresse')
 										@endforeach
 										</tbody>
 										</table>

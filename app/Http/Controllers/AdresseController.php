@@ -48,6 +48,7 @@ class AdresseController extends Controller
 		$adresse->pays_adresse = $request->pays;
 		$adresse->description_adresse = $request->description;
 		$adresse->id_user = Cookie::get('id_user');
+		$adresse->etat_adresse=1;
 		
 		$adresse->save();
 		
@@ -70,7 +71,9 @@ class AdresseController extends Controller
     { 
 		$id_user= Cookie::get('id_user');
 
-        $adresse = Adresse::where(['id_user' =>$id_user])->first() ;
+        $adresse = Adresse::where(['id_user' =>$id_user])
+		->where('etat_adresse', '=', 1)
+		->first() ;
 		
 		return view('pages_frontend/ajouter_adresse',compact('adresse'));
 		
@@ -80,7 +83,7 @@ class AdresseController extends Controller
     { 
 		$id_user= Cookie::get('id_user');
 
-        $adresses = Adresse::where(['id_user' =>$id_user])->get() ;
+        $adresses = Adresse::where(['id_user' =>$id_user])->where('etat_adresse', '=', 1)->get() ;
 		
 		return view('pages_frontend/nouveau_adresse',compact('adresses'));
 		
@@ -91,7 +94,7 @@ class AdresseController extends Controller
     { 
 		$id_user = Cookie::get('id_user');
 
-        $adresse_client = Adresse::where(['id_adresse' =>$id])->first() ;
+        $adresse_client = Adresse::where(['id_adresse' =>$id])->where('etat_adresse', '=', 1)->first() ;
 		
 		return view('pages_frontend/adresse',compact('adresse_client'));
     }
@@ -122,6 +125,7 @@ class AdresseController extends Controller
 		$adresse->pays_adresse = $request->pays;
 		$adresse->description_adresse = $request->description;
 		$adresse->id_user = Cookie::get('id_user');
+		$adresse->etat_adresse=1;
 		
 		$adresse->save();
 		
@@ -137,7 +141,13 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $adresse = Adresse::where(['id_adresse' =>$id])->first() ;
+
+         $adresse->etat_adresse=0;
+         $adresse->save();
+
+		Session()->flash('success','Félicitation, Adresse supprimer avec succès. ');
+        return redirect()->back();
     }
 
 }
