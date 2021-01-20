@@ -38,12 +38,14 @@ if (Cookie::get('id_user')== null)
 									
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000;">
+
 											<div class="button-box">
 											@include('modals/ajout/ajouter_adresse')
 											<a href="#" data-toggle="modal" data-target="#aa">
 												<button type="submit"><span>Ajouter</span></button><br/>
 												</a>
 											</div>
+
                                         <table class="table table-striped table-bordered">
 										<thead>
 											<tr>

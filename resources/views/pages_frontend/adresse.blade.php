@@ -36,8 +36,7 @@ if (Cookie::get('id_user')== null)
 									
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000; text-align : right;">
-                                                <form class="form-horizontal" method="POST"  action="{{route('adresse.update',$adresse_client->id_adresse)}}" enctype="multipart/form-data">
-													
+                                                <form class="form-horizontal" method="POST"  action="{{route('adresse.update',$adresse_client->id_adresse)}}">
 													{{ method_field('PUT') }}
 													 {{ csrf_field() }}
 													 

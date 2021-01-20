@@ -35,7 +35,8 @@ class Commande extends Model
 	protected $casts = [
 		'etat_commande' => 'int',
 		'id_user' => 'int',
-		'id_produit' => 'int'
+		'id_produit' => 'int',
+		'id_adresse' => 'int'
 	];
 
 	protected $dates = [
@@ -47,12 +48,18 @@ class Commande extends Model
 		'etat_commande',
 		'reference_commande',
 		'id_user',
-		'id_produit'
+		'id_produit',
+		'id_adresse'
 	];
 
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'id_user');
+	}
+
+	public function adresse()
+	{
+		return $this->belongsTo(Adresse::class, 'id_adresse');
 	}
 
 	public function produit()
