@@ -117,7 +117,7 @@
 	<!-- copyright -->
 	<div class="copy-right">
 		<div class="container">
-			<p class="copy-text">Copyright © <a href="https://www.sebi-inc.com/"> SEBI Inc</a>. Tous droits sont réservés.</p>
+			<p class="copy-text">Copyright © <a href="https://www.sebi-inc.com/" target="_blank"> SEBI Inc</a>. Tous droits sont réservés.</p>
 			
 		</div>
 	</div>

@@ -126,8 +126,10 @@ if (Cookie::get('id_user')== null)
                 </div>
                 <!-- container -->
                
-            </div>
-
-<div class="offcanvas-overlay"></div>
-   
-@include('footer/footer_frontend')
+            <div class="product-single-w3l"></div>
+	<footer>
+		<div class="container">
+			<!-- footer second section -->
+			
+	@include('footer/footer_frontend')
+	
