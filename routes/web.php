@@ -36,9 +36,9 @@ Route::get('/mes-adresses','AdresseController@liste_adresse_client');
 
 Route::get('/ajouter-adresse','AdresseController@show_adresse_client');
 
-//Route::get('/affiche-adresse','AdresseController@show_adresse_client')->name('client.adresse');
+//Route::get('/affiche-adresse','AdresseController@show_adresse_client')
 
-Route::get('/modifier-adresse','AdresseController@modifier_adresse_client');
+Route::get('/modifier-adresse/{id}','AdresseController@modifier_adresse_client')->name('client.adresse');
 
 
 // ROUTE FRONT-END

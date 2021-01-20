@@ -60,7 +60,7 @@ if (Cookie::get('id_user')== null)
 												<td>{{$adresse->pays_adresse}}</td>
 												<td>{{$adresse->description_adresse}}</td>
 												<td>
-													<a href="/modifier-adresse">
+													<a href="{{route('client.adresse',$adresse->id_adresse)}}">
 														<button style="color:#0079ba; size: 17px; text-decoration: underline overline #FF3028;" title="Voir détail" data-toggle="modal" data-target="#">
 															<i class="glyphicon glyphicon-pencil"></i> Modifier
 														</button> 
