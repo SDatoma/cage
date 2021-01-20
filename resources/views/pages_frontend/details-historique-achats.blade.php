@@ -69,7 +69,7 @@ if (Cookie::get('id_user')== null)
                         <div class="col-md-6 text-left">
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
                             <p>{{$user->email_user}}</p>
-                            <p>221 ,Baker Street</p>
+							
                             <p>+228 {{$user->telephone_user}}</p>
                         </div>
 
