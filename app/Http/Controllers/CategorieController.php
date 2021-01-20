@@ -76,7 +76,7 @@ class CategorieController extends Controller
 
         $categorie->save();
 
-        return back()->with('success', 'Enregistrement effectuer avec succè');
+        return back()->with('success', 'Enregistrement effectué avec succè');
     }
 
  // Enregistrement de sous categorie

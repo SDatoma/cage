@@ -107,7 +107,7 @@ class CommandeController extends Controller
 
         ShoppingCart::destroy();
          //return back()->with('success', 'Sous categorie enregistrement effectuer avec succè');
-         return redirect()->to('/')->with('success', 'Conmande effectuee avec succè');
+         return redirect()->to('/')->with('success', 'Conmande effectuée avec succè');
     }
 
 
