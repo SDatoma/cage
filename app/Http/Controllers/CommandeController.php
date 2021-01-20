@@ -137,7 +137,9 @@ class CommandeController extends Controller
     {
         $user = User::where(['id_user' =>$id])->first() ;
 
-        $etat_commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
+        $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
+         
+        $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
 
         $commandes = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
@@ -155,7 +157,7 @@ class CommandeController extends Controller
         ->where('commande.reference_commande', '=', $reference_commande)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total'));
+        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse'));
 
     }
  
@@ -192,11 +194,12 @@ class CommandeController extends Controller
     {
         $user = User::where(['id_user' =>$id])->first() ;
 
-        $etat_commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
+        $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
-        if($etat_commande->etat_commande == 0)
+        $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
+        // si la commande n'est pas encore valider
+        if($commande->etat_commande == 0)
         {
-
         $commandes = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
         //->join('user', 'user.id_user', '=', 'commande.id_user')
@@ -215,11 +218,13 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse'));
+
+        // si la commande est deja valider
 
         }else{
 
-            $commandes = DB::table('ligne_commande')
+        $commandes = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
         //->join('user', 'user.id_user', '=', 'commande.id_user')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
@@ -237,7 +242,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse'));
 
         }
     }
@@ -301,6 +306,8 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     // Validation de la commande
     public function destroy($id)
     {
          $commande = Commande::where(['id_commande' =>$id])->first() ;
@@ -308,6 +315,6 @@ class CommandeController extends Controller
          $commande->etat_commande=1;
          $commande->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Conmande validee avec succè');;
     }
 }

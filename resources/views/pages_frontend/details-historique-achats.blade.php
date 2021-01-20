@@ -64,12 +64,20 @@ if (Cookie::get('id_user')== null)
                             <h2><u>FACTURE N° 2021/00001</u></h2> 
                             </br></br></br>
                         </div>
-                        <div class="col-md-8 text-left">
+                        <div class="col-md-6 text-left">
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
                             <p>{{$user->email_user}}</p>
                             <p>221 ,Baker Street</p>
                             <p>+228 {{$user->telephone_user}}</p>
                         </div>
+
+                        <div class="col-md-6 text-left">
+                            <h4 style="color: black;"><strong><u>Adresse de livraison</u></strong></h4>
+                            <p> Ville : {{$adresse->ville_adresse}}</p>
+                            <p> Pays : {{$adresse->pays_adresse}}</p>
+                            <p> Description : {{$adresse->description_adresse}}</p>
+                        </div>
+                        
                     </div> <br />
                     <div>
                         <table class="table table-striped table-bordered" >

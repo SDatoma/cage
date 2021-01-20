@@ -38,11 +38,12 @@ if (Cookie::get('id_user')== null)
 									
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000;">
-											<div class="button-box">
-											<a href="/ajouter-adresse">
-												<button type="submit"><span>Ajouter</span></button><br/>
-												</a>
-											</div>
+											   <div class="button-box">
+											       <a href="/ajouter-adresse">
+												     <button type="submit"><span>Ajouter</span></button><br/>
+												   </a>
+											   </div>
+											   </br>
                                         <table class="table table-striped table-bordered">
 										<thead>
 											<tr>
