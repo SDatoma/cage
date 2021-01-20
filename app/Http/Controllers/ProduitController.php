@@ -124,7 +124,7 @@ class ProduitController extends Controller
 
         }
 
-        return back()->with('success', 'Produit enregistre effectuer avec succè');
+        return back()->with('success', 'Produit enregistrée avec succè');
     }
 
     // ajouter une promotion du produit
@@ -163,7 +163,7 @@ class ProduitController extends Controller
 
         $promotion->save();
 
-        return back()->with('success', 'Promotion enregistree effectuer avec succè');
+        return back()->with('success', 'Promotion enregistrée avec succè');
 
     }
 
@@ -306,7 +306,7 @@ class ProduitController extends Controller
         $produit->save();
 
         //return back()->with('success', 'Modification effectuee avec succè');
-        return redirect()->to('/list/produit')->with('success', 'Modification effectuee avec succè');
+        return redirect()->to('/list/produit')->with('success', 'Modification effectuée avec succè');
     }
 
 
@@ -320,7 +320,7 @@ class ProduitController extends Controller
 
         $promotion->save();
 
-        return back()->with('success', 'Modification effectuee avec succè');
+        return back()->with('success', 'Modification effectuée avec succè');
         // return redirect()->back();
     }
 
@@ -338,7 +338,7 @@ class ProduitController extends Controller
 
         $produit->save();
 
-       return back()->with('error','Suppression effectuer avec succè');
+       return back()->with('error','Suppression effectuée avec succè');
        
     }
 
@@ -348,7 +348,7 @@ class ProduitController extends Controller
         //dd($promotion);
         $promotion->delete();
 
-        return back()->with('error', 'Suppression effectuer avec succè');
+        return back()->with('error', 'Suppression effectuée avec succè');
        
     }
 }

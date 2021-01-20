@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Alert;
 
 class AdresseController extends Controller
 {
