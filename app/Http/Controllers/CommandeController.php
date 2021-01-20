@@ -75,6 +75,7 @@ class CommandeController extends Controller
          $commande->reference_commande= $code;
          $commande->date_commande= $date_jour;
          $commande->etat_commande= 0;
+         $commande->id_adresse= $request->id_adresse;
          $commande->id_user= Cookie::get('id_user');
     
          $commande->save();

@@ -66,7 +66,7 @@ if (Cookie::get('id_user')== null)
                                                @foreach($adresses as $adresse)
                                                    <div class="col-md-6">
                                                       <label for="huey" style="color:blue">Adresse {{$i}}</label>&nbsp;&nbsp;
-                                                      <input type="radio" name="adresse" value="{{$adresse->id_adresse}}" >
+                                                      <input type="radio" name="id_adresse" value="{{$adresse->id_adresse}}" required="">
                                                      <p ><strong style="color:black"> Ville </strong>: {{$adresse->ville_adresse}}</p>
                                                      <p><strong style="color:black"> Pays </strong>: {{$adresse->pays_adresse}}</p>
                                                      <p><strong style="color:black"> Description </strong>: {{$adresse->description_adresse}}</p>

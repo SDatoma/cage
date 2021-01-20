@@ -85,11 +85,7 @@
                                     <td>{{$commande->prix_ht_produit*$commande->quantite_commande}}</td>
                                 </tr>
                             @endforeach 
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th></th>
-									<th ></th>
-								</tr>
-                                
+                               
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
 									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
@@ -115,7 +111,7 @@
                     <div>
                         <div class="col-md-12">
                             <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
-									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red"><?php echo int2str($prix_total+1000)?> F CFA</b> </i></p>
+									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red"><?php echo int2str($prix_total)?> F CFA</b> </i></p>
 										
 									<p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use ShoppingCart;
 
 class ConnexionController extends Controller
 {
@@ -89,6 +90,8 @@ class ConnexionController extends Controller
         Cookie::queue(Cookie::forget('prenom_user'));
         Cookie::queue(Cookie::forget('email_user'));
         Cookie::queue(Cookie::forget('telephone_user'));
+        
+        ShoppingCart::destroy();
 
         return $this->logout();
     }
