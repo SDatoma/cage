@@ -45,7 +45,7 @@ if (Cookie::get('id_user')== null)
 												<button type="submit"><span>Ajouter</span></button><br/>
 												</a>
 											</div>
-
+                                            </br>
                                         <table class="table table-striped table-bordered">
 										<thead>
 											<tr>
@@ -74,7 +74,7 @@ if (Cookie::get('id_user')== null)
 													</a>
 												</td>
 											</tr>
-														@include('modals/suppression/supprimer_adresse')
+											@include('modals/suppression/supprimer_adresse')
 														
 											@include('modals/modification/modifier_adresse')
 										@endforeach

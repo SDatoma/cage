@@ -172,7 +172,7 @@ class CommandeController extends Controller
     public function checkout(){
         
         $id_user = $id_user= Cookie::get('id_user');
-        $adresses = Adresse::where(['id_user' =>$id_user])->get() ;
+        $adresses = Adresse::where(['id_user' =>$id_user,'etat_adresse' =>1])->get() ;
 		$id_categorie=0 ;
 		
 		return view('pages_frontend/checkout',compact('id_categorie','adresses'));

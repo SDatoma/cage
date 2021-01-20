@@ -58,10 +58,10 @@ if (Cookie::get('id_user')== null)
                                         <div class="swiper-slide bg-img d-flex" style="background-image: url({{asset('css_frontend/images/image2.jpg')}});">
                                             <div class="container align-self-center">
                                                 <div class="slider-content-1 slider-animated-1 text-left pl-60px">
-                                                    <span class="animated color-white" style="color:black">BT HEADPHONE</span>
+                                                    <span class="animated color-white" style="color:black">SECURITE TOTALE</span>
                                                     <h1 class="animated color-white" style="color:black">
-                                                        Headset <br />
-                                                        <strong>Hyper X</strong>
+                                                        De la commande<br />
+                                                        <strong>a la livraison</strong>
                                                     </h1>
                                                     <!-- <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a> -->
                                                 </div>

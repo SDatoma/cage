@@ -146,7 +146,7 @@ class AdresseController extends Controller
          $adresse->etat_adresse=0;
          $adresse->save();
 
-		Session()->flash('success','Félicitation, Adresse supprimer avec succès. ');
+		Session()->flash('success','Adresse supprimer avec succès. ');
         return redirect()->back();
     }
 

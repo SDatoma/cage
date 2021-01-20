@@ -8,21 +8,20 @@
       </div>
       <div class="modal-body">
 		<div class="tab-content">
-                                    <form class="form-horizontal" method="POST"  action="{{route('adresse.update',$adresse->id_adresse)}}" enctype="multipart/form-data">
-													
-													{{ method_field('PUT') }}
-													 {{ csrf_field() }}
+           <form class="form-horizontal" method="POST" action="{{route('adresse.update',$adresse->id_adresse)}}" >
+							{{ method_field('PUT') }}
+							{{ csrf_field() }}
 													 
-                                                    <div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" value="{{$adresse->ville_adresse}}" name="ville" /> </div>
-                                                    <div class="col-lg-4">Pays : </div> <div class="col-lg-8"> <input required type="text" name="pays" value="TOGO" /> </div>
-                                                    <div class="col-lg-4">Description précise : </div> <div class="col-lg-8"> <input required value="{{$adresse->description_adresse}}" name="description" type="numeric" /> </div>
-                                                    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" >Modifier</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-      </div>
-                                                </form>
+             <div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" value="{{$adresse->ville_adresse}}" name="ville" /> </div>
+               <div class="col-lg-4">Pays : </div> <div class="col-lg-8"> <input required type="text" name="pays" value="TOGO" /> </div>
+               <div class="col-lg-4">Description précise : </div> <div class="col-lg-8"> <input required value="{{$adresse->description_adresse}}" name="description" type="numeric" /> </div>
+                    <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary" >Modifier</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+           </form>
                                             
-                                </div>
+          </div>
   </div>
 </div>
 </div>
