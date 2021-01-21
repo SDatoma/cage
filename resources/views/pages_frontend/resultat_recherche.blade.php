@@ -11,35 +11,6 @@ if (Cookie::get('id_user')== null)
 <div class="header-menu ">
                 <div class="container">
                     <div class="row mt-2">
-                        <div class="col-md-2">
-                            <div class="header-menu-vertical bg-blue">
-                                <h4 class="menu-title be-af-none">Catégories</h4>
-                                <ul class="menu-content display-block">
-                                  @foreach($categories as $categorie)
-                                            <?php
-                                              $sous_categories = \App\Models\SousCategorie::where(['id_categorie' =>$categorie->id_categorie])->get();
-                                             ?>
-                                    <li class="menu-item">
-                                        <a href="{{route('tri.produit.categorie',[$categorie->id_categorie,$categorie->libelle_categorie])}}" @if($categorie->id_categorie==$id_categorie)style="color:red" @endif >{{$categorie->libelle_categorie}} @if(count($sous_categories)>0)<i class="ion-ios-arrow-right"></i> @endif</a>
-										    
-										<ul class="sub-menu sub-menu-2">
-                                            <li>
-                                                <ul class="submenu-item">
-												@foreach($sous_categories as $sous_categorie)
-                                                    <li><a href="{{route('tri.produit.sous_categorie',[$categorie->id_categorie,$sous_categorie->id_sous_categorie,$sous_categorie->libelle_sous_categorie])}}">{{$sous_categorie->libelle_sous_categorie}}</a></li>
-												@endforeach
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- sub menu -->
-                                    </li>
-								  @endforeach
-								   
-                                </ul>
-                                <!-- menu content -->
-                            </div>
-                            <!-- header menu vertical -->
-                        </div>
                         <div class="col-md-10">
                         <h3 class="tittle-w3l1" style="font-size:20px;margin-top:12px">RESULTATS DE LA RECHERCHE  " {{$mot_cle}} " @if(count($produits)!=0) ( <strong style="color:red;font-size:17px">{{count($produits)}} produit(s) trouvé(s)</strong>) @endif
                            <div class="pull-right">

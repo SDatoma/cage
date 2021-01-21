@@ -62,8 +62,8 @@
                                 <table class="table table-bordered table-striped table-hover theme-color dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                           <th>IMAGE</th>
-                                            <th>TEXTE D'ACCROCHE</th>
+                                           <th>TITRE</th>
+                                            <th>DESCRIPTION</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -71,12 +71,9 @@
                                     <tbody>
                                   
                                         <tr>
-                                           <td><img src="/" width="48" alt=""></td>
                                             <td></td>
-                                            <td>
-                                             
-                                             
-                                             </td>
+                                            <td></td>
+                                            <td> </td>
                                            
                                          </tr>
                                           
