@@ -27,7 +27,7 @@
 						<ul>
 						
 							<li>
-								<a href="/politique-confidentialite">Politique de confidentialitée</a>
+								<a href="/politique-confidentialite">Politique de confidentialité</a>
 							</li>
 							
 							<li>

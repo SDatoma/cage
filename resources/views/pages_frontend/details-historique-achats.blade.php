@@ -50,8 +50,14 @@ if (Cookie::get('id_user')== null)
                     <div class="row">
                         <div class="col-md-4"> <img class="img" alt="Invoce Template" src="{{asset('css_frontend/images/logo2.png')}}" /><p style="margin-left:20px;font-size:15px">CAGE BAT E-commerce</p>
 						 </div>
-						
-                        <div class="col-md-8 text-right">
+                         <div class="col-md-4">
+                        @if($commande->etat_commande != 0 )  
+						<span class="badge" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php setlocale(LC_TIME, "fr_FR","French");
+						 echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_livraison))); ?> 
+                         </b> </span>
+						 @endif 
+                         </div>
+                        <div class="col-md-4 text-right">
                             <h4 style="color: #F81D2D;"><strong>CAGE - BATIMENT</strong></h4>
                             <p>Togo, Lomé, Agoè Démakpoè</p>
                             <p>+228 70 45 37 85 | 96 35 80 90</p>
