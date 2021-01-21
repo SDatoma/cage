@@ -27,11 +27,11 @@
 						<ul>
 						
 							<li>
-								<a href="/politique-confidentialite">Politique de confidentialité</a>
+								<a href="/politique-confidentialite">Politique de confidentialitée</a>
 							</li>
 							
 							<li>
-								<a href="/condition-general">Conditions generales de vente ( CGV )</a>
+								<a href="/condition-general">Conditions générales de vente ( CGV )</a>
 							</li>
 							<li>
 								<a href="">Les meilleures ventes</a>
@@ -65,7 +65,7 @@
 				<!-- //quick links -->
 				<!-- social icons -->
 				<div class="col-sm-3 footer-grids  w3l-socialmk">
-					<h3>Télécharger l'application sur</h3>
+					<h3>Télécharger sur</h3>
 					<div class="agileits_app-devices">
 						<h5></h5>
 						<a href="#">
@@ -88,22 +88,22 @@
 				<!-- //brands -->
 				<!-- payment -->
 				<div class="sub-some child-momu">
-					<h5 style="color:black">Mode de paiement</h5>
+					<h5 style="color:black">Moyens de paiement</h5>
 					<ul>
 						<li>
-							<img src="{{asset('css_frontend/images/tmoney.jpg')}}" height=40 alt="">
+							<img src="{{asset('css_frontend/images/tmoney-logo.jpg')}}" height=50 alt="">
 						</li>
 						<li>
-							<img src="{{asset('css_frontend/images/flooz.jpg')}}" height=40 alt="">
+							<img src="{{asset('css_frontend/images/flooz-logo.jpg')}}" height=50 alt="">
 						</li>
 						<li>
-							<img src="{{asset('css_frontend/images/orabank.jpg')}}" height=40 alt="">
+							<img src="{{asset('css_frontend/images/orabank-logo.png')}}" height=50 width=200 alt="">
 						</li>
 						<li>
 							<img src="{{asset('css_frontend/images/visa.jpg')}}" height=40 alt="">
 						</li>
 						<li>
-							<img src="{{asset('css_frontend/images/master.png')}}" height=40 alt="">
+							<img src="{{asset('css_frontend/images/master-logo.png')}}" height=50 alt="">
 						</li>
 					</ul>
 				</div>

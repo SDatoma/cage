@@ -22,6 +22,7 @@ if (Cookie::get('id_user')== null)
 		</div>
 	</div>
 	<!-- //page -->
+	
 	<!-- Single Page -->
 	<div class="banner-bootom-w3-agileits" style="margin-top:0px">
 		<div class="container">
@@ -38,9 +39,9 @@ if (Cookie::get('id_user')== null)
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="/{{$produit->image_produit}}" style="height:300px; width:300px">
+							<li data-thumb="/{{$produit->image_produit}}" style="height:300px; width:100%">
 								<div class="thumb-image">
-									<img src="/{{$produit->image_produit}}" style="height:300px; width:300px" data-imagezoom="true" class="img-responsive" alt=""></div>
+									<img src="/{{$produit->image_produit}}" style="height:300px; width:100%" data-imagezoom="true" class="img-responsive" alt=""></div>
 							</li>
 							@foreach($photo_produits as $photo_produit)
 								<li data-thumb="/{{$photo_produit->photo_produit}}">

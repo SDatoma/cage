@@ -61,7 +61,7 @@ if (Cookie::get('id_user')== null)
                                                     <span class="animated color-white" style="color:black">SECURITE TOTALE</span>
                                                     <h1 class="animated color-white" style="color:black">
                                                         De la commande<br />
-                                                        <strong>a la livraison</strong>
+                                                        <strong>à la livraison</strong>
                                                     </h1>
                                                     <!-- <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a> -->
                                                 </div>
@@ -73,10 +73,10 @@ if (Cookie::get('id_user')== null)
                                         <div class="swiper-slide bg-img d-flex" style="background-image: url({{asset('css_frontend/images/image3.jpg')}});">
                                             <div class="container align-self-center">
                                                 <div class="slider-content-1 slider-animated-1 text-left pl-60px" >
-                                                    <span class="animated color-white" style="color:black">GALAXY WATCH</span>
+                                                    <span class="animated color-white" style="color:black">Le N° 1 dans le bâtiment</span>
                                                     <h1 class="animated color-white" style="color:black">
-                                                        Pre-Order <br />
-                                                        <strong>Exclusive</strong>
+                                                        Tous matériaux <br />
+                                                        <strong>de construction</strong>
                                                     </h1>
                                                     <!-- <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a> -->
                                                 </div>
@@ -148,7 +148,7 @@ if (Cookie::get('id_user')== null)
                                         <img src="{{asset('css_front_end/assets/images/icons/static-icons-4.png')}}" alt="" class="img-responsive" />
                                         <div class="single-static-meta">
                                             <h4>Payement 100% Sécurisé</h4>
-                                            <p>Votre paiement est en sécurité avec nous.</p>
+                                            <p>Votre payement est sécurisé.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@ if (Cookie::get('id_user')== null)
 				<div class="wrapper">
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
-						<h3 class="heading-tittle" style="font-size:25px">Produits populaires</h3>
+						<h3 class="heading-tittle" style="font-size:25px">PRODUITS POPULAIRES</h3>
 						@foreach($produits as $produit)
 						<div class="col-md-2 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
@@ -291,7 +291,7 @@ if (Cookie::get('id_user')== null)
 					<!-- //third section (oils) -->
 					<!-- fourth section (noodles) -->
 					<div class="product-sec1">
-						<h3 class="heading-tittle" style="font-size:25px">Nouvaux produits</h3>
+						<h3 class="heading-tittle" style="font-size:25px">NOUVEAUX PRODUITS</h3>
                         @foreach($nouveau_produits as $nouveau_produit)
 						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
@@ -374,11 +374,11 @@ if (Cookie::get('id_user')== null)
 					</div>
 				</div>
 			@endif
-				<h2>Faites livrer vos courses dans les magasins locaux</h2>
-				<p>Livraison gratuite sur votre première commande!</p>
+				<h2>Souscrivez à la newsletter</h2>
+				<p>Et ne rater aucune de nos offres et promotions. </p>
 				<form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
-					<input type="email" placeholder="Laissez nous votre E-mail" name="email" required="">
+					<input type="email" placeholder="Laisser nous votre e-mail" name="email" required="">
 					<input type="submit" value="Souscrire">
 				</form>
 				<div class="newsform-w3l">
@@ -420,7 +420,7 @@ if (Cookie::get('id_user')== null)
 						<span class="fa fa-times" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-8 text-form-footer">
-						<h3 style="font-size:20px">Satisfait ou rembousser </h3>
+						<h3 style="font-size:20px">Satisfait ou rembourser </h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
