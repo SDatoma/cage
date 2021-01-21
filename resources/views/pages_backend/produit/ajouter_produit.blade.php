@@ -48,10 +48,12 @@
                                     <input type="text" class="form-control" placeholder="Nom du produit" name="nom_produit" value="{{ old('nom_produit') }}" required>
                                 </div>
                                 <div class="form-group form-float">
-                                    <textarea name="description_produit" cols="30" rows="5" placeholder="Description du produit" class="form-control no-resize" required>{{ old('description_produit') }}</textarea>
+                                    <label> Description</label>
+                                    <textarea name="description_produit" cols="10" rows="5" placeholder="Description du produit" class="form-control no-resize summernote" required>{{ old('description_produit') }}</textarea>
                                 </div>
                                 <div class="form-group form-float">
-                                    <textarea name="caracteristique_produit" cols="30" rows="5" placeholder="Caracteristique du produit" class="form-control no-resize" required>{{ old('caracteristique_produit') }}</textarea>
+                                    <label> Caracteristiques</label>
+                                    <textarea name="caracteristique_produit" cols="10" rows="5" placeholder="Caracteristique du produit" class="form-control no-resize summernote" required>{{ old('caracteristique_produit') }}</textarea>
                                 </div>
                                 <div class="form-group form-float">
                                     <input type="number" min="100" class="form-control" placeholder="Prix du produit" name="prix_produit" value="{{ old('prix_produit') }}" required>

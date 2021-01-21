@@ -90,7 +90,7 @@
                     <div class="card">
                         <div class="body">
                             <h5>Description</h5>
-                            <span>{{$boutique->description_boutique}}</span>
+                            <span><?php echo nl2br($boutique->description_boutique)?></span>
                         </div>
                     </div>
 

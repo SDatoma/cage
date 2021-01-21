@@ -16,7 +16,7 @@
 <script src="{{asset('css_backend/assets/plugins/dropify/js/dropify.min.js')}}"></script>
 <script src="{{asset('css_backend/assets/js/pages/forms/dropify.js')}}"></script>
 <script src="{{asset('css_backend/assets/js/pages/forms/basic-form-elements.js')}}"></script>
-<!-- <script src="{{asset('css_admin/assets/plugins/summernote/dist/summernote.js')}}"></script> -->
+<script src="{{asset('css_backend/assets/plugins/summernote/dist/summernote.js')}}"></script>
 <script src="{{asset('css_backend/assets/plugins/select2/select2.min.js')}}"></script> <!-- Select2 Js -->
 <script src="{{asset('css_backend/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
 

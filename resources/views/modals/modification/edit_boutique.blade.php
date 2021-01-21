@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Description</label>
-            <textarea class="form-control" cols="30" name="description_boutique" id="message-text"> {{$boutique->description_boutique}}</textarea>
+            <textarea class="form-control summernote" cols="30" name="description_boutique" id="message-text"> {{$boutique->description_boutique}}</textarea>
           </div>
 
           <div class="form-group">

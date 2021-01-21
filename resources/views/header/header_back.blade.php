@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="{{asset('css_backend/assets/css/style.min.css')}}">
 <link rel="stylesheet" href="{{asset('css_backend/assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css')}}">
 <link href="{{asset('css_backend/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
-<!-- <link rel="stylesheet" href="{{asset('css/assets/plugins/summernote/dist/summernote.css')}}"/> -->
+<link rel="stylesheet" href="{{asset('css_backend/assets/plugins/summernote/dist/summernote.css')}}"/>
 <link rel="stylesheet" href="{{asset('css_backend/assets/plugins/select2/select2.css')}}" />
 
 </head>

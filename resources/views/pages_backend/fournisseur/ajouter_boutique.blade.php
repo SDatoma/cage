@@ -68,14 +68,15 @@
                                 </div>
                                
                                 <div class="form-group form-float">
-                                    <textarea name="description_boutique" cols="30" rows="5" placeholder="Description de la boutique" class="form-control no-resize" required>{{ old('description_boutique') }}</textarea>
+                                    <textarea name="description_boutique" cols="30" rows="5" placeholder="Description de la boutique" class="form-control no-resize summernote" required>{{old('description_boutique')}}</textarea>
                                 </div>
 
                                   <div class="form-group form-float col-sm-5">
                                         <input type="file" class="dropify" name="file">
                                   </div>
                                 
-                               <center> <button class="btn btn-raised btn-primary waves-effect" type="submit">ENREGISTRER</button></center>
+                               <center>
+                                <button class="btn btn-raised btn-primary waves-effect" type="submit">ENREGISTRER</button></center>
                             </form>
                         </div>
                     </div>

@@ -113,7 +113,7 @@
                         <div class="body">                            
                             <div class="tab-content">
                                 <div class="tab-pane active" id="description">
-                                    <p>{{$produit->description_produit}}</p>
+                                    <p><?php echo nl2br($produit->description_produit)?></p>
                                 </div>
                                 <div class="tab-pane" id="review">
                                             <?php
@@ -149,7 +149,7 @@
                                 </div>
                                 <div class="tab-pane" id="about">
                                     <!-- <h6>Composition</h6> -->
-                                    <p>{{$produit->caracteristique_produit}}</p>
+                                    <p><?php echo nl2br($produit->caracteristique_produit)?></p>
                                 </div>
                             </div>
                         </div>

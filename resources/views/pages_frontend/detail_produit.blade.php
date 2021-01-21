@@ -125,12 +125,12 @@ if (Cookie::get('id_user')== null)
                         <div class="tab-content description-review-bottom">
                             <div id="des-details2" class="tab-pane active">
                                 <div class="product-anotherinfo-wrapper">
-                                    <p> {{$produit->description_produit}} </p>
+                                    <p><?php echo nl2br($produit->description_produit)?></p>
                                 </div>
                             </div>
                             <div id="des-details1" class="tab-pane">
                                 <div class="product-description-wrapper">
-                                    <p> {{$produit->caracteristique_produit}} </p>
+                                    <p><?php echo nl2br($produit->caracteristique_produit)?></p>
                                 </div>
                             </div>
                             <div id="des-details3" class="tab-pane">
