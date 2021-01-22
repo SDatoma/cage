@@ -109,11 +109,6 @@
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;">TAXE</th>
-									<th colspan="2"  style="font-size:17px;"> 0 %</th>
-								</tr>
-
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
 								</tr>
