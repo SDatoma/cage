@@ -120,10 +120,15 @@ if (Cookie::get('id_user')== null)
 									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
 									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>
-                                
+
                                 <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
+								</tr>
+
+                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+									<th colspan="3"  style="font-size:17px;">REMISE</th>
+									<th colspan="2"  style="font-size:17px;"> 0 %</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-left">
@@ -140,7 +145,7 @@ if (Cookie::get('id_user')== null)
 										
 									<p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");
-										echo $date = utf8_encode(strftime("%d %B %Y", strtotime(date('Y-m-d')))); ?> </p>
+										echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?> </p>
 									<p class="text-right" style="text-align: right; margin-top:40px"><b>Signature</b></p>
                         </div>
                     </div>
