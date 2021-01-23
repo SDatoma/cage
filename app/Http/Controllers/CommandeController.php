@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
 use App\Models\adresse;
+use App\Models\Remise;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
@@ -205,6 +206,8 @@ class CommandeController extends Controller
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+
         $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
         // si la commande n'est pas encore valider
         if($commande->etat_commande == 0)
@@ -227,7 +230,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         // si la commande est deja valider
 
@@ -251,7 +254,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         }
     }
@@ -319,11 +322,13 @@ class CommandeController extends Controller
      // Validation de la commande
     public function destroy($id)
     {
+         $date_jour=date('Y-m-d');
          $commande = Commande::where(['id_commande' =>$id])->first() ;
 
          $commande->etat_commande=1;
+         $commande->date_livraison=$date_jour;
          $commande->save();
 
-        return redirect()->back()->with('success', 'Conmande validee avec succè');;
+        return redirect()->back()->with('success', 'Conmande validée avec succè');;
     }
 }
