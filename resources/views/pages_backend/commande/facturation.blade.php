@@ -14,6 +14,13 @@
      position: relative;
      font-size: 10px
  }
+
+ #filigrane{
+filter:alpha(opacity=50);
+opacity: 0.1;
+-moz-opacity:0.5;
+}
+
 </style>
 
 <section class="content">

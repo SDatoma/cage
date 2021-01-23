@@ -63,6 +63,10 @@ if (Cookie::get('id_user')== null)
                                            <div class="">
 										      <div class="row">
                                               <?php $i=1 ?>
+                                              @if(count($adresses)==0)
+                                              <h5 style="color:red"><a href="/mes-adresses"> Veuillez ajouter une adresse</a> </h5>
+                                              <input type="text" name="" disabled="" required=""/>
+                                              @else
                                                @foreach($adresses as $adresse)
                                                    <div class="col-md-6">
                                                       <label for="huey" style="color:blue">Adresse {{$i}}</label>&nbsp;&nbsp;
@@ -73,6 +77,7 @@ if (Cookie::get('id_user')== null)
                                                    </div>
                                                    <?php $i++ ?>
                                                 @endforeach
+                                                @endif
                                                 </div>
                                            </div>
                                     </div>
@@ -89,10 +94,11 @@ if (Cookie::get('id_user')== null)
                                             <h5>Frais accessoirs</h5>
                                             <ul>
                                                 <li> Livraison <span>0 FCFA</span></li>
-                                                <li> Taxe <span>0%</span></li>
+                                                <li> Remise <span>0 %</span></li>
                                             </ul>
                                         </div>
-										<h4 class="grand-totall-title" style="color:red">Net a payer<span>{{ShoppingCart::totalPrice() ?? '0'}} FCFA</span></h4>
+										<h4 class="grand-totall-title" style="color:red">Net à payer<span>{{ShoppingCart::totalPrice() ?? '0'}} FCFA</span></h4>
+
 										 <button class="cart-btn-2 btn-sm" type="submit"> <a >Commander</a></button>
                                        
                                     </div>

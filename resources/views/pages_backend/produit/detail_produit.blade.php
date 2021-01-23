@@ -20,13 +20,15 @@
                                @include('modals/ajout/definir_promotion')
                             @else
                             <button class="btn btn-success btn-sm" style="float:right" data-toggle="modal" data-target="#mp{{$promotion->id_promotion}}">
-                                   <i class="zmdi zmdi-plus"></i> Modifier Promotion
-                               </button>
+                            <i class="zmdi zmdi-plus"></i> Modifier Promotion
+                            </button>
                                @include('modals/modification/edit_promotion')
-
                             @endif
 
-                        
+                            <button class="btn btn-warning btn-sm" style="float:right" data-toggle="modal"   data-target="#add-image">
+                            <i class="zmdi zmdi-plus"></i> Ajouter une image
+                            </button>
+                               @include('modals/ajout/add_produit_image')
 
                     <button class="btn btn-primary btn-icon mobile_menu" type="button">
                     <i class="zmdi zmdi-sort-amount-desc"></i></button>
@@ -66,7 +68,13 @@
                                     <ul class="preview thumbnail nav nav-tabs">
                                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#product_1"><img src="/{{$produit->image_produit}}" alt=""/></a></li>
                                         @foreach($produit_images as $produit_image)
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#product_2"><img src="/{{$produit_image->photo_produit}}" widht="50px" height="30px" alt=""/></a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#product_2">
+                                        <img src="/{{$produit_image->photo_produit}}" widht="50px" height="30px" alt=""/></a>
+                                       <i class="zmdi zmdi-edit" data-toggle="modal" data-target="#mp{{$produit_image->id_photo_produit}}"></i>
+                                        <i class="zmdi zmdi-delete" style="color:red" data-toggle="modal" data-target="#si{{$produit_image->id_photo_produit}}"></i>
+                                        @include('modals/modification/edit_photos')
+                                        @include('modals/suppression/delete_photos')
+                                        </li>
                                         @endforeach
                                                                          
                                     </ul>                
@@ -117,7 +125,7 @@
                                 </div>
                                 <div class="tab-pane" id="review">
                                             <?php
-                                              $commentaires = \App\Models\Commentaire::where(['id_produit' =>$produit->id_produit])->get();
+                                $commentaires = \App\Models\Commentaire::where(['id_produit' =>$produit->id_produit])->get();
                                              ?>
                                     @if(count($commentaires)==0)
                                     <h5 style="color:red">Aucun commentaire poster pour ce produit </h5>
