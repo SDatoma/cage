@@ -269,11 +269,11 @@ if (Cookie::get('id_user')== null)
 										    ?>
                                             @endif
 											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
+												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;margin-left:px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
 									@else
-									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9" value="Ajouter au panier" class="button cart-resp" />
+									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9;margin-left:px" value="Ajouter au panier" class="button cart-resp" />
 									@endif
 									</div> </br>
 									@if($produit->quantite_produit>3)
