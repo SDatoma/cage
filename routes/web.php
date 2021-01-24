@@ -99,7 +99,7 @@ Route::post('/image/produit', 'ProduitController@ajouter_produit_image')->name('
 Route::get('/list/commande/attente', 'CommandeController@getAllCommandeUser');
 Route::get('/list/commande/valider', 'CommandeController@getAllCommandeValider');
 Route::get('/list/client', 'CommandeController@getAllUser');
-Route::get('/commande/download/facture/{id}/pdf', 'CommandeController@download_facture')->name('download.facture');
+Route::get('/commande/download/facture/{id}/pdf/{reference_commande}', 'CommandeController@download_facture')->name('download.facture');
 Route::get('/commande/voir/facture/{id}/{reference_commande}', 'CommandeController@vOIRfACTURE')->name('voir.facture');
 Route::get('/statistique/stock', 'StockController@index');
 

@@ -14,13 +14,6 @@
      position: relative;
      font-size: 10px
  }
-
- #filigrane{
-filter:alpha(opacity=50);
-opacity: 0.1;
--moz-opacity:0.5;
-}
-
 </style>
 
 <section class="content">
@@ -30,6 +23,13 @@ opacity: 0.1;
         <button class="btn btn-primary btn-sm " onclick="printContent('dataTable')">
             <i class="zmdi zmdi-print"></i>  Imprimer
         </button>
+        @if($commande->etat_commande == 0)
+        <a href="{{route('download.facture',[$commande->id_user,$commande->reference_commande])}}" target="_blank">
+        <button class="btn btn-warning btn-sm ">
+            <i class="zmdi zmdi-download"></i>  Telecharger
+        </button>
+        </a>
+        @endif
         <!-- @if($remise)
          <a href="" data-toggle="modal" data-target="#edit-remise">
            <button class="btn btn-warning btn-sm">
