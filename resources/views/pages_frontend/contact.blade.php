@@ -59,19 +59,29 @@ if (Cookie::get('id_user')== null)
                                     <div class="social-info">
                                         <ul>
                                             <li>
-                                                <a href="#"><i class="ion-social-facebook"></i></a>
+                                                <!-- Facebook -->
+													   <a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://www.sebi-inc.com" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><img src="{{asset('css_frontend/iconrs/facebook_icon.png')}}" alt="Facebook" /></a>
+												<!-- //Facebook -->
                                             </li>
                                             <li>
-                                                <a href="#"><i class="ion-social-twitter"></i></a>
+                                                <!-- Twitter -->
+														<a target="_blank" title="Twitter" href="https://twitter.com/share?url=https://bit.ly/2YmRH6d" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><img src="{{asset('css_frontend/iconrs/twitter_icon.png')}}" alt="Twitter" /></a>
+												<!-- //Twitter -->
                                             </li>
                                             <li>
-                                                <a href="#"><i class="ion-social-youtube"></i></a>
+                                                <!-- Google + -->
+														<a target="_blank" title="Google +" href="https://plus.google.com/share?url=https://www.sebi-inc.com" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="{{asset('css_frontend/iconrs/gplus_icon.png')}}" alt="Google Plus" /></a>
+												<!-- //Google + -->
                                             </li>
                                             <li>
-                                                <a href="#"><i class="ion-social-google"></i></a>
+                                                <!-- Linkedin -->
+														<a target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.sebi-inc.com" rel="nofollow" onclick="javascript:window.open(this.href, '','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="{{asset('css_frontend/iconrs/linkedin_icon.png')}}" alt="Linkedin" /></a>
+												<!-- //Linkedin -->
                                             </li>
                                             <li>
-                                                <a href="#"><i class="ion-social-instagram"></i></a>
+                                                <!-- Email -->
+														<a target="_blank" title="Envoyer par mail" href="mailto:?Subject=Regarde cette plateforme de CAGE BAT, ça c'est cool !&amp;Body=regarde%20cet%20article%20c'est%20super !%20 https://www.sebi-inc.com" rel="nofollow"><img src="{{asset('css_frontend/iconrs/email_icon.png')}}" alt="email" /></a>
+												<!-- //Email -->
                                             </li>
                                         </ul>
                                     </div>
