@@ -104,7 +104,7 @@ class ProduitController extends Controller
                 $file_name_photo = $photo->getClientOriginalName();
                 $file_extension = strrchr($file_name_photo, ".");
                 $file_tmp_name = $photo->getPathname();
-                $filedest = 'files_upload/produit/'.$file_name_photo;
+                $filedest = 'files_upload/produit_image/'.$file_name_photo;
 
                 if(move_uploaded_file($file_tmp_name,$filedest)){
                          $chemin_photo=$filedest;
@@ -310,6 +310,72 @@ class ProduitController extends Controller
     }
 
 
+    public function ajouter_produit_image(Request $request)
+    {
+        $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+         srand((double)microtime()*1000000);
+         $i = 0 ;
+         $code = '' ;
+         while ($i <= 4) {
+             $num = rand() % 33;
+             $tmp = substr($chars, $num, 1);
+             $code = $code . $tmp;
+             $i++;
+         }
+
+        if ($request->HasFile('file')) {
+            $cover = $request->file('file');
+            $image = Image::make($cover)->encode('jpg');
+            $image->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            Image::make($image)->save('files_upload/produit_image/'.$code.'.jpg');
+
+            $file_name ='files_upload/produit_image/'.$code.'.jpg';
+
+          }else{
+
+            $file_name = "";
+         }
+
+        $photo_produit= new PhotoProduit(); 
+
+        $photo_produit->id_produit=$request->id_produit;
+        $photo_produit->photo_produit=$file_name;
+            
+        $photo_produit->save();
+
+        return redirect()->back()->with('success', 'Modification effectuée avec succè');
+    }
+
+
+    public function update_produit_image(Request $request, $id)
+    {
+        $photo_produit = PhotoProduit::where(['id_photo_produit' =>$id])->first() ;
+         
+        if ($request->HasFile('file')) {
+            $cover = $request->file('file');
+            $image = Image::make($cover)->encode('jpg');
+            $image->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            Image::make($image)->save('files_upload/produit_image/'.$id.'.jpg');
+
+            $file_name ='files_upload/produit_image/'.$id.'.jpg';
+
+          }else{
+
+            $file_name =$photo_produit->photo_produit;
+         }
+        $photo_produit->photo_produit=$file_name;
+       
+        $photo_produit->save();
+
+        //return back()->with('success', 'Modification effectuee avec succè');
+        return redirect()->back()->with('success', 'Modification effectuée avec succè');
+    }
+
+
     public function updatePromotion(Request $request, $id)
     {
         $promotion = Promotion::where(['id_promotion' =>$id])->first() ;
@@ -349,6 +415,16 @@ class ProduitController extends Controller
         $promotion->delete();
 
         return back()->with('error', 'Suppression effectuée avec succè');
+       
+    }
+
+    public function delete_produit_image($id)
+    {
+        $photo_produit = PhotoProduit::where(['id_photo_produit' =>$id])->first() ;
+        //dd($promotion);
+        $photo_produit->delete();
+
+        return back()->with('success', 'Suppression effectuée avec succè');
        
     }
 }

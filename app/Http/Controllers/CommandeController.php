@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
 use App\Models\adresse;
+use App\Models\Remise;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
@@ -205,6 +206,8 @@ class CommandeController extends Controller
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+
         $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
         // si la commande n'est pas encore valider
         if($commande->etat_commande == 0)
@@ -227,7 +230,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         // si la commande est deja valider
 
@@ -251,36 +254,42 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         }
     }
 
 
-    public function download_facture($id)
+    public function download_facture($id,$reference_commande)
     {    
         $user = User::where(['id_user' =>$id])->first() ;
 
+        $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
+
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+
+        $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
+        // si la commande n'est pas encore valider
+        $commandes = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->where('commande.etat_commande', '=', 0)
+        ->get();
+
         $prix_total = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
-        ->join('user', 'user.id_user', '=', 'commande.id_user')
-        ->join('produit', 'produit.id_produit', '=', 'commande.id_produit')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
         ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
         ->where('commande.etat_commande', '=', 0)
-        ->SUM('ligne_commande.prix_commande');
-        
-        $sql = ("SELECT count(ligne_commande.prix_commande) as prix_net,ligne_commande.quantite_commande as quantite,ligne_commande.prix_commande as prix_total,produit.nom_produit as nom_produit ,produit.prix_ht_produit as prix_ht_produit
-		FROM commande, user, produit,ligne_commande
-        WHERE commande.id_user= $id
-		AND produit.id_produit = commande.id_produit
-        AND ligne_commande.id_commande = commande.id_commande
-        AND user.id_user = commande.id_user 
-		AND commande.etat_commande = 0 
-		GROUP BY user.nom_user, prenom_user,ligne_commande.quantite_commande,ligne_commande.prix_commande,produit.nom_produit,produit.prix_ht_produit");
-		
-		$commandes=DB::select(DB::raw($sql));
+        ->sum('ligne_commande.prix_commande');
 
-         $pdf = PDF::loadView('pages_backend/commande/facture_pdf',['user'=>$user,'prix_total'=>$prix_total,'commandes'=>$commandes])->setPaper('a4', 'landscape');
+
+         $pdf = PDF::loadView('pages_backend/commande/facture_pdf',['user'=>$user,'prix_total'=>$prix_total,'commandes'=>$commandes,'commande'=>$commande,'adresse'=>$adresse])->setPaper('a4', 'landscape');
 
         return $pdf->stream('facture.pdf');
         
@@ -319,11 +328,13 @@ class CommandeController extends Controller
      // Validation de la commande
     public function destroy($id)
     {
+         $date_jour=date('Y-m-d');
          $commande = Commande::where(['id_commande' =>$id])->first() ;
 
          $commande->etat_commande=1;
+         $commande->date_livraison=$date_jour;
          $commande->save();
 
-        return redirect()->back()->with('success', 'Conmande validee avec succè');;
+        return redirect()->back()->with('success', 'Conmande validée avec succè');;
     }
 }

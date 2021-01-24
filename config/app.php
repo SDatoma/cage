@@ -167,6 +167,7 @@ return [
         Reliese\Coders\CodersServiceProvider::class,
         Overtrue\LaravelShoppingCart\ServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         /*
          * Package Service Providers...

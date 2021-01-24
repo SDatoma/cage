@@ -50,8 +50,14 @@ if (Cookie::get('id_user')== null)
                     <div class="row">
                         <div class="col-md-4"> <img class="img" alt="Invoce Template" src="{{asset('css_frontend/images/logo2.png')}}" /><p style="margin-left:20px;font-size:15px">CAGE BAT E-commerce</p>
 						 </div>
-						
-                        <div class="col-md-8 text-right">
+                         <div class="col-md-4">
+                        @if($commande->etat_commande != 0 )  
+						<span class="badge" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php setlocale(LC_TIME, "fr_FR","French");
+						 echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_livraison))); ?> 
+                         </b> </span>
+						 @endif 
+                         </div>
+                        <div class="col-md-4 text-right">
                             <h4 style="color: #F81D2D;"><strong>CAGE - BATIMENT</strong></h4>
                             <p>Togo, Lomé, Agoè Démakpoè</p>
                             <p>+228 70 45 37 85 | 96 35 80 90</p>
@@ -114,13 +120,15 @@ if (Cookie::get('id_user')== null)
 									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
 									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>
-                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
-									<th colspan="3"  style="font-size:17px;">TAXE</th>
-									<th colspan="2"  style="font-size:17px;"> 0 %</th>
-								</tr>
+
                                 <tr scope="col" colspan="5" rowspan="1" class="text-left">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
+								</tr>
+
+                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+									<th colspan="3"  style="font-size:17px;">REMISE</th>
+									<th colspan="2"  style="font-size:17px;"> 0 %</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-left">
@@ -137,7 +145,7 @@ if (Cookie::get('id_user')== null)
 										
 									<p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");
-										echo $date = utf8_encode(strftime("%d %B %Y", strtotime(date('Y-m-d')))); ?> </p>
+										echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?> </p>
 									<p class="text-right" style="text-align: right; margin-top:40px"><b>Signature</b></p>
                         </div>
                     </div>

@@ -73,10 +73,11 @@ if (Cookie::get('id_user')== null)
 													</div></br></br></br>
                                                     <div class="col-lg-4">Nom : </div> <div class="col-lg-8"> <input required type="text" name="username" placeholder="Nom " /> </div>
                                                     <div class="col-lg-4">Prénom : </div> <div class="col-lg-8"> <input required type="text" name="userprenom" placeholder="Prénom " /> </div>
+													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" placeholder="N° Téléphone" type="numeric" /> </div>
+                                                    <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" type="email" /> </div>
                                                     <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpassword" placeholder="Mot de passe" /> </div>
                                                     <div class="col-lg-4">Confirmer mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpasswordconfirm" placeholder="Confirmer mot de passe" /> </div>
-                                                    <div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" placeholder="N° Téléphone" type="numeric" /> </div>
-                                                    <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" type="email" /> </div>
+                                                    
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
                                                             <input type="checkbox" name="usernews" value="1" />

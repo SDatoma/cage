@@ -91,12 +91,15 @@ Route::get('/list/produit', 'ProduitController@getAllProduit');
 Route::post('/promotion/produit', 'ProduitController@promotionProduit')->name('promotion.produit');
 Route::delete('delete/promotion/produit/{id}', 'ProduitController@destroyPromotion')->name('delete.promotion');
 Route::put('update/promotion/produit/{id}', 'ProduitController@updatePromotion')->name('update.promotion');
+Route::put('update/image/produit/{id}', 'ProduitController@update_produit_image')->name('update.produit.image');
+Route::delete('delete/image/produit/{id}', 'ProduitController@delete_produit_image')->name('delete.produit.image');
+Route::post('/image/produit', 'ProduitController@ajouter_produit_image')->name('ajouter.produit.image');
 
 //Commande
 Route::get('/list/commande/attente', 'CommandeController@getAllCommandeUser');
 Route::get('/list/commande/valider', 'CommandeController@getAllCommandeValider');
 Route::get('/list/client', 'CommandeController@getAllUser');
-Route::get('/commande/download/facture/{id}/pdf', 'CommandeController@download_facture')->name('download.facture');
+Route::get('/commande/download/facture/{id}/pdf/{reference_commande}', 'CommandeController@download_facture')->name('download.facture');
 Route::get('/commande/voir/facture/{id}/{reference_commande}', 'CommandeController@vOIRfACTURE')->name('voir.facture');
 Route::get('/statistique/stock', 'StockController@index');
 
@@ -124,6 +127,7 @@ Route::resource('commande', 'CommandeController');
 Route::resource('client', 'InscriptionController');
 Route::resource('slider', 'SliderController');
 Route::resource('connexion', 'ConnexionController');
+Route::resource('remise', 'RemiseController');
 Route::resource('news', 'NewsController');
 Route::resource('adresse', 'AdresseController');
 Route::resource('message', 'ContactController');

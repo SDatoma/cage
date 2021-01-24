@@ -35,6 +35,7 @@ if (Cookie::get('id_user')== null)
                                             <tr>
                                                 <th>Reférences Commandes</th>
                                                 <th>Nombre de produits</th>
+												<th>Date commande</th>
                                                 <th>Etat commande</th>
                                                 <th>Action</th>
                                             </tr>
@@ -43,9 +44,7 @@ if (Cookie::get('id_user')== null)
                                             @foreach($commandes as $commande)
 											<?php
 
-												 $user = \App\Models\User::where(['id_user' =>$commande->id_user])->first() ;
-
-												 $nombre_produits = DB::table('ligne_commande')
+												$nombre_produits = DB::table('ligne_commande')
 												 ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
 												 ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
 												 ->where('commande.id_user', '=', $commande->id_user)
@@ -56,7 +55,12 @@ if (Cookie::get('id_user')== null)
                                             <tr>
                                                 <td class="product-name">{{$commande->reference_commande}}</td>
                                                 <td class="product-name">{{$nombre_produits}}</td>
-												<td class="product-name">@if($commande->etat_commande != 0 )  
+												<td class="product-name">
+												<?php setlocale(LC_TIME, "fr_FR","French");
+										        echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?>
+												</td>
+												<td class="product-name">
+												@if($commande->etat_commande != 0 )  
 													<span class="badge" style="background-color:#06d755; font-size:15px;color:#fff"><b>Livrer</b> </span>
 												@else 
 													<span class="item_price" style="background-color:#a12626; font-size:15px;color:#fff"><b>En attente</b> </span>

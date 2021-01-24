@@ -4,6 +4,17 @@
 <!-- Main Content -->
 @section('content')
 
+<style>
+.blink {
+  animation: blink 1s infinite;
+}
+@keyframes blink { 
+  0% { opacity:0; }
+  50% { opacity:1; } 
+  100% { opacity:0; }
+}
+</style>
+
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -111,8 +122,8 @@
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
                                             <div>                                
-                                            <center> <h5>{{$commande_en_attente}}</h5>  </center>
-                                                <span>Commandes en attente</span>
+                                            <center><h5 @if($commande_en_attente>0) class="blink" @endif style="color:red">{{$commande_en_attente}}</h5>  </center>
+                                                <span >Commandes en attente</span>
                                             </div>
                                             
                                         </div>
