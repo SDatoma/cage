@@ -16,10 +16,10 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	
+	<!--
 	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=600d989ba75167001ad219ef&product=sticky-share-buttons" async="async">
 	</script>
-	
+	-->
 	<!--//tags -->
 	<link href="{{asset('css_frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{asset('css_frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />

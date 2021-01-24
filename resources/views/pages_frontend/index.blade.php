@@ -204,7 +204,7 @@ if (Cookie::get('id_user')== null)
 			</div>
 		</div>
 	</div> -->
-	<!-- //special offers -->
+	<!-- //special offers 
 <div class="sharethis-inline-share-buttons"></div>
    <!-- top Products -->
 	<div class="ads-grid" style="margin-top:-100px">
