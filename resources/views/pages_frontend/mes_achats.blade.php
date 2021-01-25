@@ -25,10 +25,12 @@ if (Cookie::get('id_user')== null)
             <!-- cart area start -->
             <div class="cart-main-area mtb-60px">
                 <div class="container">
-                   <center> <h3 class="cart-page-title">Historique de vos commandes</h3>
-                    <div class="row"></center>
-                     
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                   <center> <h3 class="cart-page-title ml-4">Historique de vos commandes</h3></center>
+                    <div class="row">
+					@if(count($commandes)==0)
+					<center><h5 class="ml-4" style="color:red">Vous n'avez aucune commande</h5> </center>
+					@else
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                <div class="table-content table-responsive cart-table-content">
                                     <table>
                                         <thead>
@@ -68,19 +70,17 @@ if (Cookie::get('id_user')== null)
                                                 <td class="product-name">
 													<a href="{{route('voir.detail',[Cookie::get('id_user'),$commande->reference_commande])}}">
 														<button style="color:#0079ba; text-decoration: underline overline #FF3028;" title="Voir détail" data-toggle="modal" data-target="#">
-															<i class="glyphicon glyphicon-eye-open"></i> Voir détails
+														<i class="glyphicon glyphicon-eye-open"></i> Voir détails
 														</button> 
 													</a>
 												</td>
-                                                
                                             </tr>
                                             @endforeach
                                           </tbody>
                                     </table>
                                 </div>
-                            </form>
-                            
-                        </div>
+                           </div>
+						   @endif
                     </div>
                 </div>
             </div>

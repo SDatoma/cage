@@ -30,20 +30,7 @@
         </button>
         </a>
         @endif
-        <!-- @if($remise)
-         <a href="" data-toggle="modal" data-target="#edit-remise">
-           <button class="btn btn-warning btn-sm">
-               <i class="zmdi zmdi-edit"></i>  Modifier la remise
-           </button>
-        </a>
-        @include('modals/modification/edit_remise')
-        @else
-        <a href="" data-toggle="modal" data-target="#remise">
-           <button class="btn btn-primary btn-sm">
-               <i class="zmdi zmdi-plus"></i>  Faire une remise
-           </button>
-        </a>
-        @endif -->
+       
        </center>
        @include('modals/ajout/add_remise')
     </div>

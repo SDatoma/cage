@@ -108,7 +108,7 @@ class InscriptionController extends Controller
             Cookie::queue('prenom_user', $result->prenom_user , 5000);
             Cookie::queue('id_user', $result->id_user , 5000);
             
-            return redirect()->to('/');
+            return redirect()->to('/detail-profil-client');
 		}
 	}
 	

@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
 use App\Models\adresse;
-use App\Models\Remise;
+//use App\Models\Remise;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
@@ -206,7 +206,7 @@ class CommandeController extends Controller
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
-        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+        //$remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
 
         $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
         // si la commande n'est pas encore valider
@@ -230,7 +230,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
 
         // si la commande est deja valider
 
@@ -254,7 +254,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
 
         }
     }

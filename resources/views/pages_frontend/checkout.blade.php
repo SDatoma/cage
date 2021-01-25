@@ -98,13 +98,16 @@ if (Cookie::get('id_user')== null)
                                             </ul>
                                         </div>
 										<h4 class="grand-totall-title" style="color:red">Net à payer<span>{{ShoppingCart::totalPrice() ?? '0'}} FCFA</span></h4>
-
-										 <button class="cart-btn-2 btn-sm" type="submit"> <a >Commander</a></button>
-                                       
+                                        @if(count($adresses)>0)
+										 <button class="cart-btn-2 btn-sm" type="submit"><a>Commander</a></button>
+                                        </form>
+                                        @else
+                                        <a>Indiquer l'adresse de livraison</a>
+                                        @endif
                                     </div>
                                 </div>
 							</div>
-                        </form>
+                       
                         </div>
                     </div>
                 </div>
