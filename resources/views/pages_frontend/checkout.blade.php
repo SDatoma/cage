@@ -13,7 +13,7 @@ if (Cookie::get('id_user')== null)
             <div class="cart-main-area mtb-60px">
                 <div class="container">
                            <div class="row">
-                                <div class="col-lg-4 col-md-6 mb-lm-30px">
+                                <div class="col-lg-3 col-md-6 mb-lm-30px">
                                     <div class="cart-tax">
                                         <div class="title-wrap">
                                             <h4 class="cart-bottom-title section-bg-gray">Détails de facturation</h4>
@@ -55,7 +55,7 @@ if (Cookie::get('id_user')== null)
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 col-md-6 mb-lm-30px">
+                                <div class="col-lg-3 col-md-6 mb-lm-30px">
                                     <div class="discount-code-wrapper">
                                         <div class="title-wrap">
                                             <h4 class="cart-bottom-title section-bg-gray">Choisissez l'adresse de livraison</h4>
@@ -68,7 +68,7 @@ if (Cookie::get('id_user')== null)
                                               <input type="text" name="" disabled="" required=""/>
                                               @else
                                                @foreach($adresses as $adresse)
-                                                   <div class="col-md-6">
+                                                   <div class="col-md-12">
                                                       <label for="huey" style="color:blue">Adresse {{$i}}</label>&nbsp;&nbsp;
                                                       <input type="radio" name="id_adresse" value="{{$adresse->id_adresse}}" required="">
                                                      <p ><strong style="color:black"> Ville </strong>: {{$adresse->ville_adresse}}</p>
@@ -76,12 +76,57 @@ if (Cookie::get('id_user')== null)
                                                      <p><strong style="color:black"> Description </strong>: {{$adresse->description_adresse}}</p>
                                                    </div>
                                                    <?php $i++ ?>
+                                                   <hr>
                                                 @endforeach
                                                 @endif
                                                 </div>
                                            </div>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-3 col-md-6 mb-lm-30px">
+                                    <div class="discount-code-wrapper">
+                                        <div class="title-wrap">
+                                            <h4 class="cart-bottom-title section-bg-gray">Mode de paiement</h4>
+                                        </div>
+                                           <div class="">
+										      <div class="row">
+
+                                                   <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="livraison" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue">Paiement à la livraison</label>
+                                                    </div>
+
+                                                   <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="tmoney" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/tmoney-logo.jpg')}}" height=30 alt=""></label>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="flooz" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/flooz-logo.jpg')}}" height=30 alt=""></label>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="visa" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/visa.jpg')}}" height=30 alt=""></label>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="master-cart" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/master-logo.png')}}" height=30 alt=""></label>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="orabank" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/orabank-logo.png')}}" height=30 width=200 alt=""></label>
+                                                    </div>
+
+                                                </div>
+                                           </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-3 col-md-12 mt-md-30px">
                                     <div class="grand-totall">
 									   <div class="title-wrap">

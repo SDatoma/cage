@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c90d5900b27d29fd8349b4c46b1cb626",
+    "content-hash": "d730cefc20dcf299cbb81e871fb80aca",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -159,6 +159,52 @@
                 "math"
             ],
             "time": "2020-04-15T15:59:35+00:00"
+        },
+        {
+            "name": "cinetpay/cinetpay-php",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cinetpay/cinetpay-php-legacy.git",
+                "reference": "8a4a53bce076036fc5d6781bee839719780f2028"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cinetpay/cinetpay-php-legacy/zipball/8a4a53bce076036fc5d6781bee839719780f2028",
+                "reference": "8a4a53bce076036fc5d6781bee839719780f2028",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CinetPay": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fawaz Adisa",
+                    "email": "adisaf@programmer.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "easily integrate cinetpay's gateway on your php web site.",
+            "homepage": "https://github.com/cinetpay/cinetpay-php-legacy",
+            "keywords": [
+                "cinetpay",
+                "integration",
+                "mobile",
+                "money"
+            ],
+            "time": "2020-11-30T00:00:00+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

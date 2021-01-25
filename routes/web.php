@@ -103,6 +103,9 @@ Route::get('/commande/download/facture/{id}/pdf/{reference_commande}', 'Commande
 Route::get('/commande/voir/facture/{id}/{reference_commande}', 'CommandeController@vOIRfACTURE')->name('voir.facture');
 Route::get('/statistique/stock', 'StockController@index');
 
+//Paiement
+
+
 //Slider
 Route::get('/list/slider', 'SliderController@getAllSlider');
 
@@ -118,6 +121,7 @@ Route::get('/checkout','CommandeController@checkout');
 
 //LES RESOURCES
 Route::resource('fournisseur', 'FournisseurController');
+Route::resource('paiement', 'PaiementController');
 Route::resource('commentaire', 'CommentaireController');
 Route::resource('cart', 'CartController');
 Route::resource('categorie', 'CategorieController');
