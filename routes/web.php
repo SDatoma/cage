@@ -72,8 +72,11 @@ Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@
 	ROUTE BACKEND
 
 ****************************/
+Route::group(['middleware' => ['connexion']], function () {
 
 Route::get('/admin', 'AdminController@index');
+
+});
 
 //Boutique
 Route::get('/add/boutique', 'FournisseurController@create');
