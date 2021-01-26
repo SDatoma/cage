@@ -37,8 +37,10 @@ if (Cookie::get('id_user')== null)
             <!-- cart area start -->
             <div class="cart-main-area mtb-60px">
                 <div class="container">
-                   <center> <h3 class="cart-page-title">Détail historique de la commande</h3>
-                    <div class="row"></center>
+                   <center> 
+                   <h3 class="cart-page-title">Détail historique de la commande</h3>
+                    <div class="row">
+                    </center>
                      
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="container"><br/>

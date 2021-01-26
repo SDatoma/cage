@@ -124,12 +124,12 @@ if (Cookie::get('id_user')== null)
                             <a data-toggle="tab" href="#des-details3" style="font-size:15px">COMMENTAIRES</a>
                         </div>
                         <div class="tab-content description-review-bottom">
-                            <div id="des-details2" class="tab-pane active">
+                            <div id="des-details1" class="tab-pane active">
                                 <div class="product-anotherinfo-wrapper">
                                     <p><?php echo nl2br($produit->description_produit)?></p>
                                 </div>
                             </div>
-                            <div id="des-details1" class="tab-pane">
+                            <div id="des-details2" class="tab-pane">
                                 <div class="product-description-wrapper">
                                     <p><?php echo nl2br($produit->caracteristique_produit)?></p>
                                 </div>

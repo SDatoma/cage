@@ -44,6 +44,7 @@
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon traffic">
+                       <a href="/list/produit">
                         <div class="body">
                             <h6>Produits</h6>
                             <h2  style="color:black">{{$nombre_produit ?? '0'}}</h2>
@@ -51,10 +52,12 @@
                                 <div class="progress-bar l-amber" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon sales">
+                       <a href="/list/categorie">
                         <div class="body">
                             <h6>Categories</h6>
                             <h2  style="color:black">{{$nombre_categorie ?? '0'}}</h2>
@@ -62,10 +65,12 @@
                                 <div class="progress-bar l-blue" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%;"></div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon email">
+                        <a href="/list/boutique">
                         <div class="body">
                             <h6>Boutiques</h6>
                             <h2  style="color:black">{{$nombre_boutique ?? '0'}}</h2>
@@ -73,10 +78,12 @@
                                 <div class="progress-bar l-purple" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" style="width: 39%;"></div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon domains">
+                        <a href="/list/sous/categorie">
                         <div class="body">
                             <h6>Sous categories</h6>
                             <h2 style="color:black">{{$nombre_sous_categorie ?? '0'}}</h2>
@@ -84,6 +91,7 @@
                                 <div class="progress-bar l-green" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -110,44 +118,48 @@
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
+                                            <a href="/list/commande/valider">
                                             <div>
                                                <center> <h5>{{$commande_valider}}</h5> </center>
                                                 <span>Commandes valider</span>
                                             </div>
-                                            
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
+                                          <a href="/list/commande/attente">
                                             <div>                                
                                             <center><h5 @if($commande_en_attente>0) class="blink" @endif style="color:red">{{$commande_en_attente}}</h5>  </center>
                                                 <span >Commandes en attente</span>
                                             </div>
-                                            
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
+                                          <a href="/list/client">
                                             <div>
                                             <center><h5>{{$nombre_client}}</h5> </center>
                                                 <span>Clients</span>
                                             </div>
-                                            
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
+                                          <a href="#">
                                             <div>                            
                                             <center> <h5>0</h5>  </center>
                                                 <span>Utilisateurs</span>
                                             </div>
-                                        
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

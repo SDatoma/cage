@@ -26,7 +26,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::all();
+        $categories = Categorie::where(['etat_categorie' =>1])->get() ;
 		
         $produits = Produit::where(['etat_produit' =>1,'nouveau_produit' =>'Existant'])->get() ;
         
@@ -34,7 +34,7 @@ class IndexController extends Controller
 
         $id_categorie = 0;
 
-        $sliders = DB::table('slider')
+         $sliders = DB::table('slider')
          ->where('etat_slider', '=', 1)
          ->orderBy('id_slider', 'desc')
          ->limit(2)
@@ -51,7 +51,7 @@ class IndexController extends Controller
 	
 	public function liste_categorie_header_mobile(){
 		
-		$categories = Categorie::all();
+        $categories = Categorie::where(['etat_categorie' =>1])->get() ;
 		
 		return view('pages_frontend/header/header_frontend',compact('categories'));
 	}

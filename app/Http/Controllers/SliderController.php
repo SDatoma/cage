@@ -63,14 +63,20 @@ class SliderController extends Controller
 
         $slider->save();
 
-        Session()->flash('succes',"Enregistrement effectué avec succè");
+        Session()->flash('success',"Enregistrement effectué avec succè");
         return redirect()->back();
     }
 
 
     public function getAllSlider()
     {
-        $sliders = Slider::where(['etat_slider' =>1])->get();
+         $sliders = DB::table('slider')
+         ->where('etat_slider', '=', 1)
+         ->orderBy('id_slider', 'desc')
+         ->limit('2')
+         ->get();
+
+       // $sliders = Slider::where(['etat_slider' =>1])->get();
 
         return view('pages_backend/slider/list_slider',compact('sliders'));
     }

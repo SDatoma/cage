@@ -24,7 +24,7 @@ if (Cookie::get('id_user')== null)
 
             <div class="cart-main-area mtb-60px">
                 <div class="container">
-                    <h3 class="cart-page-title"></h3>
+                <h3 class="cart-page-title" style="color:blue">Mon compte</h3>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 	                            <div class="row">
@@ -80,8 +80,8 @@ if (Cookie::get('id_user')== null)
 				    <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="row">
-                                <div class="col-lg-6 col-md-6 mb-lm-30px">
-								<a href="/histotique-achats">
+                                <div class="col-lg-4 col-md-6 mb-lm-30px">
+								  <a href="/histotique-achats">
                                     <div class="discount-code-wrapper">
                                         <div class="title-wrap">
                                             <h4 class="cart-bottom-title section-bg-gray">HISTORIQUE</h4>
@@ -95,8 +95,26 @@ if (Cookie::get('id_user')== null)
                                     </div>
 									</a>
                                 </div>
+
+                                <div class="col-lg-4 col-md-6 mb-lm-30px">
+								  <a href="#">
+                                    <div class="discount-code-wrapper">
+                                        <div class="title-wrap">
+                                            <h4 class="cart-bottom-title section-bg-gray">MESSAGERIE</h4>
+                                        </div>
+                                        <div class="discount-code">
+                                            <center><p><i class="fa fa-sms" style="color:#000; font-size:100px"></i></p></center>
+                                            <div class="tax-select-wrapper">
+                                                <center>
+                                                <button class="cart-btn-2" type="submit">ENVOYER UN MESSAGE</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+									</a>
+                                </div>
 								
-                                <div class="col-lg-6 col-md-6 mb-lm-30px">
+                                <div class="col-lg-4 col-md-6 mb-lm-30px">
                                     <a href="/deconnexion">
 									<div class="discount-code-wrapper">
                                         <div class="title-wrap">
@@ -111,6 +129,7 @@ if (Cookie::get('id_user')== null)
                                     </div>
 									</a>
                                 </div>
+
                              </div>
                            </div>
 								

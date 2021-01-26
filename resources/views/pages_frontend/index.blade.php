@@ -92,12 +92,22 @@ if (Cookie::get('id_user')== null)
                         </div>
                         <div class="col-lg-4">
                             <div class="banner-area banner-area-2">
+							   @if(count($sliders)==0)
+                               <div class="banner-wrapper mb-15px">
+                                    <a href="#"><img src="{{asset('css_frontend/images/pub3.jpg')}}" alt="" widht="100%" height="200px"/></a>
+                                </div>
+
+								<div class="banner-wrapper mb-15px">
+                                    <a href="#"><img src="{{asset('css_frontend/images/pub2.png')}}" alt="" widht="100%" height="200px"/></a>
+                                </div>
+
+							   @else
+							   @foreach($sliders as $slider)
                                 <div class="banner-wrapper mb-15px">
-                                    <a href="#"><img src="/{{$sliders[0]->image_slider}}" alt="" widht="100%" height="200px"/></a>
+                                    <a href="#"><img src="/{{$slider->image_slider}}" alt="" widht="100%" height="200px"/></a>
                                 </div>
-                                <div class="banner-wrapper">
-                                    <a href="#"><img src="/{{$sliders[1]->image_slider}}" alt="" widht="100%" height="220px"/></a>
-                                </div>
+                                @endforeach
+								@endif
                             </div>
                         </div>
                     </div>
@@ -161,53 +171,7 @@ if (Cookie::get('id_user')== null)
             </div>
 
 <div class="offcanvas-overlay"></div>
-   <!-- special offers -->
-	<!-- <div class="featured-section" id="projects">
-		<div class="container">
-			<h3 class="tittle-w3l">Catégories Populaires
-				<span class="heading-style">
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
-			</h3>
-			<div class="content-bottom-in">
-				<ul id="flexiselDemo1">
-					
-					@foreach($categories as $categorie)
-					<div class="col-md-3 product-men">
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="">
-									<img src="{{asset('css_front_end/assets/images/product-image/2-1.jpg')}}" height=180 alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="">Nom : {{$categorie->libelle_categorie}}</a>
-								</h4>
-								<div class="w3l-pricehkj">
-								@foreach($sous_categories as $sous_categorie)
-									@if($sous_categorie->id_categorie == $categorie->id_categorie)
-										<h6>{{$sous_categorie->libelle_sous_categorie}}</h6>
-									@endif
-								@endforeach
-								</div>
-							</div>
-						</div>
-					</li>
-					</div>
-					@endforeach
-					
-				</ul>
-			</div>
-		</div>
-	</div> -->
-	<!-- //special offers 
-<div class="sharethis-inline-share-buttons"></div>
-   <!-- top Products -->
-	<div class="ads-grid" style="margin-top:-100px">
+   <div class="ads-grid" style="margin-top:-100px">
 		<div class="container">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l" style="font-size:27px;margin-top:40px">Nos produits
@@ -223,6 +187,10 @@ if (Cookie::get('id_user')== null)
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">PRODUITS POPULAIRES</h3>
+						@if(count($produits)==0)
+						</br></br>
+						<h5  class="text-center" style="color:red"> Veuillez enregistrer les produits </h5>
+						@else
 						@foreach($produits as $produit)
 						<div class="col-md-2 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
@@ -285,7 +253,7 @@ if (Cookie::get('id_user')== null)
 							</div>
 						</div>
 						@endforeach
-						
+						@endif
 						<div class="clearfix"></div>
 					</div>
 					<!-- //third section (oils) -->
