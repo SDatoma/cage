@@ -37,10 +37,12 @@ class Commande extends Model
 		'id_user' => 'int',
 		'id_produit' => 'int',
 		'id_adresse' => 'int'
+		
 	];
 
 	protected $dates = [
-		'date_commande'
+		'date_commande',
+		'date_livraison'
 	];
 
 	protected $fillable = [
@@ -49,7 +51,9 @@ class Commande extends Model
 		'reference_commande',
 		'id_user',
 		'id_produit',
-		'id_adresse'
+		'id_adresse',
+		'numero_facture',
+		'date_livraison'
 	];
 
 	public function user()
