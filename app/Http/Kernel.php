@@ -65,10 +65,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-<<<<<<< Updated upstream
+
         'connexion' => \App\Http\Middleware\VerifyConnexion::class,
-=======
+
 		'admin' => \App\Http\Middleware\AdminMiddlewres::class,
->>>>>>> Stashed changes
+
     ];
 }
