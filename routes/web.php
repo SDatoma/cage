@@ -22,25 +22,6 @@ Route::get('/mes-informations', function () {
     return view('pages_frontend/mon_compte',compact('id_categorie'));
 });
 
-Route::get('/detail-profil-client','InscriptionController@show_profil_client')->name('profil.client');
-
-Route::get('/info_personel','InscriptionController@show_profil_client')->name('info.client');
-
-Route::get('/detail-info-client','InscriptionController@show_info_client')->name('info.perso');
-
-Route::get('/changer-passe','InscriptionController@passe_client')->name('client.page_passe');
-
-Route::put('/mot-de-passe-client/{id}','InscriptionController@update_passe_client')->name('client.passe_update');
-
-Route::get('/mes-adresses','AdresseController@liste_adresse_client');
-
-Route::get('/ajouter-adresse','AdresseController@show_adresse_client');
-
-//Route::get('/affiche-adresse','AdresseController@show_adresse_client')
-
-Route::get('/modifier-adresse/{id}','AdresseController@modifier_adresse_client')->name('client.adresse');
-
-
 // ROUTE FRONT-END
 Route::get('/', 'IndexController@index');
 Route::get('/tri-categorie-{id_categorie}-produit-{libelle_categorie}', 'IndexController@tri_produit_par_categorie')->name('tri.produit.categorie');
@@ -74,9 +55,27 @@ Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@
 ****************************/
 Route::group(['middleware' => ['connexion']], function () {
 
-Route::get('/admin', 'AdminController@index');
+    Route::get('/detail-profil-client','InscriptionController@show_profil_client')->name('profil.client');
+
+    Route::get('/info_personel','InscriptionController@show_profil_client')->name('info.client');
+    
+    Route::get('/detail-info-client','InscriptionController@show_info_client')->name('info.perso');
+    
+    Route::get('/changer-passe','InscriptionController@passe_client')->name('client.page_passe');
+    
+    Route::put('/mot-de-passe-client/{id}','InscriptionController@update_passe_client')->name('client.passe_update');
+    
+    Route::get('/mes-adresses','AdresseController@liste_adresse_client');
+    
+    Route::get('/ajouter-adresse','AdresseController@show_adresse_client');
+    
+    //Route::get('/affiche-adresse','AdresseController@show_adresse_client')
+    
+    Route::get('/modifier-adresse/{id}','AdresseController@modifier_adresse_client')->name('client.adresse');
 
 });
+
+Route::get('/admin', 'AdminController@index');
 
 //Boutique
 Route::get('/add/boutique', 'FournisseurController@create');

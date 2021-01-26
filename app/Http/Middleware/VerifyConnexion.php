@@ -20,6 +20,6 @@ class VerifyConnexion
       if(Cookie::get('id_user')!=0){
         return $next($request);
       }
-          return redirect('/login');
+        return redirect('/login');
      }
 }
