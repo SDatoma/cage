@@ -256,6 +256,11 @@ if (Cookie::get('id_user')== null)
 						@endforeach
 						@endif
 					</div>
+
+					   <div class="d-flex justify-content-center mt-4">
+                          {{ $produits->links() }}
+                       </div>
+
 						<div class="clearfix"></div>
 				</div>
 					<!-- //third section (oils) -->
@@ -323,8 +328,13 @@ if (Cookie::get('id_user')== null)
 							</div>
 						</div>
 						@endforeach
+						
 						<div class="clearfix"></div>
+						<div class="d-flex justify-content-center mt-4">
+                          {{ $nouveau_produits->links() }}
+                       </div>
 					</div>
+					
 					<!-- //fourth section (noodles) -->
 				</div>
 			</div>

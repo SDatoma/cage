@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	<title>CAGE BATIMENT | ACCUEIL</title>
+	<title>CAGE BATIMENT | BIENVENUE</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -73,7 +73,7 @@
 					</li>
 					<li style="width:260px">
 						<a href="/login">
-						<span class="fa fa-unlock-alt" aria-hidden="true"></span>Connexion ou
+						<span class="fa fa-unlock-alt" aria-hidden="true"></span>Connexion 
 						<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Inscription
 						</a>
 					</li>
