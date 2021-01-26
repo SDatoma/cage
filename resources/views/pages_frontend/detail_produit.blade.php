@@ -72,7 +72,7 @@ if (Cookie::get('id_user')== null)
 					</p>	
 				@else
 						<p>
-					    <label>PRIX_HT :</label><span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ht_produit}} F CFA</span>
+					    <label>PRIX :</label><span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ht_produit}} F CFA</span>
 						</p>
 				@endif
 				<p>

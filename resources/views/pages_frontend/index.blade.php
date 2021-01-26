@@ -288,9 +288,9 @@ if (Cookie::get('id_user')== null)
 										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -307,15 +307,15 @@ if (Cookie::get('id_user')== null)
 										    $prix_ht_promo= $produit->prix_ht_produit - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ht_produit}} @endif"/>
 												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
 									</div> </br>
-									@if($produit->stock_produit=="En stock")
-									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$produit->stock_produit}}</b> </span>
+									@if($nouveau_produit->stock_produit=="En stock")
+									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$nouveau_produit->stock_produit}}</b> </span>
 									@else
-									<span class="item_price" style="font-size:15px;color:red"><b>{{$produit->stock_produit}}</b> </span>
+									<span class="item_price" style="font-size:15px;color:red"><b>{{$nouveau_produit->stock_produit}}</b> </span>
 									@endif
                                </div>
 							</div>
@@ -344,7 +344,7 @@ if (Cookie::get('id_user')== null)
 			@endif
 				<h2>Souscrivez à la newsletter</h2>
 				<p>Et ne rater aucune de nos offres et promotions. </p>
-				<form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
+				<form action="{{route('news.store')}}" method="post">
                     {{csrf_field()}}
 					<input type="email" placeholder="Laisser nous votre e-mail" name="email" required="">
 					<input type="submit" value="Souscrire">
