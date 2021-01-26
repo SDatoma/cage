@@ -185,8 +185,9 @@ if (Cookie::get('id_user')== null)
 			<div class="agileinfo-ads-display col-md-12">
 				<div class="wrapper">
 					<!-- first section (nuts) -->
-					<div class="product-sec1">
+			       <div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">PRODUITS POPULAIRES</h3>
+					<div class="row">
 						@if(count($produits)==0)
 						</br></br>
 						<h5  class="text-center" style="color:red"> Veuillez enregistrer les produits </h5>
@@ -254,8 +255,9 @@ if (Cookie::get('id_user')== null)
 						</div>
 						@endforeach
 						@endif
-						<div class="clearfix"></div>
 					</div>
+						<div class="clearfix"></div>
+				</div>
 					<!-- //third section (oils) -->
 					<!-- fourth section (noodles) -->
 					<div class="product-sec1">
