@@ -52,11 +52,10 @@ if (Cookie::get('id_user')== null)
                                                     <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Mot de passe" required="" /> </div>
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
-                                                            <input type="checkbox" />
-                                                            <a class="flote-none" href="javascript:void(0)">Se souvenir de moi</a> |
-                                                            <a href="#">Mot de passe oublié ?</a>
+                                                            <a class="" href="javascript:void(0)"></a> 
+                                                            <a href="#" style="color:blue">Mot de passe oublié ?</a>
                                                         </div>
-                                                        <button type="submit"><span>Connexion</span></button>
+                                                        <button type="submit" style="margin-top:40px"><span>Connexion</span></button>
                                                     </div>
                                                 </form>
                                             </div>

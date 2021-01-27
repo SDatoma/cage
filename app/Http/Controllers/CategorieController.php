@@ -210,10 +210,7 @@ class CategorieController extends Controller
         return back()->with('success', 'Modification effectuée avec succè');
     }
 	
-	
-	
-
-    /**
+	/**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
