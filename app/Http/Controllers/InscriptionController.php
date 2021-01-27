@@ -76,7 +76,10 @@ class InscriptionController extends Controller
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
 		$user->email_user = $request->useremail;
-		$user->password_user = md5($request->userpassword);
+		$options = [
+			'cost' => 12,
+			];
+		$user->password_user = password_hash($request->userpassword, PASSWORD_BCRYPT, $options);
 		$user->sexe_user = $request->usercivilite;
 		$user->telephone_user = $request->usertelephone;
 		$user->ok_newsletter = $request->usernews;
@@ -90,7 +93,9 @@ class InscriptionController extends Controller
 	
 	public function connexion_auto($email, $passe){
 		
-		$result = User::where(['email_user' => $email, 'password_user' => md5($passe)])->first();
+		$passe_base = 'password_user';
+			
+		$result = User::where(['email_user' => $email, 'password_user' => password_verify($passe, $passe_base)])->first();
 
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
       
