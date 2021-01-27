@@ -184,7 +184,7 @@ class CategorieController extends Controller
 
 
     public function update_sous_categorie(Request $request, $id)
-    {
+      {
         $sous_categorie = SousCategorie::where(['id_sous_categorie' =>$id])->first() ;
 
         if ($request->HasFile('file')) {

@@ -60,7 +60,9 @@ class CommandeController extends Controller
         
          $user = User::where(['id_user' =>$id_user])->first() ;
          
-        //  Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+        Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+
+        Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
          
          $chars = "abcdefghijkmnopqrstuvwxyz023456789";
          srand((double)microtime()*1000000);

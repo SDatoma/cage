@@ -217,27 +217,27 @@ class ProduitController extends Controller
 		
 		$produits_idem_ss_cats = DB::table('produit')
 		->where('produit.id_sous_categorie', '=', $produit->id_sous_categorie)
-		->get();
+		->paginate(12);
 		
 		$produits_idem_cats = DB::table('sous_categorie')
 		->join('produit', 'produit.id_sous_categorie', '=', 'sous_categorie.id_sous_categorie')
 		->where('produit.id_sous_categorie', '=', $produit->id_sous_categorie)
-		->get();
+		->paginate(12);
 		
 		$produits_autres_cats = DB::table('sous_categorie')
 		->where('sous_categorie.id_categorie', '=', $produit->id_categorie)
-		->get();
+		->paginate(12);
 		
 		 $nouveau_produits = DB::table('produit')
          ->where('produit.etat_produit', '=', 1)
          ->where('produit.nouveau_produit', '=', 'Nouveau')
-         ->get();
+         ->paginate(12);
 
          $commentaires = DB::table('commentaire')
-                ->where('id_produit', '=', $id)
-                ->where('commentaire.commentaire_parent', '=', 0)
-                ->orderBy('commentaire.id_commentaire', 'asc')
-                ->get();
+         ->where('id_produit', '=', $id)
+         ->where('commentaire.commentaire_parent', '=', 0)
+         ->orderBy('commentaire.id_commentaire', 'asc')
+         ->get();
 
 
          $commentaires_parent = DB::table('commentaire')
@@ -247,8 +247,7 @@ class ProduitController extends Controller
          ->get();
 
 		
-		return view('pages_frontend/detail_produit',compact('promotion', 'nouveau_produits', 'produits_autres_cats', 'produits_idem_cats', 
-	   'produits_idem_ss_cats', 'sous_categories', 'produit', 'photo_produits','id_categorie','commentaires','commentaires_parent'));
+		return view('pages_frontend/detail_produit',compact('promotion', 'nouveau_produits', 'produits_autres_cats', 'produits_idem_cats', 'produits_idem_ss_cats', 'sous_categories', 'produit', 'photo_produits','id_categorie','commentaires','commentaires_parent'));
     }
 
     /**
