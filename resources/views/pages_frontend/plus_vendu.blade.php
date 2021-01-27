@@ -58,7 +58,8 @@ if (Cookie::get('id_user')== null)
 					</div>
 					</div>
 					</div>
-					<!-- //fourth section (noodles) -->
+	<!-- //fourth section (noodles) -->
+	
 	<!-- footer --><div class="product-single-w3l"></div>
 	<footer>
 		<div class="container">
