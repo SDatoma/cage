@@ -45,8 +45,10 @@ class ConnexionController extends Controller
             return redirect()->to('/admin');
         }  
         
+		$passe = 'password_user';
+			
         $result = User::where(['email_user' => $request->username,
-								'password_user' => md5($request->userpassword)])
+								'password_user' => password_verify($request->userpassword, $passe)])
 								->first();
 
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
