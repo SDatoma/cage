@@ -28,13 +28,15 @@ class Adresse extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_user' => 'int'
+		'id_user' => 'int',
+		'etat_adresse' => 'int'
 	];
 
 	protected $fillable = [
 		'ville_adresse',
 		'pays_adresse',
 		'description_adresse',
+		'etat_adresse',
 		'id_user'
 	];
 

@@ -24,13 +24,22 @@
             <i class="zmdi zmdi-print"></i>  Imprimer
         </button>
         @if($commande->etat_commande == 0)
-        <a href="{{route('download.facture',[$commande->id_user,$commande->reference_commande])}}" target="_blank">
+          @if($remise)
+         <a href="" class="btn btn-default waves-effect waves-float btn-sm waves-red" data-toggle="modal"     data-target="#edit-remise"><i class="zmdi zmdi-edit"></i> Modifier la remise</a>
+         @include('modals/modification/edit_remise')
+
+         <a href="" class="btn btn-danger waves-effect waves-float btn-sm waves-red" data-toggle="modal"     data-target="#delete-remise"><i class="zmdi zmdi-delete"></i> Supprimer la remise</a>
+         @include('modals/suppression/delete_remise')
+
+          @else
+          <a href="" class="btn btn-success waves-effect waves-float btn-sm waves-red" data-toggle="modal"     data-target="#remise"><i class="zmdi zmdi-plus"></i> Faire une remise</a>
+          @endif
+        <!-- <a href="{{route('download.facture',[$commande->id_user,$commande->reference_commande])}}" target="_blank">
         <button class="btn btn-warning btn-sm ">
             <i class="zmdi zmdi-download"></i>  Telecharger
         </button>
-        </a>
+        </a> -->
         @endif
-       
        </center>
        @include('modals/ajout/add_remise')
     </div>
@@ -117,16 +126,28 @@
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
 								</tr>
-                              
+                                @if($remise)
+                                <?php
+                                
+                                 $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                  $prix_revient= $prix_total - $remisee ;
+                                 ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">REMISE</th>
-									<th colspan="2"  style="font-size:17px;">0 %</th>
+									<th colspan="2"  style="font-size:17px;">{{$remise->pourcentage_remise}} %</th>
 								</tr>
-
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
+									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_revient?> F CFA</th>
+								</tr>
+                                @else
+                                 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
 									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>
+
+                                @endif
                                
                             </tbody>
                         </table>
@@ -134,7 +155,12 @@
                     <div>
                         <div class="col-md-12">
                             <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
-									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red"><?php echo int2str($prix_total)?> F CFA</b> </i></p>
+									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red">
+                                     @if($remise)
+                                     <?php echo int2str($prix_revient)?> F CFA</b> </i></p>
+                                     @else
+                                     <?php echo int2str($prix_total)?> F CFA</b> </i></p>
+									 @endif	
 										
 									<p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");

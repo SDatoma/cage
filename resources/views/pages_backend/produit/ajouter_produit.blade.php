@@ -91,7 +91,7 @@
                                 <div id="ODayForm">
                                     <div id="add_days">
                                        <div class="form-group form-float col-sm-5">
-                                             <input type="file" class="dropify" name="file">
+                                             <input type="file" class="dropify" name="file" required="">
                                        </div>
                                     </div>
                                 </div>

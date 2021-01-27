@@ -28,7 +28,7 @@ class IndexController extends Controller
     {
         $categories = Categorie::where(['etat_categorie' =>1])->get() ;
 		
-        $produits = Produit::where(['etat_produit' =>1,'nouveau_produit' =>'Existant'])->get() ;
+        $produits = Produit::where(['etat_produit' =>1,'nouveau_produit' =>'Existant'])->paginate(18) ;
         
         $sous_categories = SousCategorie::all();
 
@@ -43,7 +43,7 @@ class IndexController extends Controller
          $nouveau_produits = DB::table('produit')
          ->where('produit.etat_produit', '=', 1)
          ->where('produit.nouveau_produit', '=', 'Nouveau')
-         ->get();
+         ->paginate(8) ;
         
        return view('pages_frontend/index',compact('categories', 'produits', 'sous_categories','nouveau_produits','sliders','id_categorie'));
 	

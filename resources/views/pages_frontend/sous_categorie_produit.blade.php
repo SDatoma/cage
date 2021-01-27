@@ -31,14 +31,14 @@ if (Cookie::get('id_user')== null)
                                                 </ul>
                                             </li>
                                         </ul>
-                                        <!-- sub menu 
+                                      
                                     </li>
 								  @endforeach
 								   
                                 </ul>
-                                <!-- menu content 
+                             
                             </div>
-                            <!-- header menu vertical 
+                        
                         </div-->
                         <div class="col-md-12">
                         <h3 class="tittle-w3l1" style="font-size:15px; margin-bottom:-10px">
@@ -47,34 +47,31 @@ if (Cookie::get('id_user')== null)
 						<img src="{{$sous_categoriee->image_sous_categorie}}" height=150 width=200 class="thumbnail" alt=""> 
 						<br/><h3 class="tittle-w3l1" style="font-size:15px;  margin-bottom:-10px">
 						PRODUITS DE LA MEME SOUS CATEGORIE QUE <strong style="color:blue;">{{$sous_categoriee->libelle_sous_categorie}}</strong></h3>
-                           <div class="pull-right">
-                               <!-- <span>Recherches :dfdgf </span> -->
+                           <!-- <div class="pull-right">
                                <input type="text" id="recherche" class="col-md-8 ml-2 form" placeholder="Rechercher...">
-                           </div>
+                           </div> -->
                            <!-- Slider Start -->
                            <div class="row" id="documents">
-						   
-                           @foreach($produits as $produit)
-						<div class="col-md-3 product-men document">
+						   @foreach($produits as $produit)
+						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="/{{$produit->image_produit}}" height=150 width=250 class="thumbnail image-resp" alt="">
+									<img src="/{{$produit->image_produit}}"  height=150 width=200  alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Voir plus</a>
+											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
-									
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
-										<a href="{{route('detail-produit.produit', $produit->id_produit)}}" style="font-size:15px">{{$produit->nom_produit}}</a>
-                                    </h4>
-                                    <?php
+										<a href="single.html">{{$produit->nom_produit}}</a>
+									</h4>
+									<?php
 									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
 									?>
 									<div class="info-product-price">
-                                    @if($promotion)
+									   @if($promotion)
 										 <?php 
 										   $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
 										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
@@ -85,14 +82,14 @@ if (Cookie::get('id_user')== null)
 									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span>
 									    @endif
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item 
-									hvr-outline-out">
-									@if($produit->quantite_produit>3)
-									    <form  method="POST"  action="{{route('cart.store')}}">
-                                           {{csrf_field()}}
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form  method="POST"  action="{{route('cart.store')}}">
+                                         {{ csrf_field() }}
 											<fieldset>
 												<input type="hidden" name="id_produit" value="{{$produit->id_produit}}"/>
 												<input type="hidden" name="nom_produit" value="{{$produit->nom_produit}}"/>
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Almonds, 100g" />
 											@if($promotion)
 										    <?php 
 										    $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
@@ -100,22 +97,19 @@ if (Cookie::get('id_user')== null)
 										    ?>
                                             @endif
 											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
+												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
+									</div> </br>
+									@if($produit->stock_produit=="En stock")
+									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$produit->stock_produit}}</b> </span>
 									@else
-									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9" value="Ajouter au panier" class="button cart-resp" />
+									<span class="item_price" style="font-size:15px;color:red"><b>{{$produit->stock_produit}}</b> </span>
 									@endif
-									</div></br>
-									@if($produit->quantite_produit>3)
-									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>En Stock</b> </span>
-									@else
-									<span class="item_price" style="font-size:15px;color:red"><b>En rupture</b> </span>
-									@endif
-								</div>
+                               </div>
 							</div>
 						</div>
-                        @endforeach
+						@endforeach
                          </div>
                             <!-- Slider End -->
                         </div>

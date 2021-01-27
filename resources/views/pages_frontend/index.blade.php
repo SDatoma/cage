@@ -185,106 +185,35 @@ if (Cookie::get('id_user')== null)
 			<div class="agileinfo-ads-display col-md-12">
 				<div class="wrapper">
 					<!-- first section (nuts) -->
-					<div class="product-sec1">
+			       <div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">PRODUITS POPULAIRES</h3>
+					<div class="row">
 						@if(count($produits)==0)
 						</br></br>
 						<h5  class="text-center" style="color:red"> Veuillez enregistrer les produits </h5>
 						@else
 						@foreach($produits as $produit)
-						<div class="col-md-2 product-men">
+						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="{{$produit->image_produit}}" height="150px" width="200px" class="thumbnail image-resp" alt="">
+									<img src="/{{$produit->image_produit}}"  height=150 width=200  alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Voir plus</a>
+											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
-									
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
-										<a href="{{route('detail-produit.produit', $produit->id_produit)}}" style="font-size:15px">{{$produit->nom_produit}}</a>
+										<a href="single.html">{{$produit->nom_produit}}</a>
 									</h4>
-									        <?php
-                                              $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
-                                             ?>
+									<?php
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
+									?>
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
 										   $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
-										 ?>
-										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span></del>
-										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span>
-									    @endif
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item 
-									hvr-outline-out">
-									@if($produit->quantite_produit>3)
-									    <form  method="POST"  action="{{route('cart.store')}}">
-                                           {{csrf_field()}}
-											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$produit->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$produit->nom_produit}}"/>
-											@if($promotion)
-										    <?php 
-										    $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ht_produit - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;margin-left:px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
-									@else
-									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9;margin-left:px" value="Ajouter au panier" class="button cart-resp" />
-									@endif
-									</div> </br>
-									@if($produit->quantite_produit>3)
-									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>En Stock</b> </span>
-									@else
-									<span class="item_price" style="font-size:15px;color:red"><b>En rupture</b> </span>
-									@endif
-								</div>
-							</div>
-						</div>
-						@endforeach
-						@endif
-						<div class="clearfix"></div>
-					</div>
-					<!-- //third section (oils) -->
-					<!-- fourth section (noodles) -->
-					<div class="product-sec1">
-						<h3 class="heading-tittle" style="font-size:25px">NOUVEAUX PRODUITS</h3>
-                        @foreach($nouveau_produits as $nouveau_produit)
-						<div class="col-md-3 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="/{{$nouveau_produit->image_produit}}"  height=150 width=200  alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $nouveau_produit->id_produit)}}" class="link-product-add-cart">Detail</a>
-										</div>
-									</div>
-									<span class="product-new-top">Neuf</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4 class="mb">
-										<a href="single.html">{{$nouveau_produit->nom_produit}}</a>
-									</h4>
-									<?php
-									 $promotion = \App\Models\Promotion::where(['id_produit' =>$nouveau_produit->id_produit])->first();
-									?>
-									   
-									<div class="info-product-price">
-									   @if($promotion)
-										 <?php 
-										   $reduction= ($nouveau_produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
 										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
@@ -321,8 +250,84 @@ if (Cookie::get('id_user')== null)
 							</div>
 						</div>
 						@endforeach
-						<div class="clearfix"></div>
+						@endif
 					</div>
+
+					   <div class="d-flex justify-content-center mt-4">
+                          {{ $produits->links() }}
+                       </div>
+
+						<div class="clearfix"></div>
+				</div>
+					<!-- //third section (oils) -->
+					<!-- fourth section (noodles) -->
+					<div class="product-sec1">
+						<h3 class="heading-tittle" style="font-size:25px">NOUVEAUX PRODUITS</h3>
+                        @foreach($nouveau_produits as $nouveau_produit)
+						<div class="col-md-3 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="/{{$nouveau_produit->image_produit}}"  height=150 width=200  alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="{{route('detail-produit.produit', $nouveau_produit->id_produit)}}" class="link-product-add-cart">Detail</a>
+										</div>
+									</div>
+									<span class="product-new-top">Neuf</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4 class="mb">
+										<a href="single.html">{{$nouveau_produit->nom_produit}}</a>
+									</h4>
+									<?php
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$nouveau_produit->id_produit])->first();
+									?>
+									   
+									<div class="info-product-price">
+									   @if($promotion)
+										 <?php 
+										   $reduction= ($nouveau_produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
+										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										 ?>
+										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span></del>
+										@else
+									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span>
+									    @endif
+									</div>
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form  method="POST"  action="{{route('cart.store')}}">
+                                         {{ csrf_field() }}
+											<fieldset>
+											<input type="hidden" name="id_produit" value="{{$nouveau_produit->id_produit}}"/>
+											<input type="hidden" name="nom_produit" value="{{$nouveau_produit->nom_produit}}"/>
+											@if($promotion)
+										    <?php 
+										    $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										    ?>
+                                            @endif
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ht_produit}} @endif"/>
+												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
+											</fieldset>
+										</form>
+									</div> </br>
+									@if($nouveau_produit->stock_produit=="En stock")
+									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$nouveau_produit->stock_produit}}</b> </span>
+									@else
+									<span class="item_price" style="font-size:15px;color:red"><b>{{$nouveau_produit->stock_produit}}</b> </span>
+									@endif
+                               </div>
+							</div>
+						</div>
+						@endforeach
+						<div class="clearfix"></div>
+						<div class="d-flex justify-content-center mt-4">
+                          {{ $nouveau_produits->links() }}
+                       </div>
+					</div>
+					
 					<!-- //fourth section (noodles) -->
 				</div>
 			</div>
@@ -344,7 +349,7 @@ if (Cookie::get('id_user')== null)
 			@endif
 				<h2>Souscrivez à la newsletter</h2>
 				<p>Et ne rater aucune de nos offres et promotions. </p>
-				<form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
+				<form action="{{route('news.store')}}" method="post">
                     {{csrf_field()}}
 					<input type="email" placeholder="Laisser nous votre e-mail" name="email" required="">
 					<input type="submit" value="Souscrire">

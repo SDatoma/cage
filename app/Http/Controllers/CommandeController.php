@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
 use App\Models\adresse;
-//use App\Models\Remise;
+use App\Models\Remise;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
@@ -60,7 +60,9 @@ class CommandeController extends Controller
         
          $user = User::where(['id_user' =>$id_user])->first() ;
          
-        //  Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+        Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+
+        Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
          
          $chars = "abcdefghijkmnopqrstuvwxyz023456789";
          srand((double)microtime()*1000000);
@@ -203,6 +205,8 @@ class CommandeController extends Controller
         $user = User::where(['id_user' =>$id])->first() ;
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
+
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
          
         $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
 
@@ -222,7 +226,7 @@ class CommandeController extends Controller
         ->where('commande.reference_commande', '=', $reference_commande)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse','commande','remise'));
 
     }
  
@@ -261,7 +265,7 @@ class CommandeController extends Controller
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
-        //$remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
 
         $adresse = Adresse::where(['id_adresse' =>$commande->id_adresse])->first() ;
         // si la commande n'est pas encore valider
@@ -285,7 +289,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         // si la commande est deja valider
 
@@ -300,6 +304,8 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->get();
 
+        $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
+
         $prix_total = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
         //->join('user', 'user.id_user', '=', 'commande.id_user')
@@ -309,7 +315,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
 
         }
     }

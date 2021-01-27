@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 08 jan. 2021 à 12:15
+-- Généré le :  mer. 27 jan. 2021 à 11:04
 -- Version du serveur :  10.1.29-MariaDB
 -- Version de PHP :  7.4.13
 
@@ -33,7 +33,8 @@ CREATE TABLE `adresse` (
   `ville_adresse` varchar(100) DEFAULT NULL,
   `pays_adresse` varchar(100) DEFAULT NULL,
   `description_adresse` varchar(100) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
+  `id_user` int(11) DEFAULT NULL,
+  `etat_adresse` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -64,10 +65,7 @@ CREATE TABLE `boutique` (
 --
 
 INSERT INTO `boutique` (`id_boutique`, `nom_boutique`, `description_boutique`, `photos_boutique`, `ville_boutique`, `pays_boutique`, `nif_boutique`, `contact_1_boutique`, `contact_2_boutique`, `email_boutique`, `slogan_boutique`, `id_role`, `password_boutique`, `etat_boutique`) VALUES
-(1, 'SEBI Inc', 'reteryty tytuuyuy  tuyu', 'files_upload/boutique/1.jpg', 'Sokode', 'togo', 'null', 90454345, 54454342, 'fof@gmail.com', 'rtyytyt', NULL, NULL, 1),
-(2, 'Ets bamako', 'dfdgfghfh ghjgj', 'files_upload/boutique/2.jpg', 'Sokode', 'togo', 'null', 90454345, 354565657, 'fofb@gmail.com', 'Vite vite', NULL, NULL, 1),
-(3, 'DC 10', 'ghghj ghgjhkhk tyuuyi', 'files_upload/boutique/3.jpg', 'Accra', 'Ghana', 'null', 34566678, 54656788, 'fofbilaii@gmail.com', 'DOUCEMENT', NULL, NULL, 1),
-(4, 'FOF B', 'tryyuyu huiuiuiu', 'files_upload/boutique/FOF B.jpg', 'lome', 'togo', 'null', 98787656, 90987873, 'fanaf@gmail.com', 'Document', NULL, NULL, 1);
+(1, 'SEBI Incorporation', '<p>&nbsp;<u><b>Informatique pour tous</b></u><br></p>', 'files_upload/boutique/SEBI Incorporation.jpg', 'Lome', 'Togo', 'null', 90655456, 70654330, 'sebiinc@dmail.com', 'SEBI Inc', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -87,13 +85,10 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id_categorie`, `libelle_categorie`, `image_categorie`, `etat_categorie`) VALUES
-(1, 'Alimentations', 'files_upload/categorie/Alimentations.jpg', 1),
-(2, 'Bierre boisson', 'files_upload/categorie/Bierre.jpg', 1),
-(3, 'Ordinateur', 'files_upload/categorie/Ordinateur.jpg', 1),
-(4, 'Quincaillerie', 'files_upload/categorie/Quincaillerie.jpg', 1),
-(5, 'Plomberie', 'files_upload/categorie/Plomberie.jpg', 1),
-(6, 'Carreaux', 'files_upload/categorie/Carreaux.jpg', 1),
-(7, 'FER', 'files_upload/categorie/FER.jpg', 1);
+(1, 'Quincaillerie', 'files_upload/categorie/Quincaillerie.jpg', 1),
+(2, 'Electricite', 'files_upload/categorie/Electricite.jpg', 1),
+(3, 'Portable', 'files_upload/categorie/Portable.jpg', 1),
+(5, 'Sol', 'files_upload/categorie/Sol.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +102,10 @@ CREATE TABLE `commande` (
   `etat_commande` int(1) DEFAULT NULL,
   `reference_commande` varchar(100) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `id_produit` int(11) DEFAULT NULL
+  `id_produit` int(11) DEFAULT NULL,
+  `id_adresse` int(11) DEFAULT NULL,
+  `numero_facture` varchar(40) DEFAULT NULL,
+  `date_livraison` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,23 +124,6 @@ CREATE TABLE `commentaire` (
   `email_commentaire` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `commentaire`
---
-
-INSERT INTO `commentaire` (`id_commentaire`, `commentaire_parent`, `resume_commentaire`, `date_commentaire`, `id_produit`, `nom_commentaire`, `email_commentaire`) VALUES
-(1, 0, 'Salut', '2021-01-05', 1, 'Bilali', 'fof@gmail.com'),
-(2, 0, 'dhgggggg\r\nfgggggfffff dfgdfgfggggggggggggg ghfhhgh trytyutuyuy\r\nfgfhghjgjhkj', '2021-01-05', 1, 'SALAM', 'fof@gmail.com'),
-(3, 1, NULL, '2021-01-05', 1, 'Samadpo', 'fof@gmail.com'),
-(4, 2, NULL, '2021-01-05', 1, 'garcon', 'fof@gmail.com'),
-(5, 2, 'fgfgfg', '2021-01-05', 1, 'dfdfd', 'fof@gmail.com'),
-(6, 1, 'Bonsoi a tous comment vous allez ?', '2021-01-05', 1, 'ETOO', 'fof@gmail.com'),
-(7, 0, 'GFHGHGHGJ GHJHJHK HJHKJLJL RYTUYUYI GHGJHKK', '2021-01-05', 7, 'BILALI', 'fof@gmail.com'),
-(8, 0, 'C\'est trop cool cette application ,jaoime ca', '2021-01-05', 7, 'Fridaous', 'fof@gmail.com'),
-(9, 7, 'gfgfgfg gfhghvbv gj hgjhjh rtrytyut', '2021-01-05', 7, 'Kadija', 'fof@gmail.com'),
-(10, 8, 'ERERT FHGJHJ YIUO HJHKK', '2021-01-05', 7, 'QERTY', 'fof@gmail.com'),
-(11, 0, 'Salut a toutes l\'equipe de cage batiment', '2021-01-05', 2, 'Fofana', 'fofanabilali@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -154,6 +135,21 @@ CREATE TABLE `envoi_mail` (
   `titre_mail` varchar(222) DEFAULT NULL,
   `description_mail` text,
   `etat_mail` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `info_contact`
+--
+
+CREATE TABLE `info_contact` (
+  `id_contact` int(11) NOT NULL,
+  `nom_contact` varchar(11) DEFAULT NULL,
+  `email_contact` varchar(100) DEFAULT NULL,
+  `objet_contact` varchar(100) DEFAULT NULL,
+  `message_contact` text,
+  `date_contact` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -174,6 +170,32 @@ CREATE TABLE `ligne_commande` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `id_newsletter` int(11) NOT NULL,
+  `email_newsletter` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `paiement`
+--
+
+CREATE TABLE `paiement` (
+  `id_paiement` int(11) NOT NULL,
+  `id_transaction` varchar(50) DEFAULT NULL,
+  `reference_commande` varchar(60) DEFAULT NULL,
+  `mode_payement` varchar(50) DEFAULT NULL,
+  `montant_payer` double DEFAULT NULL,
+  `etat_paiement` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `photo_produit`
 --
 
@@ -188,28 +210,24 @@ CREATE TABLE `photo_produit` (
 --
 
 INSERT INTO `photo_produit` (`id_photo_produit`, `photo_produit`, `id_produit`) VALUES
-(1, 'files_upload/produit/117847847_2342777705847453_3886967107264232118_o.jpg', 1),
-(2, 'files_upload/produit/carte visite.jpeg', 1),
-(3, 'files_upload/produit/118222442_2351207881671102_5219590186213770587_o.jpg', 2),
-(4, 'files_upload/produit/117445394_2351219085003315_7313510420217429495_o.jpg', 2),
-(5, 'files_upload/produit/117847847_2342777705847453_3886967107264232118_o.jpg', 2),
-(6, 'files_upload/produit/courrier-ok.jpg', 3),
-(7, 'files_upload/produit/118222442_2351207881671102_5219590186213770587_o.jpg', 3),
-(8, 'files_upload/produit/home_picto_cmonsite.webp', 3),
-(9, 'files_upload/produit/logoahde.jpg', 4),
-(10, 'files_upload/produit/117413228_2337129259745631_4997223986152559912_o.jpg', 4),
-(11, 'files_upload/produit/courrier-ok.jpg', 5),
-(12, 'files_upload/produit/117413228_2337129259745631_4997223986152559912_o.jpg', 5),
-(13, 'files_upload/produit/logoo.png', 5),
-(14, 'files_upload/produit/unnamed (1).jpg', 6),
-(15, 'files_upload/produit/unnamed (1).jpg', 6),
-(16, 'files_upload/produit/istockphoto-1152767923-612x612.jpg', 6),
-(17, 'files_upload/produit/8131ed447305eec5f3adc7c0295bf553_L.jpg', 7),
-(18, 'files_upload/produit/Elearning-cours-informatique-660x330.jpg', 7),
-(19, 'files_upload/produit/8131ed447305eec5f3adc7c0295bf553_L.jpg', 8),
-(20, 'files_upload/produit/crédit-photo-www.aeroschool.fr_.jpg', 9),
-(21, 'files_upload/produit/contact-us_0.jpg', 9),
-(22, 'files_upload/produit/unnamed (1).jpg', 9);
+(1, 'files_upload/produit_image/AS1782-zoom.jpg', 1),
+(2, 'files_upload/produit_image/Item802286.jpeg', 1),
+(3, 'files_upload/produit_image/téléchargement (1).jpg', 2),
+(4, 'files_upload/produit_image/téléchargement.jpg', 2),
+(5, 'files_upload/produit_image/telephone-portable-apple-iphone-6-plus-64-go-gold.jpg', 3),
+(6, 'files_upload/produit_image/apple-iphone-11-pro_001.jpg', 3),
+(7, 'files_upload/produit_image/telephone-portable-samsung-galaxy-a20s-rouge-sim-orange-offerte-60-go.jpg', 4),
+(8, 'files_upload/produit_image/c3.jpg', 5),
+(9, 'files_upload/produit_image/b3.jpg', 6),
+(10, 'files_upload/produit_image/117386268_2351220655003158_7363619508379051574_o.jpg', 7),
+(11, 'files_upload/produit_image/ca2.jpg', 8),
+(12, 'files_upload/produit_image/i1.jpg', 9),
+(13, 'files_upload/produit_image/i3.jpg', 9),
+(14, 'files_upload/produit_image/117039275_2315465875245303_3552014753127450217_o.jpg', 10),
+(15, 'files_upload/produit_image/117390481_2351218141670076_4633275444831874476_o.jpg', 11),
+(16, 'files_upload/produit_image/117445394_2351219085003315_7313510420217429495_o.jpg', 11),
+(17, 'files_upload/produit_image/117390481_2351218141670076_4633275444831874476_o.jpg', 11),
+(18, 'files_upload/produit_image/enora-recharge-b6.jpg', 13);
 
 -- --------------------------------------------------------
 
@@ -220,7 +238,7 @@ INSERT INTO `photo_produit` (`id_photo_produit`, `photo_produit`, `id_produit`) 
 CREATE TABLE `produit` (
   `id_produit` int(11) NOT NULL,
   `nom_produit` varchar(100) DEFAULT NULL,
-  `description_produit` varchar(255) DEFAULT NULL,
+  `description_produit` text,
   `prix_ht_produit` int(11) DEFAULT NULL,
   `quantite_produit` int(11) DEFAULT NULL,
   `stock_produit` varchar(50) DEFAULT NULL,
@@ -238,15 +256,19 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix_ht_produit`, `quantite_produit`, `stock_produit`, `nouveau_produit`, `etat_produit`, `id_categorie`, `id_sous_categorie`, `id_boutique`, `caracteristique_produit`, `image_produit`) VALUES
-(1, 'Jus de citron bb', 'tytryutuy yuyuyu', 450, 30, 'En stock', 'Existant', 1, 1, 4, 3, 'ghghghjytuyuyu', 'files_upload/produit/1.jpg'),
-(2, 'Savon liquide propre', 'C\'est un bon produit propre', 500, 2, 'En rupture', 'Nouveau', 1, 2, 1, 2, 'tytyuyiuyi yiuojhjk hkhjkj', 'files_upload/produit/2.jpg'),
-(3, 'Portable Infinix', 'gghgjhgkkj', 30000, 24, 'En stock', 'Existant', 1, 1, 2, 2, 'hjhgkhjkjk', 'files_upload/produit/3.jpg'),
-(4, 'Cahier 100 p', 'fgfdhgfhjhjh gjhkh hkhk', 340, 32, 'En stock', 'Existant', 1, 2, 4, 2, 'rytyt tytuyiy gjhkjhkjkl', 'files_upload/produit/4.jpg'),
-(5, 'Lunette Recto', 'tyt tuyiuy jhk', 1330, 45, 'En rupture', 'Existant', 1, 1, 2, 3, 'rtrytuyi gjhkhl', 'files_upload/produit/5.jpg'),
-(6, 'Ampoule', 'fghfghgjhk  hjhk hjhk', 430, 3, 'En stock', 'Existant', 1, 3, 5, 1, 'tytuyuyi gjhk yuyiui', 'files_upload/produit/Ampoule.jpg'),
-(7, 'Lait caille', 'dfd fgfhghj jhjk', 1700, 50, 'En stock', 'Existant', 1, 3, 5, 1, 'ghghjtytu hghjj', 'files_upload/produit/Lait caille.jpg'),
-(8, 'Fer de 10', 'trtty jhjh', 2400, 28, 'En stock', 'Existant', 1, 7, 6, 4, 'rtrytu hjhjh', 'files_upload/produit/Fer de 10.jpg'),
-(9, 'Alcool 95 degre', 'dffdg fgghg gjgj', 2800, 6, 'En stock', 'Nouveau', 1, 7, 6, 1, 'fgfhghghj', 'files_upload/produit/Alcool 95 degre.jpg');
+(1, 'Ampoule 12 volt', '<p>rtytruytuyuy tuyi hjhk<br></p>', 1200, 20, NULL, 'Existant', 1, 2, 3, 1, '<p>tryytuyiu gjhk hkhjk<br></p>', 'files_upload/produit/Ampoule 12 volt.jpg'),
+(2, 'Peinture au sol 80kp', '<p>gfh gjhjhk jkjl<br></p>', 3900, 12, NULL, 'Existant', 1, 1, 2, 1, '<p>ytu gjhhjhk yiuoi yiuoio<br></p>', 'files_upload/produit/Peinture au sol 80kp.jpg'),
+(3, 'Iphone 11', '<p>fgfdhgfh<br></p>', 110000, 23, NULL, 'Nouveau', 1, 3, 6, 1, '<p>gfhgjhgk<br></p>', 'files_upload/produit/Iphone 11.jpg'),
+(4, 'Tecno spark 4', '<p>fhghgj<br></p>', 90000, 11, NULL, 'Existant', 1, 3, 5, 1, '<p>ghhgkjklj<br></p>', 'files_upload/produit/Tecno spark 4.jpg'),
+(5, 'Carreaux 3 m cube', '<p>rettrytu yiui hjkhk<br></p>', 3500, 27, NULL, 'Existant', 1, 5, 7, 1, '<p>ytru yiyuouj hkjkl<br></p>', 'files_upload/produit/Carreaux 3 m cube.jpg'),
+(6, 'Pot wc 20mm', '<p>tytryuyt yiuiui<br></p>', 4300, 6, NULL, 'Existant', 1, 5, 9, 1, '<p>tyutyiyu hkjkljl<br></p>', 'files_upload/produit/Pot wc 20mm.jpg'),
+(7, 'Lait caille', '<p>gfhgjhjh hjhkh<br></p>', 1630, 12, NULL, 'Existant', 1, 1, 2, 1, '<p>yuyiuoipo hjhkj<br></p>', 'files_upload/produit/7.jpg'),
+(8, 'Cahier 200 p', '<p>gfhgfjhj<br></p>', 200, 18, NULL, 'Existant', 1, 2, 4, 1, '<p>tytuyuiyu<br></p>', 'files_upload/produit/Cahier 200 p.jpg'),
+(9, 'Infinix hot 10', '<p>fghfgjhkh<br></p>', 95000, 9, NULL, 'Existant', 1, 3, 5, 1, '<p>tyuyuyuiuy<br></p>', 'files_upload/produit/Infinix hot 10.jpg'),
+(10, 'Ademe', '<p>fdgfh<br></p>', 150, 11, NULL, 'Existant', 1, 1, 1, 1, '<p>ghgjhkj<br></p>', 'files_upload/produit/10.jpg'),
+(11, 'Carrote', '<p>fgfhghj<br></p>', 430, 5, NULL, 'Existant', 1, 2, 4, 1, '<p>ghjhjk<br></p>', 'files_upload/produit/11.jpg'),
+(12, 'Sodigaz 6kg', '<p>gfhgfhg<br></p>', 12400, 50, NULL, 'Existant', 1, 1, 1, 1, '<p>gjhjhk<br></p>', 'files_upload/produit/Sodigaz 6kg.jpg'),
+(13, 'Enora gaz 6kg', '<p>Enora <br></p>', 12900, 6, NULL, 'Nouveau', 1, 1, 1, 1, '<p>fgfdhgfh<br></p>', 'files_upload/produit/Enora gaz 6kg.jpg');
 
 -- --------------------------------------------------------
 
@@ -268,9 +290,29 @@ CREATE TABLE `promotion` (
 --
 
 INSERT INTO `promotion` (`id_promotion`, `pourcentage_promotion`, `code_promotion`, `date_debut_promotion`, `date_fin_promotion`, `id_produit`) VALUES
-(4, 40, '7i6tx', '2020-12-14', '2020-12-26', 1),
-(5, 15, 'dezb4', '2020-12-16', '2020-12-26', 4),
-(6, 10, 'goypy', '2020-12-27', '2020-12-30', 2);
+(2, 5, 'mjf80', '2021-01-26', '2021-01-30', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `remise`
+--
+
+CREATE TABLE `remise` (
+  `id_remise` int(11) NOT NULL,
+  `reference_commande` varchar(222) DEFAULT NULL,
+  `id_commande` int(11) DEFAULT NULL,
+  `etat_remise` int(11) DEFAULT NULL,
+  `pourcentage_remise` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `remise`
+--
+
+INSERT INTO `remise` (`id_remise`, `reference_commande`, `id_commande`, `etat_remise`, `pourcentage_remise`) VALUES
+(2, '27otp', 1, 1, 5),
+(3, 'a8vd3', 3, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -296,16 +338,6 @@ CREATE TABLE `slider` (
   `etat_slider` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `slider`
---
-
-INSERT INTO `slider` (`id_slider`, `image_slider`, `text_slider`, `etat_slider`) VALUES
-(1, 'files_upload/slider/1.jpg', 'fgfhhg hjhjhjhj ggfhghgj', 1),
-(3, 'files_upload/slider/retrt tyuyi.jpg', 'retrt tyuyi', 1),
-(4, 'files_upload/slider/rtryty.jpg', 'rtryty', 1),
-(5, 'files_upload/slider/hghghg hjkjk.jpg', 'hghghg hjkjk', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -324,12 +356,15 @@ CREATE TABLE `sous_categorie` (
 --
 
 INSERT INTO `sous_categorie` (`id_sous_categorie`, `libelle_sous_categorie`, `id_categorie`, `image_sous_categorie`) VALUES
-(1, 'Mais', 1, NULL),
-(2, 'Riz blanc', 1, NULL),
-(3, 'Coctail', 2, NULL),
-(4, 'Fanta BB', 2, NULL),
-(5, 'Sumsung', 3, NULL),
-(6, 'Fer lisse', 7, 'files_upload/categorie/Fer lisse.jpg');
+(1, 'Fer', 1, 'files_upload/categorie/1.jpg'),
+(2, 'Chaux', 1, 'files_upload/categorie/Chaux.jpg'),
+(3, 'Ampoule', 2, 'files_upload/categorie/Ampoule.jpg'),
+(4, 'Torche', 2, 'files_upload/categorie/Torche.jpg'),
+(5, 'Tecno', 3, 'files_upload/categorie/Tecno.jpg'),
+(6, 'Iphone', 3, 'files_upload/categorie/Iphone.jpg'),
+(7, 'Carreaux', 5, 'files_upload/categorie/Carreaux.jpg'),
+(8, 'Baingnoire', 5, 'files_upload/categorie/Baingnoire.jpg'),
+(9, 'Pot wc', 5, 'files_upload/categorie/Pot wc.jpg');
 
 -- --------------------------------------------------------
 
@@ -355,9 +390,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `email_user`, `password_user`, `sexe_user`, `telephone_user`, `id_role`, `ok_newsletter`, `type_user`) VALUES
-(1, 'FOFANA', 'Bilali', 'fofb@gmail.com', 'fofb1234', 'Masculin', 90345753, NULL, NULL, 2),
-(2, 'ALASSANI', 'Mouhamed', 'alassani@gmail.com', '12345', 'Feminin', 45433234, NULL, NULL, 2),
-(3, 'Fofana', 'bilali', 'fofanabilali@gmail.com', 'fofb1234', 'M', 90565453, NULL, 1, 2);
+(3, 'Mamadou', 'Sambalaye', 'mamadou@gmail.com', 'mamadou12345678', 'M', 90867866, NULL, 1, 2),
+(5, 'KPEKPASSI', 'Bilali', 'bilali@gmail.com', 'fofb12345678', 'M', 90867866, NULL, 1, 2);
 
 --
 -- Index pour les tables déchargées
@@ -411,6 +445,18 @@ ALTER TABLE `ligne_commande`
   ADD KEY `id_commande` (`id_commande`);
 
 --
+-- Index pour la table `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`id_newsletter`);
+
+--
+-- Index pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  ADD PRIMARY KEY (`id_paiement`);
+
+--
 -- Index pour la table `photo_produit`
 --
 ALTER TABLE `photo_produit`
@@ -432,6 +478,12 @@ ALTER TABLE `produit`
 ALTER TABLE `promotion`
   ADD PRIMARY KEY (`id_promotion`),
   ADD KEY `id_produit` (`id_produit`);
+
+--
+-- Index pour la table `remise`
+--
+ALTER TABLE `remise`
+  ADD PRIMARY KEY (`id_remise`);
 
 --
 -- Index pour la table `role`
@@ -473,13 +525,13 @@ ALTER TABLE `adresse`
 -- AUTO_INCREMENT pour la table `boutique`
 --
 ALTER TABLE `boutique`
-  MODIFY `id_boutique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_boutique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
@@ -491,7 +543,7 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `envoi_mail`
@@ -506,22 +558,40 @@ ALTER TABLE `ligne_commande`
   MODIFY `id_ligne_commande` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `newsletter`
+--
+ALTER TABLE `newsletter`
+  MODIFY `id_newsletter` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  MODIFY `id_paiement` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `photo_produit`
 --
 ALTER TABLE `photo_produit`
-  MODIFY `id_photo_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_photo_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `promotion`
 --
 ALTER TABLE `promotion`
-  MODIFY `id_promotion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_promotion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `remise`
+--
+ALTER TABLE `remise`
+  MODIFY `id_remise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `role`
@@ -533,19 +603,19 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `sous_categorie`
 --
 ALTER TABLE `sous_categorie`
-  MODIFY `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées

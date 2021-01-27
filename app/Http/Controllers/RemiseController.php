@@ -52,7 +52,7 @@ class RemiseController extends Controller
 
         $remise->save();
 
-        Session()->flash('succes',"Remise effectuée avec succè");
+        Session()->flash('success',"Remise effectuée avec succè");
         return redirect()->back();
     }
 
@@ -87,7 +87,15 @@ class RemiseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $remise = Remise::where(['id_remise' =>$id])->first() ;
+
+        $remise->pourcentage_remise = $request->remise ;
+
+        $remise->save();
+
+        Session()->flash('success',"Modification effectuée avec succè");
+        return redirect()->back();
+
     }
 
     /**
@@ -98,6 +106,12 @@ class RemiseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $remise = Remise::where(['id_remise' =>$id])->first() ;
+
+        $remise->delete();
+
+        Session()->flash('success',"Suppression effectuée avec succè");
+        return redirect()->back();
+
     }
 }
