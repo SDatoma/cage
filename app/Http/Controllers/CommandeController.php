@@ -184,6 +184,20 @@ class CommandeController extends Controller
         return view('pages_frontend/mes_achats',compact('commandes'));
     }
 	
+	//les meileurs ventes
+	public function meileurs_ventes_clients(){
+		
+		$meilleurs_ventes = DB::table('ligne_commande')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+		->orderBy('ligne_commande.id_produit', 'desc')
+		//->groupBy('ligne_commande.id_produit')
+		->take(6)
+        ->get();
+		
+		return view('pages_frontend/plus_vendu',compact('meilleurs_ventes'));
+	}
+	
+	
 	public function detail_historique($id,$reference_commande)
     {
         $user = User::where(['id_user' =>$id])->first() ;

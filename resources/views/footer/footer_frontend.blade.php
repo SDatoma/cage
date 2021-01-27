@@ -34,7 +34,7 @@
 								<a href="/condition-general">Conditions générales de vente ( CGV )</a>
 							</li>
 							<li>
-								<a href="">Les meilleures ventes</a>
+								<a href="/meilleurs-ventes">Les meilleures ventes</a>
 							</li>
 							<li>
 								<a href="/contact">Contact</a>

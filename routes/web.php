@@ -46,6 +46,7 @@ Route::get('/histotique-achats', 'CommandeController@historique_achat');
 
 Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@detail_historique')->name('voir.detail');
 
+Route::get('/meilleurs-ventes','CommandeController@meileurs_ventes_clients');
 
 
 /****************************
