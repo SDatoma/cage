@@ -23,7 +23,8 @@ if (Cookie::get('id_user')== null)
 	</div>
 	<!-- //page -->
 
-	<!-- fourth section (noodles) --><div class="featured-section" id="projects">
+	<!-- fourth section (noodles) --><br/>
+	<div class="featured-section" id="projects">
 		<div class="container">
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">Les meilleures ventes</h3>
@@ -41,20 +42,18 @@ if (Cookie::get('id_user')== null)
 								<div class="item-info-product ">
 									<h4 class="mb">
 										<a href="">{{$meilleurs_vente->nom_produit}}</a>
-									</h4> <br/>
+									</h4><hr>
 									<?php
-									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produits_idem_ss_cat->id_produit])->first();
+									 $nbres_ventes = \App\Models\LigneCommande::where(['id_produit' =>$meilleurs_vente->id_produit])
+									 ->count('id_produit');
 									?>
 									
-									
-									<h4 class="mb">
-										<a href="">{{$nbres_ventes}}</a>
-									</h4>
-									</br>
+									<span class="item_price" style="font-size:17px;color:#146cda"><b> Nombre vendu : {{$nbres_ventes}} </b> </span>
+									</br><hr>
 									@if($meilleurs_vente->quantite_produit>3)
-									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>En Stock</b> </span>
+									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>Etat du produit : En Stock</b> </span>
 									@else
-									<span class="item_price" style="font-size:15px;color:red"><b>En rupture</b> </span>
+									<span class="item_price" style="font-size:15px;color:red"><b>Etat du produit : En rupture</b> </span>
 									@endif
                                </div>
 							</div>
