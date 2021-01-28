@@ -209,10 +209,10 @@ class InscriptionController extends Controller
 			return redirect()->back();
 		}
 		
-		if($request->lastuserpassword == $user->password_user)
+		if(password_verify($request->lastuserpassword , $user->password_user))
 		{
 		
-		$user->password_user = $request->userpassword;
+		$user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
 	   
 		$user->save();
 		
