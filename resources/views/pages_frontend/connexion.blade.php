@@ -36,10 +36,10 @@ if (Cookie::get('id_user')== null)
                                     </a>
                                 </div>
                                 <div class="tab-content">
-								@if (Session::has('error'))
+								@if (Session::has('Error'))
 									<div class="form-group">
 										<div class="alert alert-danger">
-											<center>{{ Session::pull('error') }}</center>
+											<center>{{ Session::pull('Error') }}</center>
 										</div>
 									</div>
 								@endif

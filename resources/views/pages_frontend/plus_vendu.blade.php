@@ -37,12 +37,18 @@ if (Cookie::get('id_user')== null)
 											<a href="{{route('detail-produit.produit', $meilleurs_vente->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
-									<span class="product-new-top">Neuf</span>
-
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
 										<a href="">{{$meilleurs_vente->nom_produit}}</a>
+									</h4> <br/>
+									<?php
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produits_idem_ss_cat->id_produit])->first();
+									?>
+									
+									
+									<h4 class="mb">
+										<a href="">{{$nbres_ventes}}</a>
 									</h4>
 									</br>
 									@if($meilleurs_vente->quantite_produit>3)

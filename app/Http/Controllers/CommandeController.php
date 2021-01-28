@@ -189,20 +189,14 @@ class CommandeController extends Controller
 	//les meileurs ventes
 	public function meileurs_ventes_clients(){
 		
-		/*$meilleurs_ventes = DB::table('ligne_commande')
+		$meilleurs_ventes = DB::table('ligne_commande')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
-		->orderBy('ligne_commande.id_produit', 'desc')
-		//->groupBy('ligne_commande.id_produit')
+		//->orderBy('ligne_commande.id_produit', 'desc')
+		->groupBy('ligne_commande.id_produit')
 		->take(6)
-        ->get();*/
+        ->get();
 		
-		$sql = ("SELECT ligne_commande.id_produit, ligne_commande.quantite_commande, produit.*
-		FROM ligne_commande, produit
-        WHERE produit.id_produit = ligne_commande.id_produit
-		GROUP BY produit.nom_produit");
-		
-		$meilleurs_ventes=DB::select(DB::raw($sql));
-		
+
 		return view('pages_frontend/plus_vendu',compact('meilleurs_ventes'));
 	}
 	

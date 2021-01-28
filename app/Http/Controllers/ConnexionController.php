@@ -47,17 +47,28 @@ class ConnexionController extends Controller
         
 		$passe = 'password_user';
 			
-        $result = User::where(['email_user' => $request->username,
-								'password_user' => password_verify($request->userpassword, $passe)])
-								->first();
+        $result = User::where(['email_user' => $request->username, 'password_user' =>md5($request->userpassword)])->first();
 
-        /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
+//dd($result->password_user);
+        /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer
       
-        if ($result == null) {
-            Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
+        /*if ($result->email_user == null) {
+            Session()->flash('error','Cet email n`\'existe pas ou est incorrecte ');
+            return redirect()->back();
+            /* si non il envoi les resultats de la requete 
+        }*/
+
+		/*if ($result->password_user == null) {
+            Session()->flash('error','Ce mot de passe n`\'existe pas ou est incorrecte ');
+            return redirect()->back();
+            /* si non il envoi les resultats de la requete 
+        }
+		*/
+		if ($result == null) {
+            Session()->flash('Error','Identifiants incorects ou compte inexistant.');
             return redirect()->back();
             /* si non il envoi les resultats de la requete */
-        }  
+        }
 
         if ($result->type_user == 2 ){
             //**** mise en cookie des données de l'utilisateur**//
