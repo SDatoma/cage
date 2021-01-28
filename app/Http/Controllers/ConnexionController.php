@@ -45,32 +45,17 @@ class ConnexionController extends Controller
             return redirect()->to('/admin');
         }  
         
-		$passe = 'password_user';
-			
-        $result = User::where(['email_user' => $request->username, 'password_user' =>md5($request->userpassword)])->first();
-
-//dd($result->password_user);
-        /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer
+		$result = User::where(['email_user' => $request->username])->first();
+        /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
       
-        /*if ($result->email_user == null) {
-            Session()->flash('error','Cet email n`\'existe pas ou est incorrecte ');
-            return redirect()->back();
-            /* si non il envoi les resultats de la requete 
-        }*/
-
-		/*if ($result->password_user == null) {
-            Session()->flash('error','Ce mot de passe n`\'existe pas ou est incorrecte ');
-            return redirect()->back();
-            /* si non il envoi les resultats de la requete 
-        }
-		*/
-		if ($result == null) {
-            Session()->flash('Error','Identifiants incorects ou compte inexistant.');
+        if ($result==null) {
+            Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
             return redirect()->back();
             /* si non il envoi les resultats de la requete */
-        }
-
-        if ($result->type_user == 2 ){
+        }  
+		
+        if ($result->type_user == 2 && password_verify($request->userpassword, $result->password_user))
+        {
             //**** mise en cookie des données de l'utilisateur**//
 
             Cookie::queue('email_user', $result->email_user , 5000);
@@ -90,7 +75,11 @@ class ConnexionController extends Controller
             Cookie::queue('id_user', $result->id_user , 5000);
             
              return redirect()->to('/admin');
-			}
+		}else{
+
+            Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
+            return redirect()->back(); 
+        }
 	}
 
 

@@ -68,44 +68,37 @@ class InscriptionController extends Controller
 			Session()->flash('Error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
 			return back()->withErrors($validator)->withInput();
 		}
-		
-		//if (preg_match  ){
-		
+	
 		$user = new User();
 
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
 		$user->email_user = $request->useremail;
-		//$options = ['cost'=> 12,];
-		$user->password_user = md5($request->userpassword);
+		$user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
 		$user->sexe_user = $request->usercivilite;
 		$user->telephone_user = $request->usertelephone;
 		$user->ok_newsletter = $request->usernews;
 		$user->type_user = 2;
 	   
-		$user->save();
-		
+        $user->save();
+        
 		return $this->connexion_auto($request->useremail, $request->userpassword);
 		
     }
 	
-	public function connexion_auto($email, $passe){
+    public function connexion_auto($email, $passe)
+    {
 		
-		//$passe_base = 'password_user';
-			
-		//$result = User::where(['email_user' => $email, 'password_user' => password_verify($passe, $passe_base)])->first();
-		
-		$result = User::where(['email_user' => $email, 'password_user' => md5($passe)])->first();
-
+		$result = User::where(['email_user' => $email])->first();
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
-      
         if ($result == null) {
             Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
             return redirect()->back();
             /* si non il envoi les resultats de la requete */
         }  
 		
-		if ($result->type_user == 2 ){
+        if ($result->type_user == 2 && password_verify($passe, $result->password_user))
+        {
             //**** mise en cookie des données de l'utilisateur**//
 
             Cookie::queue('email_user', $result->email_user , 5000);
@@ -114,7 +107,13 @@ class InscriptionController extends Controller
             Cookie::queue('id_user', $result->id_user , 5000);
             
             return redirect()->to('/detail-profil-client');
-		}
+
+		}else{
+          
+            Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
+            return redirect()->back();
+
+        }
 	}
 	
 	//
