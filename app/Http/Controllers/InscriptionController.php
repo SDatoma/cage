@@ -55,17 +55,17 @@ class InscriptionController extends Controller
 		
 		if ($verification_email) {
 
-            Session()->flash('error',"Ce mail existe déjà sous un compte, Merci d'utiliser un autre. ");
+            Session()->flash('Error',"Ce mail existe déjà sous un compte, Merci d'utiliser un autre. ");
             return back()->withErrors($validator)->withInput();
         }
 		
 		if (strlen($request->userpassword) < 8) {
-            Session()->flash('error','Mot de passe trop cours !');
+            Session()->flash('Error','Mot de passe trop cours !');
             return back()->withErrors($validator)->withInput();
         }
 		
 		if($request->userpassword != $request->userpasswordconfirm){
-			Session()->flash('error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
+			Session()->flash('Error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
 			return back()->withErrors($validator)->withInput();
 		}
 		
@@ -76,10 +76,8 @@ class InscriptionController extends Controller
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
 		$user->email_user = $request->useremail;
-		$options = [
-			'cost' => 12,
-			];
-		$user->password_user = password_hash($request->userpassword, PASSWORD_BCRYPT, $options);
+		//$options = ['cost'=> 12,];
+		$user->password_user = md5($request->userpassword);
 		$user->sexe_user = $request->usercivilite;
 		$user->telephone_user = $request->usertelephone;
 		$user->ok_newsletter = $request->usernews;
@@ -93,9 +91,11 @@ class InscriptionController extends Controller
 	
 	public function connexion_auto($email, $passe){
 		
-		$passe_base = 'password_user';
+		//$passe_base = 'password_user';
 			
-		$result = User::where(['email_user' => $email, 'password_user' => password_verify($passe, $passe_base)])->first();
+		//$result = User::where(['email_user' => $email, 'password_user' => password_verify($passe, $passe_base)])->first();
+		
+		$result = User::where(['email_user' => $email, 'password_user' => md5($passe)])->first();
 
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
       
