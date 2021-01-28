@@ -195,6 +195,10 @@ class CommandeController extends Controller
 		// //->groupBy('ligne_commande.id_produit')
 		// ->take(6)
         // ->get();
+
+        $vente = DB::select("SELECT ligne_commande.id_produit,count(ligne_commande.id_produit) as nombre,produit.nom_produit from ligne_commande,produit
+        where produit.id_produit=ligne_commande.id_produit
+        GROUP BY ligne_commande.id_produit");
 		
 		$sql = ("SELECT ligne_commande.id_produit, ligne_commande.quantite_commande, produit.*
 		FROM ligne_commande, produit
