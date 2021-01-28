@@ -188,6 +188,8 @@ class CommandeController extends Controller
 	
 	//les meileurs ventes
 	public function meileurs_ventes_clients(){
+
+		$id_categorie=0 ;
 		
 		$meilleurs_ventes = DB::table('ligne_commande')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
@@ -196,8 +198,8 @@ class CommandeController extends Controller
 		->take(6)
         ->get();
 		
+		return view('pages_frontend/plus_vendu',compact('meilleurs_ventes','id_categorie'));
 
-		return view('pages_frontend/plus_vendu',compact('meilleurs_ventes'));
 	}
 	
 	
