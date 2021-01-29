@@ -38,6 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th>NOM & PRENOM</th>
+                                            <th>VILLE</th>
                                             <th>SEXE</th>
                                             <th>ADRESSE MAIL</th>
                                             <th>TELEPHONE</th>
@@ -48,6 +49,7 @@
                                     @foreach($users as $user)
                                         <tr>
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
+                                            <td>{{$user->ville_user}}</td>
                                             <td>{{$user->sexe_user}}</td>
                                             <td>{{$user->email_user}}</td>
                                             <td>{{$user->telephone_user}}</td>
