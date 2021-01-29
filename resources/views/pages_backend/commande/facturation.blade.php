@@ -134,13 +134,12 @@
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
-									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
+									<th colspan="2"  style="font-size:17px;"> {{$commande->frais_livraison ?? '0'}} F CFA</th>
 								</tr>
                                 @if($remise)
                                 <?php
-                                
-                                 $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
-                                  $prix_revient= $prix_total - $remisee ;
+                                $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                  $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">REMISE</th>
@@ -151,10 +150,9 @@
 									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_revient?> F CFA</th>
 								</tr>
                                 @else
-                                 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
-									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total?> F CFA</th>
+									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total+$commande->frais_livraison?> F CFA</th>
 								</tr>
 
                                 @endif
@@ -167,9 +165,9 @@
                             <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
 									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red">
                                      @if($remise)
-                                     <?php echo int2str($prix_revient)?> F CFA</b> </i></p>
+                                     <?php echo int2str($prix_revient+$commande->frais_livraison)?> F CFA</b> </i></p>
                                      @else
-                                     <?php echo int2str($prix_total)?> F CFA</b> </i></p>
+                                     <?php echo int2str($prix_total+$commande->frais_livraison)?> F CFA</b> </i></p>
 									 @endif	
 										
 									<p  class="text-right" style="text-align: right; margin-top:40px">

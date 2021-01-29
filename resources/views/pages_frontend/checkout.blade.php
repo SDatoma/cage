@@ -95,8 +95,13 @@ if (Cookie::get('id_user')== null)
 										      <div class="row">
 
                                                    <div class="col-md-12">
-                                                     <input type="radio" name="mode" value="livraison" required="">&nbsp;&nbsp;
+                                                     <input type="radio" name="mode" value="domicile" required="">&nbsp;&nbsp;
                                                       <label for="huey" style="color:blue">Paiement à la livraison</label>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                     <input type="radio" name="mode" value="magasin" required="">&nbsp;&nbsp;
+                                                      <label for="huey" style="color:blue">Paiement au magasin</label>
                                                     </div>
 
                                                    <div class="col-md-12">
@@ -140,8 +145,10 @@ if (Cookie::get('id_user')== null)
                                         <div class="total-shipping">
                                             <h5>Frais accessoirs</h5>
                                             <ul>
+                                                <li> Tva <span>18 %</span></li>
+                                                <li> Httc <span>0 </span></li>
                                                 <li> Livraison <span>0 FCFA</span></li>
-                                                <li> Remise <span>0 %</span></li>
+                                               
                                             </ul>
                                         </div>
 										<h4 class="grand-totall-title" style="color:red">Net à payer<span>{{ShoppingCart::totalPrice() ?? '0'}} FCFA</span></h4>

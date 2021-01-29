@@ -19,6 +19,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $reference_commande
  * @property int|null $id_user
  * @property int|null $id_produit
+ * @property int|null $id_adresse
+ * @property int|null $frais_livraison
+ * @property string|null $numero_facture
+ * @property Carbon|null $date_livraison
  * 
  * @property User $user
  * @property Produit $produit
@@ -36,8 +40,8 @@ class Commande extends Model
 		'etat_commande' => 'int',
 		'id_user' => 'int',
 		'id_produit' => 'int',
-		'id_adresse' => 'int'
-		
+		'id_adresse' => 'int',
+		'frais_livraison' => 'int'
 	];
 
 	protected $dates = [
@@ -52,6 +56,7 @@ class Commande extends Model
 		'id_user',
 		'id_produit',
 		'id_adresse',
+		'frais_livraison',
 		'numero_facture',
 		'date_livraison'
 	];
@@ -59,11 +64,6 @@ class Commande extends Model
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'id_user');
-	}
-
-	public function adresse()
-	{
-		return $this->belongsTo(Adresse::class, 'id_adresse');
 	}
 
 	public function produit()

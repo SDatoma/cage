@@ -55,14 +55,14 @@ class CommandeController extends Controller
     {
          // Recupration de la date du jour
          $date_jour=date('Y-m-d');
-        
          $id_user= Cookie::get('id_user');
-        
+         $total=ShoppingCart::total();
+
          $user = User::where(['id_user' =>$id_user])->first() ;
          
-        Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+        // Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
 
-        Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
+        // Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
          
          $chars = "abcdefghijkmnopqrstuvwxyz023456789";
          srand((double)microtime()*1000000);
@@ -82,6 +82,13 @@ class CommandeController extends Controller
          }else{
             $numero=$dernier_numero->numero_facture+1;
          }
+         
+         if( $total > 100000 || $request->mode=="magasin"){
+           $frais_livraison=0;
+         }else{
+            $frais_livraison=1000; 
+         }
+        
          $commande = new Commande();
          
          $commande->reference_commande= $code;
@@ -89,6 +96,7 @@ class CommandeController extends Controller
          $commande->etat_commande= 0;
          $commande->id_adresse= $request->id_adresse;
          $commande->numero_facture=  $numero;
+         $commande->frais_livraison= $frais_livraison;
          $commande->id_user= Cookie::get('id_user');
     
          $commande->save();
@@ -109,7 +117,7 @@ class CommandeController extends Controller
 
          }
 
-        if($request->mode=="livraison")
+        if($request->mode=="domicile" || $request->mode=="magasin")
          {
          ShoppingCart::destroy();
          return redirect()->to('/')->with('success', 'Conmande effectuée avec succè');

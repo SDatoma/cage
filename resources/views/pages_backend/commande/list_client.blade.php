@@ -31,7 +31,6 @@
                         <!-- <div class="header">
                             <h2>LISTE DES FOURNISSEURS</h2>
                         </div> -->
-
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover theme-color dataTable js-exportable">
