@@ -118,12 +118,22 @@ if (Cookie::get('id_user')== null)
                                 </tr>
                             @endforeach 
                                 
-                               <tr scope="col" colspan="5" rowspan="1" class="text-left">
+                               <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
 									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>
 
-                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3"  style="font-size:17px;">TVA</th>
+									<th colspan="2"  style="font-size:17px;">18 %</th>
+								</tr>
+
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3"  style="font-size:17px;">HTTC</th>
+									<th colspan="2"  style="font-size:17px;"> 0 </th>
+								</tr>
+
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
 									<th colspan="2"  style="font-size:17px;"> 0 F CFA</th>
 								</tr>
@@ -133,17 +143,17 @@ if (Cookie::get('id_user')== null)
                                   $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
                                   $prix_revient= $prix_total - $remisee ;
                                  ?>
-                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:17px;">REMISE</th>
 									<th colspan="2"  style="font-size:17px;">{{$remise->pourcentage_remise}} %</th>
 								</tr>
-                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
 									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_revient?> F CFA</th>
 								</tr>
                                 @else
                                  
-                                <tr scope="col" colspan="5" rowspan="1" class="text-left">
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
 									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total?> F CFA</th>
 								</tr>

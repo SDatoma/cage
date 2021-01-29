@@ -76,7 +76,9 @@ class InscriptionController extends Controller
 		$user->email_user = $request->useremail;
 		$user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
 		$user->sexe_user = $request->usercivilite;
-		$user->telephone_user = $request->usertelephone;
+        $user->telephone_user = $request->usertelephone;
+        $user->ville_user = $request->userville;
+        $user->quartier_user = $request->userquartier;
 		$user->ok_newsletter = $request->usernews;
 		$user->type_user = 2;
 	   
@@ -172,7 +174,9 @@ class InscriptionController extends Controller
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
 		$user->email_user = $request->useremail;
-		$user->sexe_user = $request->usercivilite;
+        $user->sexe_user = $request->usercivilite;
+        $user->ville_user = $request->userville;
+        $user->quartier_user = $request->userquartier;
 		$user->telephone_user = $request->usertelephone;
 		
 		$user->save();

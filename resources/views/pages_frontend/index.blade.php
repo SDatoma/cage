@@ -187,6 +187,7 @@ if (Cookie::get('id_user')== null)
 					<!-- first section (nuts) -->
 			       <div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">PRODUITS POPULAIRES</h3>
+						</br></br>
 					<div class="row">
 						@if(count($produits)==0)
 						</br></br>
@@ -263,6 +264,7 @@ if (Cookie::get('id_user')== null)
 					<!-- fourth section (noodles) -->
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">NOUVEAUX PRODUITS</h3>
+						</br></br>
                         @foreach($nouveau_produits as $nouveau_produit)
 						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">

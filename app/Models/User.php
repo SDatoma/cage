@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $id_role
  * @property int|null $ok_newsletter
  * @property int|null $type_user
+ * @property string|null $ville_user
+ * @property string|null $quartier_user
  * 
  * @property Role $role
  * @property Collection|Adresse[] $adresses
@@ -51,7 +53,9 @@ class User extends Model
 		'telephone_user',
 		'id_role',
 		'ok_newsletter',
-		'type_user'
+		'type_user',
+		'ville_user',
+		'quartier_user'
 	];
 
 	public function role()

@@ -33,23 +33,9 @@ if (Cookie::get('id_user')== null)
                                 </div>
                                 <div class="tab-content">
                                     <div id="lg1" class="tab-pane active">
-									@if (Session::has('error'))
-									<div class="form-group">
-										<div class="alert alert-danger">
-											<center>{{ Session::pull('error') }}</center>
-										</div>
-									</div>
-									@endif
-								@if (Session::has('success'))
-									<div class="form-group">
-										<div class="alert alert-success">
-											<center>{{ Session::pull('success') }}</center>
-										</div>
-									</div>
-								@endif
-                                        <div class="login-form-container">
+									    <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000; text-align : right;">
-                                                <form class="form-horizontal" method="POST"  action="{{route('client.update',$user->id_user)}}" enctype="multipart/form-data">
+                                                <form class="form-horizontal" method="POST"  action="{{route('client.update',$user->id_user)}}">
 													{{ method_field('PUT') }}
 													 {{ csrf_field() }}
 													<div class="col-lg-4">Civilité (Mr/Mme) : </div> <div class="col-lg-8" style="text-align : left;"> 
@@ -60,6 +46,11 @@ if (Cookie::get('id_user')== null)
                                                     <div class="col-lg-4">Prénom : </div> <div class="col-lg-8"> <input required type="text" name="userprenom" value="{{$user->prenom_user}}" /> </div>
                                                     <div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" value="{{$user->telephone_user}}" type="numeric" /> </div>
                                                     <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" value="{{$user->email_user}}" type="email" /> </div>
+
+													<div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" name="userville" value="{{$user->ville_user}}" /> </div>
+
+													<div class="col-lg-4">Quartier : </div> <div class="col-lg-8"> <input required type="text" name="userquartier" value="{{$user->quartier_user}}" /> </div>
+
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
                                                             <input type="checkbox" name="usernews" value="1" />
