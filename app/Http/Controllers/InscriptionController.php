@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Ville;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -77,7 +78,7 @@ class InscriptionController extends Controller
 		$user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
 		$user->sexe_user = $request->usercivilite;
         $user->telephone_user = $request->usertelephone;
-        $user->ville_user = $request->userville;
+        $user->id_ville = $request->userville;
         $user->quartier_user = $request->userquartier;
 		$user->ok_newsletter = $request->usernews;
 		$user->type_user = 2;
@@ -129,12 +130,13 @@ class InscriptionController extends Controller
     }
 	
 	public function show_info_client()
-    { 
+    {  
+        $villes = Ville::where(['etat_ville' =>1])->get() ;
         $id_user= Cookie::get('id_user');
 
         $user = User::where(['id_user' =>$id_user])->first() ;
 
-        return view('pages_frontend/info_personel',compact('user'));
+        return view('pages_frontend/info_personel',compact('user','villes'));
     }
 
     /**
@@ -168,14 +170,14 @@ class InscriptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-		
+       
 		$user = User::where(['id_user' =>$id])->first() ;
 		 
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
 		$user->email_user = $request->useremail;
         $user->sexe_user = $request->usercivilite;
-        $user->ville_user = $request->userville;
+        $user->id_ville = $request->userville;
         $user->quartier_user = $request->userquartier;
 		$user->telephone_user = $request->usertelephone;
 		

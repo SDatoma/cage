@@ -47,7 +47,15 @@ if (Cookie::get('id_user')== null)
                                                     <div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" value="{{$user->telephone_user}}" type="numeric" /> </div>
                                                     <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" value="{{$user->email_user}}" type="email" /> </div>
 
-													<div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" name="userville" value="{{$user->ville_user}}" /> </div>
+													   <div class="col-lg-4">Ville : </div> 
+													   <div class="col-lg-8">
+													        <select name="userville" class="form-control" required >
+															@foreach($villes as $ville) 
+													           <option value="{{$ville->id_ville}}" @if($ville->id_ville == $user->id_ville) selected @endif>{{$ville->libelle_ville}} </option> 
+															@endforeach
+															</select>
+															</br></br>
+													   </div>
 
 													<div class="col-lg-4">Quartier : </div> <div class="col-lg-8"> <input required type="text" name="userquartier" value="{{$user->quartier_user}}" /> </div>
 

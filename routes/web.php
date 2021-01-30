@@ -112,6 +112,9 @@ Route::get('/statistique/stock', 'StockController@index');
 //Slider
 Route::get('/list/slider', 'SliderController@getAllSlider');
 
+//Ville
+Route::get('/list/ville', 'VilleController@getAllVille');
+
 //Emailing
 Route::get('/emailing', function () {
     return view('pages_backend/emailing/list_message');
@@ -124,6 +127,7 @@ Route::get('/checkout','CommandeController@checkout');
 
 //LES RESOURCES
 Route::resource('fournisseur', 'FournisseurController');
+Route::resource('ville', 'VilleController');
 Route::resource('paiement', 'PaiementController');
 Route::resource('commentaire', 'CommentaireController');
 Route::resource('cart', 'CartController');

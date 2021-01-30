@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $id_role
  * @property int|null $ok_newsletter
  * @property int|null $type_user
- * @property string|null $ville_user
+ * @property string|null $id_ville
  * @property string|null $quartier_user
  * 
  * @property Role $role
@@ -54,7 +54,7 @@ class User extends Model
 		'id_role',
 		'ok_newsletter',
 		'type_user',
-		'ville_user',
+		'id_ville',
 		'quartier_user'
 	];
 

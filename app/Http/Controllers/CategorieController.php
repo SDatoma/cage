@@ -61,9 +61,10 @@ class CategorieController extends Controller
             $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            Image::make($image)->save('files_upload/categorie/'.$request->libelle_categorie.'.jpg');
+            $nom_image= $_FILES['file']['name'];
+            Image::make($image)->save('files_upload/categorie/'.$nom_image.'.jpg');
 
-            $file_name ='files_upload/categorie/'.$request->libelle_categorie.'.jpg';
+            $file_name ='files_upload/categorie/'.$nom_image.'.jpg';
 
           }else{
 
@@ -90,9 +91,10 @@ class CategorieController extends Controller
             $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            Image::make($image)->save('files_upload/categorie/'.$request->libelle_sous_categorie.'.jpg');
+            $nom_image= $_FILES['file']['name'];
+            Image::make($image)->save('files_upload/categorie/'.$nom_image.'.jpg');
 
-            $file_name ='files_upload/categorie/'.$request->libelle_sous_categorie.'.jpg';
+            $file_name ='files_upload/categorie/'.$nom_image.'.jpg';
 
           }else{
 

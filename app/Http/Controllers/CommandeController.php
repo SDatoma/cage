@@ -8,6 +8,7 @@ use App\Models\Produit;
 use App\Models\Commande;
 use App\Models\adresse;
 use App\Models\Remise;
+use App\Models\Ville;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
@@ -245,8 +246,9 @@ class CommandeController extends Controller
     public function getAllUser()
     {
           $users = DB::table('user')->get();
+          $villes = Ville::where(['etat_ville' =>1])->get() ;
 
-        return view('pages_backend/commande/list_client',compact('users'));
+        return view('pages_backend/commande/list_client',compact('users','villes'));
     }
 
     public function checkout(){

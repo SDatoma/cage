@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Ville;
 use ShoppingCart;
 
 class ConnexionController extends Controller
@@ -18,8 +19,10 @@ class ConnexionController extends Controller
      */
     public function index()
     {
+        $villes = Ville::where(['etat_ville' =>1])->get() ;
         $id_categorie=0;
-        return view('pages_frontend/connexion',compact('id_categorie'));
+
+        return view('pages_frontend/connexion',compact('id_categorie','villes'));
     }
 
     /**

@@ -1,6 +1,4 @@
 @extends('header/header_back')
-
-
 <!-- Main Content -->
 @section('content')
 <section class="content">
@@ -8,7 +6,13 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5><strong>LISTE DES CLIENTS</strong></h5>
+                       <h5>LISTE DES VILLES</h5>
+                            <div class="pull-right mt-4">
+                               <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ville">
+                                   <i class="zmdi zmdi-plus"></i> Ajouter une ville
+                               </button>
+                            </div>
+                            @include('modals/ajout/add_ville')
                     <!-- 
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Aero</a></li>
@@ -31,34 +35,30 @@
                         <!-- <div class="header">
                             <h2>LISTE DES FOURNISSEURS</h2>
                         </div> -->
+                        
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover theme-color dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>NOM & PRENOM</th>
-                                            <th>VILLE</th>
-                                            <th>SEXE</th>
-                                            <th>ADRESSE MAIL</th>
-                                            <th>TELEPHONE</th>
+                                            <th>LIBELLE</th>
+                                            <th>ACTION</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                    @foreach($users as $user)
+                                    @foreach($villes as $ville)
                                         <tr>
-                                            <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
+                                            <td>{{$ville->libelle_ville}}</td>
                                             <td>
-                                            @foreach($villes as $ville)
-                                                @if($ville->id_ville == $user->id_ville)
-                                                 {{$ville->libelle_ville}}
-                                                @endif
-                                            @endforeach
+                                            <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#mv{{$ville->id_ville}}"><i class="zmdi zmdi-edit"></i></button> 
+
+                                            <button class="btn btn-danger btn-sm" title="Supprimer" data-toggle="modal" data-target="#sv{{$ville->id_ville}}"><i class="zmdi zmdi-delete"></i></button>
+                                            
                                             </td>
-                                            <td>{{$user->sexe_user}}</td>
-                                            <td>{{$user->email_user}}</td>
-                                            <td>{{$user->telephone_user}}</td>
+                                            @include('modals/suppression/delete_ville')
                                         </tr>
+                                             @include('modals/modification/edit_ville')
                                     @endforeach  
                                     </tbody>
                                 </table>
@@ -71,7 +71,5 @@
 
     </div>
 </section>
-
-
 
 @endsection()

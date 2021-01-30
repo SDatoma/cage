@@ -75,8 +75,17 @@ if (Cookie::get('id_user')== null)
 													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" placeholder="N° Téléphone" type="numeric" /> </div>
                                                     <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" type="email" /> </div>
 
-													<div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required name="userville" placeholder="Ville" type="text"/> </div>
-
+													<div class="col-lg-4">Ville : </div> 
+													   <div class="col-lg-8">
+													        <select name="userville" class="form-control" required >
+															<option>Choisissez votre ville de résidence</option> 
+															@foreach($villes as $ville) 
+													           <option value="{{$ville->id_ville}}"> {{$ville->libelle_ville}} </option> 
+															@endforeach
+															</select>
+															</br></br>
+													   </div>
+                                                     
 													<div class="col-lg-4">Quartier : </div> <div class="col-lg-8"> <input required name="userquartier" placeholder="Quartier" type="text" /> </div>
 
                                                     <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpassword" placeholder="Mot de passe" /> </div>
