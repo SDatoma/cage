@@ -17,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/testmail','TestController@testmail');
 Route::post('/testmail','TestController@testmail1')->name('envoi.mail');
 
-Route::get('/mes-informations', function () {
-    $id_categorie=0;
-    return view('pages_frontend/mon_compte',compact('id_categorie'));
-});
-
 // ROUTE FRONT-END
 Route::get('/', 'IndexController@index');
 Route::get('/tri-categorie-{id_categorie}-produit-{libelle_categorie}', 'IndexController@tri_produit_par_categorie')->name('tri.produit.categorie');
@@ -43,8 +38,6 @@ Route::get('/login','ConnexionController@index');
 Route::get('/deconnexion','ConnexionController@deconnection');
 
 Route::get('/histotique-achats', 'CommandeController@historique_achat');
-
-Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@detail_historique')->name('voir.detail');
 
 Route::get('/meilleurs-ventes','CommandeController@meileurs_ventes_clients');
 
@@ -69,6 +62,8 @@ Route::group(['middleware' => ['connexion']], function () {
     Route::get('/mes-adresses','AdresseController@liste_adresse_client');
     
     Route::get('/ajouter-adresse','AdresseController@show_adresse_client');
+
+    Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@detail_historique')->name('voir.detail');
     
     //Route::get('/affiche-adresse','AdresseController@show_adresse_client')
     
@@ -116,9 +111,7 @@ Route::get('/list/slider', 'SliderController@getAllSlider');
 Route::get('/list/ville', 'VilleController@getAllVille');
 
 //Emailing
-Route::get('/emailing', function () {
-    return view('pages_backend/emailing/list_message');
-});
+Route::get('/list/email', 'EmailingController@getAllEmail');
 
 //cart
 Route::get('/empty', 'CartController@emptyCart');
@@ -128,6 +121,7 @@ Route::get('/checkout','CommandeController@checkout');
 //LES RESOURCES
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('ville', 'VilleController');
+Route::resource('email', 'EmailingController');
 Route::resource('paiement', 'PaiementController');
 Route::resource('commentaire', 'CommentaireController');
 Route::resource('cart', 'CartController');

@@ -46,6 +46,7 @@
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
                                 <div class="form-group form-float">
+                                <label> Nom du produit</label>
                                     <input type="text" class="form-control" placeholder="Nom du produit" name="nom_produit" value="{{$produit->nom_produit}}" required>
                                 </div>
                                 <div class="form-group form-float">
@@ -57,12 +58,15 @@
                                     <textarea name="caracteristique_produit" cols="30" rows="5" placeholder="Caracteristique du produit" class="form-control no-resize summernote" required>{{$produit->caracteristique_produit}}</textarea>
                                 </div>
                                 <div class="form-group form-float">
+                                <label> Prix</label>
                                     <input type="number" min="100" class="form-control" placeholder="Prix du produit" name="prix_produit" value="{{$produit->prix_ht_produit}}" required>
                                 </div>
                                 <div class="form-group form-float">
+                                <label> Quantite disponible</label>
                                     <input type="number" min="1" class="form-control" placeholder="Quantite en stock" name="quantite_produit" value="{{$produit->quantite_produit}}" required>
                                 </div>
                                 <div class="form-group form-float">
+                                  <label> Categorie</label>
                                    <select class="form-control show-tick ms select2" data-placeholder="Select" name="id_sous_categorie" required>
                                       @foreach($sous_categories as $sous_categorie)
                                        <option value="{{$sous_categorie->id_sous_categorie}}" @if($produit->id_sous_categorie ==$sous_categorie->id_sous_categorie) selected @endif> {{$sous_categorie->libelle_sous_categorie}} </option>
@@ -72,6 +76,7 @@
                                 </div>
 
                                 <div class="form-group form-float">
+                                  <label> Fournisseur</label>
                                    <select class="form-control show-tick ms select2" data-placeholder="Select" name="id_boutique" required>
                                       @foreach($boutiques as $boutique)
                                        <option value="{{$boutique->id_boutique}}" @if($produit->id_boutique== $boutique->id_boutique) selected @endif> {{$boutique->nom_boutique}} </option>
@@ -80,6 +85,7 @@
                                 </div>
 
                                 <div class="form-group form-float">
+                                  <label> Etat</label>
                                    <select class="form-control show-tick ms select2" data-placeholder="Select"      name="nouveau_produit" required>
                                        <option value=""> CHOISISSEZ L'ETAT DU PRODUIT</option>
                                        <option value="Nouveau" @if($produit->nouveau_produit== "Nouveau") selected @endif> Nouveau</option>

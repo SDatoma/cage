@@ -66,14 +66,15 @@
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Paramettre</span></a>
                 <ul class="ml-menu">
-                    <li><a href="/list/slider">Image en slide</a></li>
+                    <li><a href="/list/slider">Pub des images</a></li>
                     <li><a href="/list/ville">Liste des villes</a></li>
-                    <li><a href="/emailing">Envoi d'email</a></li>
+                    <li><a href="/list/client">Liste des clients</a></li>
+                    <li><a href="/list/email">Envoi d'email</a></li>
                     <!-- <li><a href="#">Liste des utilisateurs</a></li>                   -->
                 </ul>
             </li>
 
-            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Boutiques</span></a>
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Boutiques</span></a>
                 <ul class="ml-menu">
                     <li><a href="/add/boutique">Ajouter une boutique</a></li>                  
                     <li><a href="/list/boutique">Liste des boutiques</a></li>
@@ -95,8 +96,6 @@
                 <ul class="ml-menu">
                     <li><a href="/list/commande/attente"> Commande en attente</a></li>
                     <li><a href="/list/commande/valider"> Commande valider</a></li>
-                    <li><a href="/list/client">Liste des clients</a></li>
-
                 </ul>
             </li>
 

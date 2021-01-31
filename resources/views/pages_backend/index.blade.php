@@ -155,14 +155,15 @@
                                     <div class="state_w1 mb-1 mt-1">
                                         <div class="d-flex justify-content-between">
                                           <a href="#">
-                                            <div>                            
-                                            <center> <h5>0</h5>  </center>
-                                                <span>Utilisateurs</span>
+                                            <div>
+                                            <center><h5>0</h5> </center>
+                                                <span>Message recu</span>
                                             </div>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
                         </div>
                         <div class="body">

@@ -45,8 +45,17 @@
 
                         <div class="body">
                         <h5>ENVOYER UN NOUVEAU MESSAGE</h5>
-                        <form id="form_validation" method="POST" action="{{route('envoi.mail')}}">
-                            {{csrf_field()}}
+                           <form id="form_validation" method="POST" action="{{route('email.store')}}">
+                              {{csrf_field()}}
+                               <div class="form-group form-float">
+                                    <select name="ville" class="form-control show-tick ms select2" data-placeholder="Select" required >
+										<option value=""> Choisissez la ville </option> 
+										@foreach($villes as $ville) 
+										<option value="{{$ville->id_ville}}"> {{$ville->libelle_ville}} </option> 
+										@endforeach
+								    </select>
+                                </div>
+
                                 <div class="form-group form-float">
                                     <input type="text" class="form-control" placeholder="Titre du message" name="titre_mail" value="{{ old('nom_produit') }}" required>
                                 </div>
@@ -54,7 +63,9 @@
                                     <textarea name="description_mail" cols="30" rows="5" placeholder="Description" class="form-control no-resize summernote" required>{{old('description_produit') }}</textarea>
                                 </div>
 
-                                <center> <button class="btn btn-raised btn-primary waves-effect " type="submit">Envoyer</button> </center>
+                                <center> 
+                                <button class="btn btn-raised btn-primary waves-effect " type="submit">Envoyer</button> 
+                                </center>
                             </form>
 
                             <div class="table-responsive mt-4">
@@ -64,6 +75,7 @@
                                         <tr>
                                            <th>TITRE</th>
                                             <th>DESCRIPTION</th>
+                                            <th>VILLE</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -74,8 +86,8 @@
                                             <td></td>
                                             <td></td>
                                             <td> </td>
-                                           
-                                         </tr>
+                                            <td> </td>
+                                        </tr>
                                           
                                   
                                     </tbody>

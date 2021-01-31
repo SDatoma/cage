@@ -8,7 +8,7 @@
           
           <!--Body-->
           <div class="modal-body">
-           <strong><p>Supprimer cette Categorie ? </strong></p>
+           <strong><p>Supprimer cette ville ? </strong></p>
            <strong style="font-size:20px">{{$ville->libelle_ville}}</strong>
           </div>
           <!--Footer-->
