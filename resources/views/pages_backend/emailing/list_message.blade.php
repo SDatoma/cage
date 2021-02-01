@@ -94,16 +94,17 @@
                                             @endforeach
                                             </td>
                                             <td>
-                                            
-                                            <button class="btn btn-succes btn-sm" title="Reenvoyer le message"  data-toggle="modal" data-target=""><i class="zmdi zmdi-plus"></i></i></button> 
+                                            <button class="btn btn-succes btn-sm" title="Reenvoyer le message" data-toggle="modal"  data-target="#ce{{$email->id_email}}"><i class="zmdi zmdi-plus"></i></i></button> 
 
-                                            <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#me{{$email->id_email}}"><i class="zmdi zmdi-edit"></i></button> 
+                                           <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#me{{$email->id_email}}"><i class="zmdi zmdi-edit"></i></button> 
 
                                             <button class="btn btn-danger btn-sm" title="Supprimer" data-toggle="modal"  data-target="#se{{$email->id_email}}"><i class="zmdi zmdi-delete"></i></button>
                                             
                                              </td>
                                              @include('modals/suppression/delete_email')
+                                             @include('modals/detail/confirmation_envoi')
                                         </tr>
+                                        @include('modals/modification/edit_envoi_mail')
                                     @endforeach
                                     </tbody>
                                 </table>

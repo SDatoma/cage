@@ -112,6 +112,7 @@ Route::get('/list/ville', 'VilleController@getAllVille');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
+Route::get('/envoi/email/{id}', 'EmailingController@reenvoiMail')->name('reenvoi.mail');
 
 //cart
 Route::get('/empty', 'CartController@emptyCart');

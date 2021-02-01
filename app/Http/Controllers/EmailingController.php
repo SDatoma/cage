@@ -64,6 +64,19 @@ class EmailingController extends Controller
        return back()->with('success', 'Email envoyes avec succè');
     }
 
+    public function reenvoiMail($id)
+    {
+        $email = Emailing::where(['id_email' =>$id])->first() ;
+         
+        $users = User::where(['id_ville' =>$email->id_ville])->get() ;
+
+        foreach($users as $user){
+          Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $email->titre_email,$email->description_email));
+        }
+
+        return back()->with('success', 'Email envoyes avec succè');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -103,7 +116,15 @@ class EmailingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $email = Emailing::where(['id_email' =>$id])->first() ;
+       
+        $email->titre_email= $request->titre_email;
+        $email->description_email= $request->description_email;
+        $email->id_ville= $request->id_ville;
+
+        $email->save();
+        
+       return back()->with('success', 'Modification effectuee avec succè');
     }
 
     /**
@@ -117,7 +138,7 @@ class EmailingController extends Controller
         $email = Emailing::where(['id_email' =>$id])->first() ;
          
         $email->delete();
-        
+
         return back()->with('success', 'Suppression effectuée avec succè');
     }
 }
