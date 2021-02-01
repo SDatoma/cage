@@ -71,7 +71,7 @@ class ProduitController extends Controller
             $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $nom_image= $_FILES['file']['name'];
+            $nom_image=str_replace(' ','',$request->nom_produit);
             Image::make($image)->save('files_upload/produit/'.$nom_image.'.jpg');
 
             $file_name ='files_upload/produit/'.$nom_image.'.jpg';

@@ -1,10 +1,10 @@
 @component('mail::message')
 # Bonjour Mr/Mme {{$first_name}} {{$last_name}},
 
-Titre 
+{{$titre_email}}
 <br><br>
 {{-- @component('mail::panel', ['url' => 'fgfhghghg']) --}}
-Contenu de mail
+<?php echo nl2br($description_email)?>
 {{-- @endcomponent --}}
 <br>
 <br>

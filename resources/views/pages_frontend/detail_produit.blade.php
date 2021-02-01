@@ -66,7 +66,7 @@ if (Cookie::get('id_user')== null)
 						   $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
 						   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
 						 ?>
-						<label>PRIX_HT :</label><span class="item_price" style="font-size:15px;color:red"> {{$prix_ht_promo}} F CFA</span>
+						<label>PRIX :</label><span class="item_price" style="font-size:15px;color:red"> {{$prix_ht_promo}} F CFA</span>
 						<del> <span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ht_produit}} F CFA</span></del>
 						
 					</p>	
