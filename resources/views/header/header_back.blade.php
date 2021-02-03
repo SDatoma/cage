@@ -80,19 +80,19 @@
                     <li><a href="/list/boutique">Liste des boutiques</a></li>
                 </ul>
             </li>
-            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Gestion Categorie</span></a>
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Categorie</span></a>
                 <ul class="ml-menu">
                     <li><a href="/list/categorie">Liste des categorie</a></li>
                     <li><a href="/list/sous/categorie">Sous categories</a></li>
                 </ul>
             </li>
-            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-folder"></i><span>Gestion Produits</span></a>
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Produits</span></a>
                 <ul class="ml-menu">
                     <li><a href="/add/produit">Ajouter un produit</a></li>
                     <li><a href="/list/produit">Liste des produits</a></li>
                 </ul>
             </li>
-            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-blogger"></i><span>Gestion commande</span></a>
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion commande</span></a>
                 <ul class="ml-menu">
                     <li><a href="/list/commande/attente"> Commande en attente</a></li>
                     <li><a href="/list/commande/valider"> Commande valider</a></li>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
-use App\Models\adresse;
+use App\Models\Adresse;
 use App\Models\Remise;
 use App\Models\Ville;
 use App\Models\LigneCommande;

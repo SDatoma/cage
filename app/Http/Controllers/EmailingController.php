@@ -47,11 +47,11 @@ class EmailingController extends Controller
      */
     public function store(Request $request)
     {
-        $users = User::where(['id_ville' =>$request->id_ville])->get() ;
+        // $users = User::where(['id_ville' =>$request->id_ville])->get() ;
 
-        foreach($users as $user){
-          Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $request->titre_email,$request->description_email));
-        }
+        // foreach($users as $user){
+        //   Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $request->titre_email,$request->description_email));
+        // }
 
         $email = new Emailing();
        
@@ -68,11 +68,11 @@ class EmailingController extends Controller
     {
         $email = Emailing::where(['id_email' =>$id])->first() ;
          
-        $users = User::where(['id_ville' =>$email->id_ville])->get() ;
+        // $users = User::where(['id_ville' =>$email->id_ville])->get() ;
 
-        foreach($users as $user){
-          Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $email->titre_email,$email->description_email));
-        }
+        // foreach($users as $user){
+        //   Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $email->titre_email,$email->description_email));
+        // }
 
         return back()->with('success', 'Email envoyes avec succè');
     }
