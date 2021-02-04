@@ -191,7 +191,7 @@ if (Cookie::get('id_user')== null)
 					<div class="row">
 						@if(count($produits)==0)
 						</br></br>
-						<h5  class="text-center" style="color:red"> Veuillez enregistrer les produits </h5>
+						<h5 class="text-center" style="color:red"><center> Veuillez enregistrer les produits </center></h5>
 						@else
 						@foreach($produits as $produit)
 						<div class="col-md-3 product-men">
