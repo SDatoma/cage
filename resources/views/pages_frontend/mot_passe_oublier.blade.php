@@ -15,18 +15,23 @@ if (Cookie::get('id_user')== null)
 						<a href="/">Accueil</a>
 						<i>|</i>
 					</li>
-					<li>Connexion </li>
+					<li>Mot de passe oublier</li>
 				</ul>
 			</div>
 		</div>
 	</div>
     <!-- Breadcrumb Area End-->
             <!-- login area start -->
-            <div class="login-register-area" style="background: linear-gradient(#146cda, white)">
+            <div class="login-register-area mtb-60px">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                             <div class="login-register-wrapper">
+                                <div class="login-register-tab-list nav">
+                                    <a class="active" data-toggle="tab" href="#lg1">
+                                        <h4>Changer de mot de passe</h4>
+                                    </a>
+                                </div>
                                 <div class="tab-content">
 								@if (Session::has('error'))
 									<div class="form-group">
@@ -35,23 +40,19 @@ if (Cookie::get('id_user')== null)
 										</div>
 									</div>
 								@endif
-                                     <br/><br/>
-									 <div style="background-color:#fff">
+                                    <div id="lg1" class="tab-pane active">
                                         <div class="login-form-container">
                                             <div class="login-register-form"  style="color:#000; text-align : right;">
-                                                <form action="{{route('connexion.store')}}" method="post">
+                                                <form action="{{route('password.store')}}" method="post">
                                                      {{csrf_field()}}
-													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="text" name="username" placeholder="Nom d'utilisateur" required=""/> </div>
-                                                    <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Mot de passe" required="" /> </div>
-                                                    <div class="col-lg-4"><a href="#" style="color:blue">Mot de passe oublié ? </a></div> <div class="col-lg-8"> Pas encore inscrit, <a href="/inscription" style="color:blue">créer un compte </a></div>
+													<div class="col-lg-4">Entre votre adresse email : </div> <div class="col-lg-8"> <input type="text" name="useremail" placeholder="Entrer votre adresse mail" required=""/> </div>
                                                     <div class="button-box">
-                                                        <button type="submit" style="margin-top:40px"><span>Connexion</span></button>
+                                                        <button type="submit" style="margin-top:40px"><span>Envoyer</span></button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>

@@ -19,10 +19,17 @@ class ConnexionController extends Controller
      */
     public function index()
     {
+        $id_categorie=0;
+
+        return view('pages_frontend/connexion',compact('id_categorie'));
+    }
+	
+	public function register()
+    {
         $villes = Ville::where(['etat_ville' =>1])->get() ;
         $id_categorie=0;
 
-        return view('pages_frontend/connexion',compact('id_categorie','villes'));
+        return view('pages_frontend/inscription',compact('id_categorie','villes'));
     }
 
     /**
@@ -67,7 +74,7 @@ class ConnexionController extends Controller
             Cookie::queue('id_user', $result->id_user , 5000);
             Cookie::queue('telephone_user', $result->telephone_user , 5000);
             
-            return redirect()->to('/mes-informations');
+            return redirect()->to('/detail-profil-client');
          
         }else if($result->type_user == 1 ){
 			

@@ -15,7 +15,7 @@ if (Cookie::get('id_user')== null)
 						<a href="/">Accueil</a>
 						<i>|</i>
 					</li>
-					<li>Connexion </li>
+					<li>Nouveau mot de passe </li>
 				</ul>
 			</div>
 		</div>
@@ -29,6 +29,7 @@ if (Cookie::get('id_user')== null)
                             <div class="login-register-wrapper">
                                 <div class="tab-content">
 								@if (Session::has('error'))
+									<br/><br/>
 									<div class="form-group">
 										<div class="alert alert-danger">
 											<center>{{ Session::pull('error') }}</center>
@@ -39,13 +40,14 @@ if (Cookie::get('id_user')== null)
 									 <div style="background-color:#fff">
                                         <div class="login-form-container">
                                             <div class="login-register-form"  style="color:#000; text-align : right;">
-                                                <form action="{{route('connexion.store')}}" method="post">
-                                                     {{csrf_field()}}
-													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="text" name="username" placeholder="Nom d'utilisateur" required=""/> </div>
-                                                    <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Mot de passe" required="" /> </div>
-                                                    <div class="col-lg-4"><a href="#" style="color:blue">Mot de passe oublié ? </a></div> <div class="col-lg-8"> Pas encore inscrit, <a href="/inscription" style="color:blue">créer un compte </a></div>
+                                                <form action="{{route('password.update', $password->id_user)}}" method="post">
+                                                     {{ method_field('PUT') }}
+														{{ csrf_field() }}
+													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="text" name="username" value="{{$password->username}}" required=""/> </div>
+                                                    <div class="col-lg-4">Nouveau mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Nouveau mot de passe" required="" /> </div>
+                                                    <div class="col-lg-4">Confirmer mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpasswordconfirm" placeholder="Confirmer le mot de passe" required="" /> </div>
                                                     <div class="button-box">
-                                                        <button type="submit" style="margin-top:40px"><span>Connexion</span></button>
+                                                        <button type="submit" style="margin-top:40px"><span>Modifier</span></button>
                                                     </div>
                                                 </form>
                                             </div>

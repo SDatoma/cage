@@ -35,11 +35,18 @@ Route::get('/politique-confidentialite','IndexController@politique_confidentiali
 
 Route::get('/login','ConnexionController@index');
 
+Route::get('/inscription','ConnexionController@register');
+
 Route::get('/deconnexion','ConnexionController@deconnection');
 
 Route::get('/histotique-achats', 'CommandeController@historique_achat');
 
 Route::get('/meilleurs-ventes','CommandeController@meileurs_ventes_clients');
+
+Route::get('/mot-de-passe-oublier','InscriptionController@passe_oublier');
+
+Route::get('/nouveau-mot-de-passe/{id}','ForgetPasseController@edit');
+
 
 
 /****************************
@@ -112,6 +119,7 @@ Route::get('/list/ville', 'VilleController@getAllVille');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
+Route::get('/envoi/email/{id}', 'EmailingController@reenvoiMail')->name('reenvoi.mail');
 
 //cart
 Route::get('/empty', 'CartController@emptyCart');
@@ -136,4 +144,5 @@ Route::resource('remise', 'RemiseController');
 Route::resource('news', 'NewsController');
 Route::resource('adresse', 'AdresseController');
 Route::resource('message', 'ContactController');
+Route::resource('password', 'ForgetPasseController');
 
