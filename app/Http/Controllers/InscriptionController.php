@@ -46,27 +46,27 @@ class InscriptionController extends Controller
 		 $validator = Validator::make($request->all(), [
             'username' => 'required|string',
             'userprenom' => 'required|string',
-            'useremail' => 'required',
-            'usercivilite' => 'required',
-            'usertelephone' => 'required',
-            'usernews' => 'required',
+            'useremail' => 'required|string',
+            'usercivilite' => 'required|string',
+            'usertelephone' => 'required|string',
+            'usernews' => 'required|string',
         ]);
 		
 		$verification_email = User::where(['email_user' =>$request->useremail])->first() ;
 		
 		if ($verification_email) {
 
-            Session()->flash('Error',"Ce mail existe déjà sous un compte, Merci d'utiliser un autre. ");
+            Session()->flash('error',"Ce mail existe déjà sous un compte, Merci d'utiliser un autre. ");
             return back()->withErrors($validator)->withInput();
         }
 		
 		if (strlen($request->userpassword) < 8) {
-            Session()->flash('Error','Mot de passe trop cours !');
+            Session()->flash('error','Mot de passe trop cours !');
             return back()->withErrors($validator)->withInput();
         }
 		
 		if($request->userpassword != $request->userpasswordconfirm){
-			Session()->flash('Error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
+			Session()->flash('error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
 			return back()->withErrors($validator)->withInput();
 		}
 	
@@ -95,7 +95,7 @@ class InscriptionController extends Controller
 		$result = User::where(['email_user' => $email])->first();
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
         if ($result == null) {
-            Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
+            Session()->flash('error','Identifiants incorrectes. Merci de réessayer ');
             return redirect()->back();
             /* si non il envoi les resultats de la requete */
         }  
@@ -117,6 +117,32 @@ class InscriptionController extends Controller
             return redirect()->back();
 
         }
+	}
+	
+	//gestion des mot de passes oublier
+	public function passe_oublier(){
+		
+		$id_categorie=0;
+
+        return view('pages_frontend/mot_passe_oublier',compact('id_categorie'));
+	}
+	
+	//envoi du lien par mail
+	public function lien_recuperation(Request $request){
+		
+		$id_categorie=0;
+		
+		$verification_email = User::where(['email_user' =>$request->useremail])->first() ;
+		
+		if ($verification_email == null) {
+
+            Session()->flash('error',"Cette adresse mail n'est pas enrégistrer, Merci de vérifier et réessayer. ");
+            return back()->withErrors($validator)->withInput();
+        }
+		
+		
+
+        return view('pages_frontend/mot_passe_oublier',compact('id_categorie'));
 	}
 	
 	//
@@ -187,57 +213,6 @@ class InscriptionController extends Controller
 		return redirect()->back();
 		
     }
-	
-	
-	//
-	public function passe_client()
-    { 
-        $id_user= Cookie::get('id_user');
-
-        $user = User::where(['id_user' =>$id_user])->first() ;
-
-        return view('pages_frontend/changer_passe',compact('user'));
-    }
-	
-	
-	//
-	public function update_passe_client(Request $request, $id)
-    {
-		$user = User::where(['id_user' =>$id])->first() ;
-		
-		if (strlen($request->userpassword) < 8) {
-            Session()->flash('error','Mot de passe trop cours !');
-            return redirect()->back();
-        }
-		
-		if($request->userpassword != $request->userpasswordconfirm){
-			Session()->flash('error','Les mots de passe ne sont pas conforment ! Merci de re-saisir. ');	
-			return redirect()->back();
-		}
-		
-		if(password_verify($request->lastuserpassword , $user->password_user))
-		{
-		
-		$user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
-	   
-		$user->save();
-		
-		Session()->flash('success','Félicitation, Mot de passe changer avec succès. ');	
-		return redirect()->back();
-		
-		}else{
-			Session()->flash('error','L\'ancien mot de passe saisie n\'est pas correcte ! Merci de re-saisir. ');	
-			return redirect()->back();
-		}
-    }
-
-
-    public function update_adresse(Request $request, $id)
-    {
-        //
-    }
-	
-	
 	
 
     /**

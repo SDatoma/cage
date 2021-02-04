@@ -19,10 +19,17 @@ class ConnexionController extends Controller
      */
     public function index()
     {
+        $id_categorie=0;
+
+        return view('pages_frontend/connexion',compact('id_categorie'));
+    }
+	
+	public function register()
+    {
         $villes = Ville::where(['etat_ville' =>1])->get() ;
         $id_categorie=0;
 
-        return view('pages_frontend/connexion',compact('id_categorie','villes'));
+        return view('pages_frontend/inscription',compact('id_categorie','villes'));
     }
 
     /**

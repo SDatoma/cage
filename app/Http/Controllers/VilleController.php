@@ -67,7 +67,10 @@ class VilleController extends Controller
     {
         $villes = Ville::where(['etat_ville' =>1])->get();
 
-        return view('pages_backend/ville/list_ville',compact('villes'));
+        return view('pages_backend/ville/list_ville')
+				->with(["villes" => $villes])
+				->with(["page" => "liste-ville"]);
+				
     }
 
     /**

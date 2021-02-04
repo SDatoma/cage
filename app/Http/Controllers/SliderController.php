@@ -76,9 +76,20 @@ class SliderController extends Controller
          ->limit('2')
          ->get();
 
-       // $sliders = Slider::where(['etat_slider' =>1])->get();
-
-        return view('pages_backend/slider/list_slider',compact('sliders'));
+        return view('pages_backend/slider/list_slider')
+				->with(["sliders" => $sliders])
+				->with(["page" => "list/slider"]);
+		
+    }
+	
+	public function page()
+    {
+        return view('header/header_back')
+				->with(["page" => "liste-slider"])
+				->with(["page" => "liste-ville"])
+				->with(["page" => "liste-client"])
+				->with(["page" => "liste-email"]);
+		
     }
 
 

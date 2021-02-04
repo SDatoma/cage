@@ -71,10 +71,13 @@
 					<li style="width:170px">
 						<span class="fa fa-phone" aria-hidden="true"></span> +228 70 45 37 85 | 96 35 80 90 |90 90 49 03
 					</li>
-					<li style="width:260px">
+					<li style="width:130px">
 						<a href="/login">
-						<span class="fa fa-unlock-alt" aria-hidden="true"></span>Connexion 
-						<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Inscription
+							<span class="fa fa-unlock-alt" aria-hidden="true"></span>Connexion </a>
+					</li>
+					<li style="width:130px">
+						<a href="/inscription">
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Inscription
 						</a>
 					</li>
 				</ul>
