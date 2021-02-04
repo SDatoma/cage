@@ -61,10 +61,10 @@ class FournisseurController extends Controller
             $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $nom_image= $_FILES['file']['name'];
+            $nom_image=str_replace(' ','',$request->nom_boutique);
             Image::make($image)->save('files_upload/boutique/'.$nom_image.'.jpg');
 
-            $file_name ='files_upload/boutique/'.nom_image.'.jpg';
+            $file_name ='files_upload/boutique/'.$nom_image.'.jpg';
 
           }else{
 

@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Produit;
 use App\Models\Commande;
-use App\Models\adresse;
+use App\Models\Adresse;
 use App\Models\Remise;
 use App\Models\Ville;
 use App\Models\LigneCommande;
 use ShoppingCart;
 use Mail;
-use App\Mail\TestMail;
+use App\Mail\EnvoiFacture;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -61,7 +61,7 @@ class CommandeController extends Controller
 
          $user = User::where(['id_user' =>$id_user])->first() ;
          
-        // Mail::to($user->email_user)->send(new TestMail($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
+        // Mail::to($user->email_user)->send(new EnvoiFacture($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
 
         // Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
          

@@ -33,9 +33,9 @@
 
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover theme-color dataTable js-exportable">
+                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
                                     <thead>
-                                        <tr>
+                                        <tr style="background-color:#0069d9;color:white">
                                             <th>REFERENCE</th>
                                             <th>NOM & PRENOM</th>
                                             <th>NOMBRE DE PRODUIT</th>

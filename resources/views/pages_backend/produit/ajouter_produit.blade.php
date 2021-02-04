@@ -88,10 +88,16 @@
                                     </select>
                                 </div>
                                
-                                <div id="ODayForm">
-                                    <div id="add_days">
                                        <div class="form-group form-float col-sm-5">
                                              <input type="file" class="dropify" name="file" required="">
+                                       </div>
+                                   
+
+                                <div id="ODayForm">
+                                    <div id="add_days">
+                                    <center><span style="font-size:15px"> Photo 1 </span></center>
+                                       <div class="form-group form-float col-sm-5">
+                                             <input type="file" class="form-control" name="photo[]" required="">
                                        </div>
                                     </div>
                                 </div>
@@ -100,7 +106,8 @@
                                     <h4 class="btn btn-succes btn-sm pull-right" onclick="addNewImageForm()"><i class="zmdi zmdi-plus"></i> Photos</h4>
                                </div>
 
-                               <center> <button class="btn btn-raised btn-primary waves-effect " type="submit">Enregistrer</button> </center>
+                               <center>
+                                <button class="btn btn-raised btn-primary waves-effect " type="submit">Enregistrer</button> </center>
                             </form>
                         </div>
                     </div>

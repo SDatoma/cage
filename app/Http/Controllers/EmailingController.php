@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ville;
+use App\Models\User;
+use App\Models\Emailing;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -11,6 +13,8 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Mail;
+use App\Mail\EnvoiMail;
 use Alert;
 
 class EmailingController extends Controller
@@ -43,7 +47,34 @@ class EmailingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $users = User::where(['id_ville' =>$request->id_ville])->get() ;
+
+        // foreach($users as $user){
+        //   Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $request->titre_email,$request->description_email));
+        // }
+
+        $email = new Emailing();
+       
+        $email->titre_email= $request->titre_email;
+        $email->description_email= $request->description_email;
+        $email->id_ville= $request->id_ville;
+
+        $email->save();
+        
+       return back()->with('success', 'Email envoyes avec succè');
+    }
+
+    public function reenvoiMail($id)
+    {
+        $email = Emailing::where(['id_email' =>$id])->first() ;
+         
+        // $users = User::where(['id_ville' =>$email->id_ville])->get() ;
+
+        // foreach($users as $user){
+        //   Mail::to($user->email_user)->send(new EnvoiMail($user->nom_user, $user->prenom_user, $email->titre_email,$email->description_email));
+        // }
+
+        return back()->with('success', 'Email envoyes avec succè');
     }
 
     /**
@@ -71,8 +102,9 @@ class EmailingController extends Controller
     public function getAllEmail()
     {
         $villes = Ville::where(['etat_ville' =>1])->get();
+        $emails = Emailing::all();
 
-        return view('pages_backend/emailing/list_message',compact('villes'));
+        return view('pages_backend/emailing/list_message',compact('villes','emails'));
     }
 
     /**
@@ -84,7 +116,15 @@ class EmailingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $email = Emailing::where(['id_email' =>$id])->first() ;
+       
+        $email->titre_email= $request->titre_email;
+        $email->description_email= $request->description_email;
+        $email->id_ville= $request->id_ville;
+
+        $email->save();
+        
+       return back()->with('success', 'Modification effectuee avec succè');
     }
 
     /**
@@ -95,6 +135,10 @@ class EmailingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $email = Emailing::where(['id_email' =>$id])->first() ;
+         
+        $email->delete();
+
+        return back()->with('success', 'Suppression effectuée avec succè');
     }
 }

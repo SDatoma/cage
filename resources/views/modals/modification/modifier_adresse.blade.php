@@ -13,7 +13,7 @@
 							{{ csrf_field() }}
 													 
              <div class="col-lg-4">Ville : </div> <div class="col-lg-8"> <input required type="text" value="{{$adresse->ville_adresse}}" name="ville" /> </div>
-               <div class="col-lg-4">Pays : </div> <div class="col-lg-8"> <input required type="text" name="pays" value="TOGO" /> </div>
+               <div class="col-lg-4">Pays : </div> <div class="col-lg-8"> <input required type="text" name="pays" value="TOGO"/> </div>
                <div class="col-lg-4">Description précise : </div> <div class="col-lg-8"> <input required value="{{$adresse->description_adresse}}" name="description" type="numeric" /> </div>
                     <div class="modal-footer">
                        <button type="submit" class="btn btn-primary" >Modifier</button>
