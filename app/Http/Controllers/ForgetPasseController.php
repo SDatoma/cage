@@ -52,8 +52,7 @@ class ForgetPasseController extends Controller
         } 
 		else
 		{
-			
-                $email = $verification_email->email_user; //prend l'email de la table
+			    $email = $verification_email->email_user; 
                 $id_client = $verification_email->id_user;
                 $e_nom = "Bonjour Mr/Mme  " ;
 
@@ -105,10 +104,9 @@ class ForgetPasseController extends Controller
      */
     public function edit($id)
     {
-		$id_categorie=0;
-		
+        $id_categorie=0;
+        
 		$password = User::where(['id_user' =>$id])->first();
-       
         return view('pages_frontend/nouveau_passe',compact('password', 'id_categorie'));
     }
 
@@ -149,8 +147,8 @@ class ForgetPasseController extends Controller
 		
 		$password->save();
 		
-		Session()->flash('success','Félicitation, Mot de passe changer avec succès. ');	
-		return $this->connexion_auto($request->useremail, $request->userpassword);
+        return $this->connexion_auto($request->useremail, $request->userpassword);
+        Session()->flash('success','Félicitation, Mot de passe changer avec succès. ');	
 			
         
     }

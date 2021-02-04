@@ -64,6 +64,23 @@ class CommandeController extends Controller
         // Mail::to($user->email_user)->send(new EnvoiFacture($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
 
         // Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
+            //     $e_nom = "Commande de $user->nom_user  $user->prenom_user" ;
+            //     $email = "fofanabilali2014@gmail.com"; 
+            //     // titre du mail
+            //     $titre ="Alert Commande"; 
+				
+            //     $description ="Une commande vient d'etre passee merci de prendre en compte" ; 
+
+            //     $contact = "Contact: +228 70 45 37 85 | 96 35 80 90 | 90 90 49 03 </br> Email: cagetogo@gmail.com </br>  Site Web : www.cagebatiment.com" ;
+
+            //     $contenu = $e_nom . '<br /><br />' . $description .'<br /><br /><br />'.$contact ;
+
+
+            //     // envoi du mail HTML
+            //     $from = "From: CAGE Bâtiment <cagetogo@gmail.com>\nMime-Version:";
+            //     $from .= " 1.0\nContent-Type: text/html; charset=ISO-8859-1\n";
+            //     // envoie du mail
+            //    mail($email,$titre,$contenu,$from);
          
          $chars = "abcdefghijkmnopqrstuvwxyz023456789";
          srand((double)microtime()*1000000);

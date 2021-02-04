@@ -47,8 +47,6 @@ Route::get('/mot-de-passe-oublier','InscriptionController@passe_oublier');
 
 Route::get('/nouveau-mot-de-passe/{id}','ForgetPasseController@edit');
 
-
-
 /****************************
 
 	ROUTE BACKEND
