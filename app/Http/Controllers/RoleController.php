@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ville;
+use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Alert;
 
-class VilleController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,31 +43,30 @@ class VilleController extends Controller
      */
     public function store(Request $request)
     {
-        $verification_ville = Ville::where(['libelle_ville' =>$request->libelle_ville])->first() ;
+        // $verification_ville = Ville::where(['libelle_ville' =>$request->libelle_ville])->first() ;
          
-        if ($verification_ville) {
+        // if ($verification_ville) {
 
-            Session()->flash('error',"Cette ville existe deja dans le liste");
-            return back();
-        }
+        //     Session()->flash('error',"Cette ville existe deja dans le liste");
+        //     return back();
+        // }
 
-        $ville= new Ville();
+        $role= new Role();
 
-        $ville->libelle_ville=$request->libelle_ville;
-        $ville->etat_ville=1;
+        $role->libelle_role=$request->libelle_role;
 
-        $ville->save();
+        $role->save();
 
         return back()->with('success', 'Enregistrement effectué avec succè');
     }
 
 
     //List des villes
-    public function getAllVille()
+    public function getAllRole()
     {
-        $villes = Ville::where(['etat_ville' =>1])->get();
+        $roles = Role::all();
 
-        return view('pages_backend/ville/list_ville')->with(["villes" => $villes])->with(["page" => "liste-ville"]);
+        return view('pages_backend/role/list_role')->with(["roles" => $roles])->with(["page" => "liste-ville"]);
 				
     }
 
@@ -102,11 +101,11 @@ class VilleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ville = Ville::where(['id_ville' =>$id])->first() ;
+        $role = Role::where(['id_role' =>$id])->first() ;
 
-        $ville->libelle_ville=$request->libelle_ville;
+        $role->libelle_role=$request->libelle_role;
          
-        $ville->save();
+        $role->save();
 
         return back()->with('success', 'Modification effectuée avec succè');
     }
@@ -119,11 +118,10 @@ class VilleController extends Controller
      */
     public function destroy($id)
     {
-        $ville = Ville::where(['id_ville' =>$id])->first() ;
-
-        $ville->etat_ville= 0;
+        $role = Role::where(['id_role' =>$id])->first() ;
          
-        $ville->save();
+        $role->delete();
+
         return back()->with('success', 'Suppression effectuée avec succè');
     }
 }

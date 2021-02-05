@@ -47,6 +47,8 @@ Route::get('/mot-de-passe-oublier','InscriptionController@passe_oublier');
 
 Route::get('/nouveau-mot-de-passe/{id}','ForgetPasseController@edit');
 
+
+
 /****************************
 
 	ROUTE BACKEND
@@ -115,6 +117,9 @@ Route::get('/list/slider', 'SliderController@getAllSlider');
 //Ville
 Route::get('/list/ville', 'VilleController@getAllVille');
 
+//Ville
+Route::get('/list/role', 'RoleController@getAllRole');
+
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
 Route::get('/envoi/email/{id}', 'EmailingController@reenvoiMail')->name('reenvoi.mail');
@@ -127,6 +132,7 @@ Route::get('/checkout','CommandeController@checkout');
 //LES RESOURCES
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('ville', 'VilleController');
+Route::resource('role', 'RoleController');
 Route::resource('email', 'EmailingController');
 Route::resource('paiement', 'PaiementController');
 Route::resource('commentaire', 'CommentaireController');

@@ -150,8 +150,9 @@ class ForgetPasseController extends Controller
 		
 		$password->save();
 		
-        return $this->connexion_auto($request->useremail, $request->userpassword);
+        //return $this->connexion_auto($request->useremail, $request->userpassword);
         Session()->flash('success','Félicitation, Mot de passe changer avec succès. ');	
+        return redirect('/login');
 			
         
     }

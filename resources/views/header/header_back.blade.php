@@ -69,12 +69,22 @@
                     <li><a href="/list/slider">Pub des images</a></li>
                     <li><a href="/list/ville">Liste des villes</a></li>
                     <li><a href="/list/client">Liste des clients</a></li>
+                    <li><a href="/list/role">Liste des roles</a></li>
                     <li><a href="/list/email">Envoi d'email</a></li>
                     <!-- <li><a href="#">Liste des utilisateurs</a></li>                   -->
                 </ul>
             </li>
 
-            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Boutiques</span></a>
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Utilisateur</span>
+            </a>
+                <ul class="ml-menu">
+                    <li><a href="#">Creer un utilisateur</a></li>                  
+                    <li><a href="#">Liste des utilisateurs</a></li>
+                </ul>
+            </li>
+
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Boutiques</span>
+            </a>
                 <ul class="ml-menu">
                     <li><a href="/add/boutique">Ajouter une boutique</a></li>                  
                     <li><a href="/list/boutique">Liste des boutiques</a></li>
