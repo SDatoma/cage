@@ -76,15 +76,12 @@ class ConnexionController extends Controller
             
             return redirect()->to('/detail-profil-client');
          
-        }else if($result->type_user == 1 ){
+        }else if($result->type_user == 1){
 			
 			//**** mise en cookie des données de l'utilisateur**//
-            Cookie::queue('email_user', $result->email_user , 5000);
             Cookie::queue('nom_user', $result->nom_user , 5000);
             Cookie::queue('prenom_user', $result->prenom_user , 5000);
-            Cookie::queue('id_user', $result->id_user , 5000);
-            
-             return redirect()->to('/admin');
+            return redirect()->to('/admin');
 		}else{
 
             Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');
