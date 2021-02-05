@@ -43,7 +43,7 @@ if (Cookie::get('id_user')== null)
                                                 <form action="{{route('password.update', $password->id_user)}}" method="post">
                                                      {{ method_field('PUT') }}
 														{{ csrf_field() }}
-													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="email" name="username" value="{{$password->email_user}}" required=""/> </div>
+													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="email" name="username" disabled="" value="{{$password->email_user}}" required=""/> </div>
                                                     <div class="col-lg-4">Nouveau mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Nouveau mot de passe" required=""/> </div>
                                                     <div class="col-lg-4">Confirmer mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpasswordconfirm" placeholder="Confirmer le mot de passe" required="" /> </div>
                                                     <div class="button-box">

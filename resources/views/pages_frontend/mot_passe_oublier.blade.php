@@ -29,7 +29,7 @@ if (Cookie::get('id_user')== null)
                             <div class="login-register-wrapper">
                                 <div class="login-register-tab-list nav">
                                     <a class="active" data-toggle="tab" href="#lg1">
-                                        <h4>Changer de mot de passe</h4>
+                                        <h4>Reinitialisation du mot de passe</h4>
                                     </a>
                                 </div>
                                 <div class="tab-content">

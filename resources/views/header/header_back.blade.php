@@ -64,25 +64,15 @@
             </li>
             <li class="active open"><a href="/admin"><i class="zmdi zmdi-home"></i><span>Tableau de board</span></a></li>
 
-			
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Paramettre</span></a>
                 <ul class="ml-menu">
-                    <li class="nav-item @if($page == 'liste-slider') active @endif ">
-						<a href="/list/slider">Pub des images</a>
-					</li>
-                    <li class="nav-item @if($page == 'liste-ville') active @endif ">
-						<a href="/list/ville">Liste des villes</a>
-					</li>
-                    <li class="nav-item @if($page == 'liste-client') active @endif ">
-						<a href="/list/client">Liste des clients</a>
-					</li>
-                    <li class="nav-item @if($page == 'liste-email') active @endif ">
-						<a href="/list/email">Envoi d'email</a>
-					</li>
-                    <!-- 	<li><a href="#">Liste des utilisateurs</a></li>     -->
+                    <li><a href="/list/slider">Pub des images</a></li>
+                    <li><a href="/list/ville">Liste des villes</a></li>
+                    <li><a href="/list/client">Liste des clients</a></li>
+                    <li><a href="/list/email">Envoi d'email</a></li>
+                    <!-- <li><a href="#">Liste des utilisateurs</a></li>                   -->
                 </ul>
             </li>
-			
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Boutiques</span></a>
                 <ul class="ml-menu">

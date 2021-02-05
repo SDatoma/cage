@@ -54,15 +54,18 @@ class ForgetPasseController extends Controller
 		{
 			    $email = $verification_email->email_user; 
                 $id_client = $verification_email->id_user;
-                $e_nom = "Bonjour Mr/Mme  " ;
+                $e_nom = "Bonjour $verification_email->nom_user  $verification_email->prenom_user " ;
 
                 //dd($email);
   
                 // titre du mail
-                $titre ="Modification de mot de passe"; 
+                $titre ="Confirmation de récupération de mot de passe"; 
 				
-                $description ="Merci de suivre ce lien pour modifier votre mot de passe 
-				https://www.cagebatiment.com/nouveau-mot-de-passe/$id_client" ; 
+                $description ="Vous avez demandé à réinitialiser vos identifiants de connexion sur Cage Batiment.<br />
+                Cette opération vous attribuera un nouveau mot de passe.<br /><br />
+                Pour confirmer cette action, cliquez sur le lien suivant : <br />
+                https://www.cagebatiment.com/nouveau-mot-de-passe/$id_client <br /><br /><br /> 
+                Si ce n'est pas vous, ignorez cet email." ; 
 
                 $contact = "Contact: +228 70 45 37 85 | 96 35 80 90 | 90 90 49 03 </br> Email: cagetogo@gmail.com </br>  Site Web : www.cagebatiment.com" ;
 
@@ -77,7 +80,7 @@ class ForgetPasseController extends Controller
 
 			Session()->flash('success','Merci de consulter votre boîte mail, un message vous a été envoyé. Si vous ne le retrouver pas, consulter le Spam. ');
             
-			return redirect()->back();
+			return redirect('/');
 		}
 		
     }

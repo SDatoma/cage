@@ -104,7 +104,7 @@ if (Cookie::get('id_user')== null)
                                                       <label for="huey" style="color:blue">Paiement au magasin</label>
                                                     </div>
 
-                                                   <div class="col-md-12">
+                                                   <!-- <div class="col-md-12">
                                                      <input type="radio" name="mode" value="tmoney" required="">&nbsp;&nbsp;
                                                       <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/tmoney-logo.jpg')}}" height=30 alt=""></label>
                                                     </div>
@@ -127,7 +127,7 @@ if (Cookie::get('id_user')== null)
                                                     <div class="col-md-12">
                                                      <input type="radio" name="mode" value="orabank" required="">&nbsp;&nbsp;
                                                       <label for="huey" style="color:blue"><img src="{{asset('css_frontend/images/orabank-logo.png')}}" height=30 width=200 alt=""></label>
-                                                    </div>
+                                                    </div> -->
 
                                                 </div>
                                            </div>
@@ -145,9 +145,9 @@ if (Cookie::get('id_user')== null)
                                         <div class="total-shipping">
                                             <h5>Frais accessoirs</h5>
                                             <ul>
-                                                <li> Tva <span>18 %</span></li>
-                                                <li> Httc <span>0 </span></li>
-                                                <li> Livraison <span>0 FCFA</span></li>
+                                                <li> TVA <span>18 %</span></li>
+                                                <li> HTTC <span> {{ShoppingCart::total() ?? '0'}} FCFA</span></li>
+                                                <!-- <li> LIVRAISON <span>0 FCFA</span></li> -->
                                                
                                             </ul>
                                         </div>
