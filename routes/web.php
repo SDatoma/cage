@@ -117,8 +117,11 @@ Route::get('/list/slider', 'SliderController@getAllSlider');
 //Ville
 Route::get('/list/ville', 'VilleController@getAllVille');
 
-//Ville
+//Role
 Route::get('/list/role', 'RoleController@getAllRole');
+
+//Utilisateur
+Route::get('/list/utilisateur', 'UtilisateurController@getAllUtilisateur');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
@@ -132,6 +135,7 @@ Route::get('/checkout','CommandeController@checkout');
 //LES RESOURCES
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('ville', 'VilleController');
+Route::resource('utilisateur', 'UtilisateurController');
 Route::resource('role', 'RoleController');
 Route::resource('email', 'EmailingController');
 Route::resource('paiement', 'PaiementController');

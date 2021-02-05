@@ -66,10 +66,11 @@
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Paramettre</span></a>
                 <ul class="ml-menu">
-                    <li><a href="/list/slider">Pub des images</a></li>
+                   
                     <li><a href="/list/ville">Liste des villes</a></li>
-                    <li><a href="/list/client">Liste des clients</a></li>
                     <li><a href="/list/role">Liste des roles</a></li>
+                    <li><a href="/list/client">Liste des clients</a></li>
+                    <li><a href="/list/slider">Pub des images</a></li>
                     <li><a href="/list/email">Envoi d'email</a></li>
                     <!-- <li><a href="#">Liste des utilisateurs</a></li>                   -->
                 </ul>
@@ -77,9 +78,8 @@
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Utilisateur</span>
             </a>
-                <ul class="ml-menu">
-                    <li><a href="#">Creer un utilisateur</a></li>                  
-                    <li><a href="#">Liste des utilisateurs</a></li>
+                <ul class="ml-menu">               
+                    <li><a href="/list/utilisateur">Liste des utilisateurs</a></li>
                 </ul>
             </li>
 

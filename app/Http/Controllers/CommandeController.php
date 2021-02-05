@@ -262,7 +262,10 @@ class CommandeController extends Controller
 
     public function getAllUser()
     {
-          $users = DB::table('user')->get();
+        $users = DB::table('user')
+        ->where('user.id_role', '=', null)
+        ->get();
+
           $villes = Ville::where(['etat_ville' =>1])->get() ;
 
         return view('pages_backend/commande/list_client',compact('users','villes'));

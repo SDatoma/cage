@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
                        <h5><strong>LISTE DES ROLES</strong></h5>
-                           <div class="pull-right mt-4">
+                            <div class="pull-right mt-4">
                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#role">
                                    <i class="zmdi zmdi-plus"></i> Ajouter un role
                                </button>
