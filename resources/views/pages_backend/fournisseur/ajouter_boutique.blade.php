@@ -61,6 +61,15 @@
                                     <input type="text" class="form-control" placeholder="Ville" name="ville_boutique" value="{{ old('ville_boutique') }}" required>
                                 </div>
                                 <div class="form-group form-float">
+                                    <input type="text" class="form-control" placeholder="Quartier" name="quartier_boutique" value="{{ old('quartier_boutique') }}" required>
+                                </div>
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control" placeholder="Rue" name="rue_boutique" value="{{ old('rue_boutique') }}" required>
+                                </div>
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control" placeholder="Batiment" name="batiment_boutique" value="{{ old('batiment_boutique') }}" required>
+                                </div>
+                                <div class="form-group form-float">
                                     <input type="number" class="form-control" placeholder="Contact 1 sans indicatif ( Ex. 90 00 00 00 )" value="{{ old('contact_boutique1') }}" name="contact_boutique1" required>
                                 </div>
                                 <div class="form-group form-float">
@@ -68,12 +77,21 @@
                                 </div>
                                
                                 <div class="form-group form-float">
+                                  <label> Description de la boutique </label>
                                     <textarea name="description_boutique" cols="30" rows="5" placeholder="Description de la boutique" class="form-control no-resize summernote" required>{{old('description_boutique')}}</textarea>
                                 </div>
 
-                                  <div class="form-group form-float col-sm-5">
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control" placeholder="Nom et prenom du responsable" name="responsable_boutique" value="{{ old('responsable_boutique') }}" required>
+                                </div>
+                                <div class="form-group form-float">
+                                    <input type="number" class="form-control" placeholder="Contact du responsable ( Ex. 90 00 00 00 )" value="{{old('contact_responsable')}}" name="contact_responsable" required>
+                                </div>
+                                
+                                   <div class="form-group form-float col-sm-5">
+                                       <label> Photo de la boutique </label>
                                         <input type="file" class="dropify" name="file">
-                                  </div>
+                                   </div>
                                 
                                <center>
                                 <button class="btn btn-raised btn-primary waves-effect" type="submit">ENREGISTRER</button></center>

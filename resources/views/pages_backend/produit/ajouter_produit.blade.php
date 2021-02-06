@@ -1,9 +1,16 @@
 @extends('header/header_back')
 
-
+<script>
+ function showDivTva(select){
+   if(select.value=='oui'){
+    document.getElementById('hidden_tva').style.display = "block";
+   } else{
+    document.getElementById('hidden_tva').style.display = "none";
+   }
+}
+</script>
 <!-- Main Content -->
 @section('content')
-
 <section class="content">
     <div class="body_scroll">
         <div class="block-header">
@@ -47,28 +54,44 @@
                                 <div class="form-group form-float">
                                     <input type="text" class="form-control" placeholder="Nom du produit" name="nom_produit" value="{{ old('nom_produit') }}" required>
                                 </div>
+
                                 <div class="form-group form-float">
                                     <label> Description</label>
                                     <textarea name="description_produit" cols="10" rows="5" placeholder="Description du produit" class="form-control no-resize summernote" required>{{ old('description_produit') }}</textarea>
                                 </div>
+
                                 <div class="form-group form-float">
                                     <label> Caracteristiques</label>
                                     <textarea name="caracteristique_produit" cols="10" rows="5" placeholder="Caracteristique du produit" class="form-control no-resize summernote" required>{{ old('caracteristique_produit') }}</textarea>
                                 </div>
+
                                 <div class="form-group form-float">
-                                    <input type="number" min="100" class="form-control" placeholder="Prix du produit" name="prix_produit" value="{{ old('prix_produit') }}" required>
+                                    <input type="number" min="100" class="form-control" placeholder="Prix hors taxe (PHT)" name="prix_produit" value="{{ old('prix_produit') }}" required>
                                 </div>
+
+                                <div class="form-group form-float">
+                                   <select class="form-control show-tick ms select2" data-placeholder="Select"   name="tva_applicable" onchange="showDivTva(this)" required>
+                                       <option value="" selected> TVA Aplicable</option>
+                                       <option value="oui">Oui</option>
+                                       <option value="non"> Non </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group form-float" id="hidden_tva" style="display:none">
+                                    <input type="number" min="1" class="form-control" placeholder="Taux TVA" name="taux_tva" value="{{ old('taux_tva') }}" >
+                                </div>
+
                                 <div class="form-group form-float">
                                     <input type="number" min="1" class="form-control" placeholder="Quantite en stock" name="quantite_produit" value="{{ old('quantite_produit') }}" required>
                                 </div>
+
                                 <div class="form-group form-float">
                                    <select class="form-control show-tick ms select2" data-placeholder="Select" name="id_sous_categorie" required>
-                                   <option value="">SOUS CAEGORIE </option>
+                                   <option value="">SOUS CATEGORIE </option>
                                       @foreach($sous_categories as $sous_categorie)
                                        <option value="{{$sous_categorie->id_sous_categorie}}"> {{$sous_categorie->libelle_sous_categorie}} </option>
                                        @endforeach
                                     </select>
-                                   
                                 </div>
 
                                 <div class="form-group form-float">
@@ -83,18 +106,20 @@
                                 <div class="form-group form-float">
                                    <select class="form-control show-tick ms select2" data-placeholder="Select"   name="nouveau_produit" required>
                                        <option value=""> CHOISISSEZ L'ETAT DU PRODUIT</option>
-                                       <option value="Nouveau"> Nouveau </option>
                                        <option value="Existant">Existant</option>
+                                       <option value="Nouveau"> Nouveau </option>
                                     </select>
                                 </div>
                                
                                        <div class="form-group form-float col-sm-5">
+                                            <label> Photo du produit </label>
                                              <input type="file" class="dropify" name="file" required="">
                                        </div>
                                    
 
                                 <div id="ODayForm">
                                     <div id="add_days">
+                                    <label> Autres images du produit </label>
                                     <center><span style="font-size:15px"> Photo 1 </span></center>
                                        <div class="form-group form-float col-sm-5">
                                              <input type="file" class="form-control" name="photo[]" required="">
@@ -103,7 +128,7 @@
                                 </div>
 
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <h4 class="btn btn-succes btn-sm pull-right" onclick="addNewImageForm()"><i class="zmdi zmdi-plus"></i> Photos</h4>
+                                    <h4 class="btn btn-succes btn-sm pull-right" onclick="addNewImageForm()"><i class="zmdi zmdi-plus"></i> Image</h4>
                                </div>
 
                                <center>

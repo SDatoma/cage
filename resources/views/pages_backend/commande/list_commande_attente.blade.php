@@ -18,7 +18,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5><strong>LISTE DES COMMANDES EN ATTENTE</strong></h5>
+                       <h5><strong>LISTE DES COMMANDES EN ATTENTE DE RECEPTION</strong></h5>
                     <!-- 
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Aero</a></li>
@@ -76,7 +76,7 @@
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$produit_total_commande}}</td>
                                             <td>{{$commande->date_commande}}</td>
-                                            <td><strong class="col-red blink">En attente de livraison</strong></td>
+                                            <td><strong class="col-red blink">En attente de reception</strong></td>
                                             <td>
                                             <a href="{{route('voir.facture',[$commande->id_user,$commande->reference_commande])}}">
                                             <button class="btn btn-succes btn-sm" title="Voir facture" data-toggle="modal" data-target="#"><i class="zmdi zmdi-eye"></i></i></button> 

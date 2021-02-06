@@ -73,13 +73,13 @@ if (Cookie::get('id_user')== null)
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										   $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ht_produit}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -92,11 +92,11 @@ if (Cookie::get('id_user')== null)
 												<input type="hidden" name="item_name" value="Almonds, 100g" />
 											@if($promotion)
 										    <?php 
-										    $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produit->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ttc}} @endif"/>
 												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>

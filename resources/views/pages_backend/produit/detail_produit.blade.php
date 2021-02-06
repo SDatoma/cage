@@ -91,7 +91,7 @@
                                         <strong style="color:red">En rupture</strong>
                                         @endif
                                         </p>
-                                        <p class="vote"><strong>PRIX</strong> : {{$produit->prix_ht_produit ?? '0'}} FCFA 
+                                        <p class="vote"><strong>PRIX</strong> : {{$produit->prix_ttc ?? '0'}} FCFA 
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         @if($promotion!=null)
                                           <b style="color:red">En promotion {{$promotion->pourcentage_promotion ?? '0'}} % ; Code promo : {{$promotion->code_promotion ?? '0'}} <sup><a href="" title="Supprimer" data-toggle="modal" data-target="#sp{{$promotion->id_promotion}}"><i class="fa fa-remove"></i> Supprimer</a></sup></b>

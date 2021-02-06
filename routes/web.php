@@ -96,6 +96,7 @@ Route::get('/list/produit', 'ProduitController@getAllProduit');
 Route::post('/promotion/produit', 'ProduitController@promotionProduit')->name('promotion.produit');
 Route::delete('delete/promotion/produit/{id}', 'ProduitController@destroyPromotion')->name('delete.promotion');
 Route::put('update/promotion/produit/{id}', 'ProduitController@updatePromotion')->name('update.promotion');
+Route::put('update/stock/produit/{id}', 'ProduitController@updateStock')->name('update.stock');
 Route::put('update/image/produit/{id}', 'ProduitController@update_produit_image')->name('update.produit.image');
 Route::delete('delete/image/produit/{id}', 'ProduitController@delete_produit_image')->name('delete.produit.image');
 Route::post('/image/produit', 'ProduitController@ajouter_produit_image')->name('ajouter.produit.image');

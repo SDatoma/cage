@@ -92,8 +92,8 @@
             </li>
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Categorie</span></a>
                 <ul class="ml-menu">
-                    <li><a href="/list/categorie">Liste des categorie</a></li>
-                    <li><a href="/list/sous/categorie">Sous categories</a></li>
+                    <li><a href="/list/categorie">Ajout categorie/sous-categorie</a></li>
+                    <li><a href="/list/sous/categorie">Liste sous categorie</a></li>
                 </ul>
             </li>
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Produits</span></a>

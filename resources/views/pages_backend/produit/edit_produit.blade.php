@@ -4,6 +4,15 @@
 <!-- Main Content -->
 @section('content')
 
+<script>
+ function showDivTva(select){
+   if(select.value=='oui'){
+    document.getElementById('hidden_tva').style.display = "block";
+   } else{
+    document.getElementById('hidden_tva').style.display = "none";
+   }
+}
+</script>
 <section class="content">
     <div class="body_scroll">
         <div class="block-header">
@@ -58,13 +67,33 @@
                                     <textarea name="caracteristique_produit" cols="30" rows="5" placeholder="Caracteristique du produit" class="form-control no-resize summernote" required>{{$produit->caracteristique_produit}}</textarea>
                                 </div>
                                 <div class="form-group form-float">
-                                <label> Prix</label>
+                                <label> Prix hors taxe</label>
                                     <input type="number" min="100" class="form-control" placeholder="Prix du produit" name="prix_produit" value="{{$produit->prix_ht_produit}}" required>
                                 </div>
+
+                                <div class="form-group form-float">
+                                <label> TVA Applicable</label>
+                                   <select class="form-control show-tick ms select2" data-placeholder="Select"   name="tva_applicable" onchange="showDivTva(this)" required>
+                                       <option value="oui" @if($produit->tva_applicable=='oui') selected @endif>Oui</option>
+                                       <option value="non" @if($produit->tva_applicable=='non') selected @endif> Non </option>
+                                    </select>
+                                </div>
+                                @if($produit->tva_applicable=='oui')
+                                <div class="form-group form-float" id="hidden_tva" style="">
+                                <label> Taux TVA</label>
+                                    <input type="number" min="1" class="form-control" name="taux_tva" value="{{$produit->taux_tva}}">
+                                </div>
+                                @else
+                                <div class="form-group form-float" id="hidden_tva" style="display:none">
+                                 <label> Taux TVA</label>
+                                    <input type="number" min="1" class="form-control" name="taux_tva" value="{{$produit->taux_tva}}">
+                                </div>
+                                @endif
                                 <div class="form-group form-float">
                                 <label> Quantite disponible</label>
                                     <input type="number" min="1" class="form-control" placeholder="Quantite en stock" name="quantite_produit" value="{{$produit->quantite_produit}}" required>
                                 </div>
+
                                 <div class="form-group form-float">
                                   <label> Categorie</label>
                                    <select class="form-control show-tick ms select2" data-placeholder="Select" name="id_sous_categorie" required>

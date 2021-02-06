@@ -92,6 +92,19 @@ class ProduitController extends Controller
         $produit->id_categorie= $categorie->id_categorie;
         $produit->id_boutique= $request->id_boutique;
         $produit->nouveau_produit= $request->nouveau_produit;
+        if($request->tva_applicable=='oui'){
+            $produit->tva_applicable= $request->tva_applicable;
+            $produit->taux_tva= $request->taux_tva;
+
+            $taux=($request->prix_produit*$request->taux_tva)/100;
+            $montant_tva= $request->prix_produit-$taux ;
+            $produit->prix_ttc=  $montant_tva;
+
+        }else{
+            $produit->tva_applicable= $request->tva_applicable;
+            $produit->taux_tva= 'NULL';
+            $produit->prix_ttc=  $request->prix_produit;
+        }
         $produit->image_produit=$file_name;
         $produit->etat_produit= 1 ;
 
@@ -300,6 +313,19 @@ class ProduitController extends Controller
         $produit->id_sous_categorie= $request->id_sous_categorie;
         $produit->id_boutique= $request->id_boutique;
         $produit->nouveau_produit= $request->nouveau_produit;
+        if($request->tva_applicable=='oui'){
+            $produit->tva_applicable= $request->tva_applicable;
+            $produit->taux_tva= $request->taux_tva;
+
+            $taux=($request->prix_produit*$request->taux_tva)/100;
+            $montant_tva= $request->prix_produit-$taux ;
+            $produit->prix_ttc=  $montant_tva;
+
+        }else{
+            $produit->tva_applicable= $request->tva_applicable;
+            $produit->taux_tva= 'NULL';
+            $produit->prix_ttc=  $request->prix_produit;
+        }
         $produit->image_produit=$file_name;
         //$produit->etat_produit= 1 ;
 
@@ -385,6 +411,18 @@ class ProduitController extends Controller
         $promotion->date_fin_promotion= $request->date_fin_promotion;
 
         $promotion->save();
+
+        return back()->with('success', 'Modification effectuée avec succè');
+        // return redirect()->back();
+    }
+
+    public function updateStock(Request $request, $id)
+    {
+        $produit = Produit::where(['id_produit' =>$id])->first() ;
+
+        $produit->quantite_produit=$produit->quantite_produit + $request->quantite;
+
+        $produit->save();
 
         return back()->with('success', 'Modification effectuée avec succè');
         // return redirect()->back();

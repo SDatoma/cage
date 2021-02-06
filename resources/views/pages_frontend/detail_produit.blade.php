@@ -63,16 +63,16 @@ if (Cookie::get('id_user')== null)
 				@if($promotion)
 					<p><b style="color:red">TAUX DE REDUCTION : {{$promotion->pourcentage_promotion ?? '0'}} % </b> <br/>
 						<?php 
-						   $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-						   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+						   $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+						   $prix_ht_promo= $produit->prix_ttc - $reduction;
 						 ?>
 						<label>PRIX :</label><span class="item_price" style="font-size:15px;color:red"> {{$prix_ht_promo}} F CFA</span>
-						<del> <span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ht_produit}} F CFA</span></del>
+						<del> <span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ttc}} F CFA</span></del>
 						
 					</p>	
 				@else
 						<p>
-					    <label>PRIX :</label><span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ht_produit}} F CFA</span>
+					    <label>PRIX :</label><span class="item_price" style="font-size:15px;color:red"> {{$produit->prix_ttc}} F CFA</span>
 						</p>
 				@endif
 				<p>
@@ -94,11 +94,11 @@ if (Cookie::get('id_user')== null)
 												<input type="hidden" name="item_name" value="Almonds, 100g" />
 											@if($promotion)
 										    <?php 
-										    $reduction= ($produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produit->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ttc}} @endif"/>
 												<input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
@@ -298,7 +298,7 @@ if (Cookie::get('id_user')== null)
 									<a href="{{route('detail-produit.produit', $produits_idem_ss_cat->id_produit)}}">{{$produits_idem_ss_cat->nom_produit}}</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>{{$produits_idem_ss_cat->prix_ht_produit}} F CFA</h6>
+									<h6>{{$produits_idem_ss_cat->prix_ttc}} F CFA</h6>
 								</div>
 								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 								@if($produits_idem_ss_cat->quantite_produit>3)
@@ -309,11 +309,11 @@ if (Cookie::get('id_user')== null)
 												<input type="hidden" name="nom_produit" value="{{$produits_idem_ss_cat->nom_produit}}"/>
 											@if($promotion)
 										    <?php 
-										    $reduction= ($produits_idem_ss_cat->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produits_idem_ss_cat->prix_ht_produit - $reduction;
+										    $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produits_idem_ss_cat->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ttc}} @endif"/>
 											<input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
@@ -356,13 +356,13 @@ if (Cookie::get('id_user')== null)
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($produits_idem_ss_cat->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										   $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ht_produit}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ht_produit}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -374,11 +374,11 @@ if (Cookie::get('id_user')== null)
 												<input type="hidden" name="nom_produit" value="{{$produits_idem_ss_cat->nom_produit}}"/>
 											@if($promotion)
 										    <?php 
-										    $reduction= ($produits_idem_ss_cat->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produits_idem_ss_cat->prix_ht_produit - $reduction;
+										    $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produits_idem_ss_cat->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ttc}} @endif"/>
 												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
@@ -431,13 +431,13 @@ if (Cookie::get('id_user')== null)
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($nouveau_produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										   $prix_ht_promo= $produit->prix_ht_produit - $reduction;
+										   $reduction= ($nouveau_produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ht_produit}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -449,11 +449,11 @@ if (Cookie::get('id_user')== null)
 												<input type="hidden" name="nom_produit" value="{{$nouveau_produit->nom_produit}}"/>
 											@if($promotion)
 										    <?php 
-										    $reduction= ($nouveau_produit->prix_ht_produit*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $nouveau_produit->prix_ht_produit - $reduction;
+										    $reduction= ($nouveau_produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $nouveau_produit->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ht_produit}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ttc}} @endif"/>
 												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>

@@ -77,6 +77,11 @@ class FournisseurController extends Controller
         $boutique->slogan_boutique= $request->slogan_boutique ;
         $boutique->ville_boutique= $request->ville_boutique ;
         $boutique->pays_boutique= $request->pays_boutique ;
+        $boutique->rue_boutique= $request->rue_boutique ;
+        $boutique->quartier_boutique= $request->quartier_boutique ;
+        $boutique->batiment_boutique= $request->batiment_boutique ;
+        $boutique->nom_responsable= $request->responsable_boutique ;
+        $boutique->contact_responsable= $request->contact_responsable ;
         $boutique->contact_1_boutique= $request->contact_boutique1 ;
         $boutique->contact_2_boutique= $request->contact_boutique2 ;
         $boutique->email_boutique= $request->email_boutique ;
@@ -152,6 +157,11 @@ class FournisseurController extends Controller
         $boutique->slogan_boutique= $request->slogan_boutique ;
         $boutique->ville_boutique= $request->ville_boutique ;
         $boutique->pays_boutique= $request->pays_boutique ;
+        $boutique->rue_boutique= $request->rue_boutique ;
+        $boutique->quartier_boutique= $request->quartier_boutique ;
+        $boutique->batiment_boutique= $request->batiment_boutique ;
+        $boutique->nom_responsable= $request->responsable_boutique ;
+        $boutique->contact_responsable= $request->contact_responsable ;
         $boutique->contact_1_boutique= $request->contact_boutique1 ;
         $boutique->contact_2_boutique= $request->contact_boutique2 ;
         $boutique->email_boutique= $request->email_boutique ;

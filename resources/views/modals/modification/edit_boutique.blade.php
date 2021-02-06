@@ -28,6 +28,18 @@
             <input type="text" class="form-control" id="recipient-name" name="ville_boutique" value="{{$boutique->ville_boutique}}">
           </div>
           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Quartier </label>
+            <input type="text" class="form-control" id="recipient-name" name="quartier_boutique" value="{{$boutique->quartier_boutique}}">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Rue </label>
+            <input type="text" class="form-control" id="recipient-name" name="rue_boutique" value="{{$boutique->rue_boutique}}">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Batiment </label>
+            <input type="text" class="form-control" id="recipient-name" name="batiment_boutique" value="{{$boutique->batiment_boutique}}">
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Email</label>
             <input type="text" class="form-control" id="recipient-name" name="email_boutique" value="{{$boutique->email_boutique}}">
           </div>
@@ -42,6 +54,16 @@
           <div class="form-group">
             <label for="message-text" class="col-form-label">Description</label>
             <textarea class="form-control summernote" cols="30" name="description_boutique" id="message-text"> {{$boutique->description_boutique}}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nom du responsable </label>
+            <input type="text" class="form-control" id="recipient-name" name="responsable_boutique" value="{{$boutique->nom_responsable}}">
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Contact du responsable </label>
+            <input type="number" class="form-control" id="recipient-name" name="contact_responsable" value="{{$boutique->contact_responsable}}">
           </div>
 
           <div class="form-group">

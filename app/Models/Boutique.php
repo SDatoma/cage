@@ -6,7 +6,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,6 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $description_boutique
  * @property string|null $photos_boutique
  * @property string|null $ville_boutique
+ * @property string|null $rue_boutique
+ * @property string|null $quartier_boutique
+ * @property string|null $batiment_boutique
  * @property string|null $pays_boutique
  * @property string|null $nif_boutique
  * @property int|null $contact_1_boutique
@@ -26,9 +28,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $id_role
  * @property string|null $password_boutique
  * @property int|null $etat_boutique
+ * @property string|null $nom_responsable
+ * @property string|null $contact_responsable
  * 
  * @property Role $role
- * @property Collection|Produit[] $produits
  *
  * @package App\Models
  */
@@ -50,6 +53,9 @@ class Boutique extends Model
 		'description_boutique',
 		'photos_boutique',
 		'ville_boutique',
+		'rue_boutique',
+		'quartier_boutique',
+		'batiment_boutique',
 		'pays_boutique',
 		'nif_boutique',
 		'contact_1_boutique',
@@ -58,16 +64,13 @@ class Boutique extends Model
 		'slogan_boutique',
 		'id_role',
 		'password_boutique',
-		'etat_boutique'
+		'etat_boutique',
+		'nom_responsable',
+		'contact_responsable'
 	];
 
 	public function role()
 	{
 		return $this->belongsTo(Role::class, 'id_role');
-	}
-
-	public function produits()
-	{
-		return $this->hasMany(Produit::class, 'id_boutique');
 	}
 }

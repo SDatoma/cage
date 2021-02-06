@@ -45,25 +45,31 @@ if (Cookie::get('id_user')== null)
 													  <input type="radio" name="usercivilite" value="M" class="demo6" id="demo6-a" checked><label for="demo6-a">Mr</label>
 													  <input type="radio" name="usercivilite" value="F" class="demo6" id="demo6-b" ><label for="demo6-b">Mme</label>
 													</div></br></br></br>
-                                                    <div class="col-lg-4">Nom : </div> <div class="col-lg-8"> <input required type="text" name="username" placeholder="Nom " /> </div>
-                                                    <div class="col-lg-4">Prénom : </div> <div class="col-lg-8"> <input required type="text" name="userprenom" placeholder="Prénom " /> </div>
-													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" placeholder="N° Téléphone" type="numeric" /> </div>
-                                                    <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" type="email" /> </div>
+
+                                                    <div class="col-lg-4">Nom : </div> <div class="col-lg-8"> <input required type="text" name="username" value="{{ old('username') }}" placeholder="Nom " /> </div>
+
+                                                    <div class="col-lg-4">Prénom : </div> <div class="col-lg-8"> <input required type="text" name="userprenom" value="{{ old('userprenom') }}" placeholder="Prénom " /> </div>
+
+													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" value="{{ old('usertelephone') }}" placeholder="N° Téléphone" type="numeric" /> </div>
+
+                                                    <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" value="{{ old('useremail') }}" type="email" /> </div>
 
 													<div class="col-lg-4">Ville : </div> 
 													   <div class="col-lg-8">
 													        <select name="userville" class="form-control" required >
 															<option>Choisissez votre ville de résidence</option> 
 															@foreach($villes as $ville) 
-													           <option value="{{$ville->id_ville}}"> {{$ville->libelle_ville}} </option> 
+													           <option @if (old('userville')==$ville->id_ville) selected @endif value="{{$ville->id_ville}}"> {{$ville->libelle_ville}} 
+																</option> 
 															@endforeach
 															</select>
 															</br></br>
 													   </div>
                                                      
-													<div class="col-lg-4">Quartier : </div> <div class="col-lg-8"> <input required name="userquartier" placeholder="Quartier" type="text" /> </div>
+													<div class="col-lg-4">Quartier : </div> <div class="col-lg-8"> <input required name="userquartier" value="{{ old('userquartier') }}" placeholder="Quartier" type="text" /> </div>
 
-                                                    <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpassword" placeholder="Mot de passe" /> </div>
+                                                    <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpassword" placeholder="Mot de passe" />
+													 </div>
                                                     <div class="col-lg-4">Confirmer mot de passe : </div> <div class="col-lg-8"> <input required type="password" name="userpasswordconfirm" placeholder="Confirmer mot de passe" /> </div>
                                                     
                                                     <div class="button-box">

@@ -89,10 +89,38 @@
 
                     <div class="card">
                         <div class="body">
+                            <h5>Quartier</h5>
+                            <span>{{$boutique->quartier_boutique}}</span>
+                        </div>
+                        <div class="body">
+                            <h5>Rue</h5>
+                            <span>{{$boutique->rue_boutique}}</span>
+                        </div>
+
+                        <div class="body">
+                            <h5>Batiment</h5>
+                            <span>{{$boutique->batiment_boutique}}</span>
+                        </div>
+
+                        <div class="body">
+                            <h5>Nom du responsable</h5>
+                            <span>{{$boutique->nom_responsable}}</span>
+                        </div>
+
+                        <div class="body">
+                            <h5>Contact du responsable</h5>
+                            <span>{{$boutique->contact_responsable}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="body">
                             <h5>Description</h5>
                             <span><?php echo nl2br($boutique->description_boutique)?></span>
                         </div>
                     </div>
+                    
 
                 </div>
             </div>
