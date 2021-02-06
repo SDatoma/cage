@@ -86,7 +86,7 @@
                                 @else
                                 <div class="form-group form-float" id="hidden_tva" style="display:none">
                                  <label> Taux TVA</label>
-                                    <input type="number" min="1" class="form-control" name="taux_tva" value="{{$produit->taux_tva}}">
+                                    <input type="number" min="1" class="form-control" name="taux_tva">
                                 </div>
                                 @endif
                                 <div class="form-group form-float">
