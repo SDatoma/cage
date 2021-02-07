@@ -6,7 +6,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5>LISTE DES VILLES</h5>
+                       <h5><strong>LISTE DES VILLES</strong></h5>
                             <div class="pull-right mt-4">
                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ville">
                                    <i class="zmdi zmdi-plus"></i> Ajouter une ville

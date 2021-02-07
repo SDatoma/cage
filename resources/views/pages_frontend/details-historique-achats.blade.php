@@ -164,7 +164,7 @@ if (Cookie::get('id_user')== null)
                     </div>
                     <div>
                         <div class="col-md-12">
-                            <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
+                                    <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
 									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red; ">
                                      @if($remise)
                                      <?php echo int2str($prix_revient+$commande->frais_livraison)?> F CFA</b> </i></p>
@@ -204,9 +204,6 @@ if (Cookie::get('id_user')== null)
  function int2str($a)
 {
 $convert = explode('.',$a);
-if (isset($convert[1]) && $convert[1]!=''){
-return int2str($convert[0]).'Dinars'.' et '.int2str($convert[1]).'Centimes' ;
-}
 if ($a<0) return 'moins '.int2str(-$a);
 if ($a<17){
 switch ($a){

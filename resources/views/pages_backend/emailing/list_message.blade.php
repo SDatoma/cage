@@ -70,7 +70,7 @@
                             </form>
 
                             <div class="table-responsive mt-4">
-                            <h5>LISTE DES MESSAGES ENVOYER </h5>
+                            <h5><strong>LISTE DES MESSAGES ENVOYER </strong></h5>
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr style="background-color:#0069d9;color:white">

@@ -37,13 +37,14 @@ if (Cookie::get('id_user')== null)
 								@endif
                                      <br/><br/>
 									 <div style="background-color:#fff">
+									 <center><h4 class="mt-4">Connexion</h4></center>
                                         <div class="login-form-container">
                                             <div class="login-register-form"  style="color:#000; text-align : right;">
                                                 <form action="{{route('connexion.store')}}" method="post">
                                                      {{csrf_field()}}
 													<div class="col-lg-4">Adresse email : </div> <div class="col-lg-8"> <input type="text" name="username" placeholder="Nom d'utilisateur" required=""/> </div>
                                                     <div class="col-lg-4">Mot de passe : </div> <div class="col-lg-8"> <input type="password" name="userpassword" placeholder="Mot de passe" required="" /> </div>
-                                                    <div class="col-lg-4"><a href="#" style="color:blue">Mot de passe oublié ? </a></div> <div class="col-lg-8"> Pas encore inscrit, <a href="/inscription" style="color:blue">créer un compte </a></div>
+                                                    <div class="col-lg-4"><a href="/mot-de-passe-oublier" style="color:blue">Mot de passe oublié ? </a></div> <div class="col-lg-8"> Pas encore inscrit, <a href="/inscription" style="color:blue">créer un compte </a></div>
                                                     <div class="button-box">
                                                         <button type="submit" style="margin-top:40px"><span>Connexion</span></button>
                                                     </div>

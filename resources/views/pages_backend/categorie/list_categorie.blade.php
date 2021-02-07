@@ -8,7 +8,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5>LISTE DES CATEGORIES</h5>
+                       <h5><strong>LISTE DES CATEGORIES</strong></h5>
                             <div class="pull-right mt-4">
                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#categorie">
                                    <i class="zmdi zmdi-plus"></i> Ajouter une categorie

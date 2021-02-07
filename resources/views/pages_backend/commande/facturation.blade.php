@@ -143,7 +143,7 @@
 								</tr>
                                 @if($remise)
                                 <?php
-                                $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                 $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
                                   $prix_revient= ($prix_total - $remisee);
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
@@ -165,7 +165,7 @@
                                 
                                 @if($remise)
                                 <?php
-                                $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                  $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
                                   $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
@@ -185,6 +185,19 @@
                     <div>
                         <div class="col-md-12">
                               
+                                     <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
+									 La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red; ">
+                                     @if($remise)
+                                     <?php
+                                      $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                      $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
+                                      echo int2str($prix_revient)
+                                      ?> F CFA</b>
+                                     @else
+                                     <?php echo int2str($prix_total+$commande->frais_livraison)?> F CFA</b>
+                                     </p>
+									 @endif	
+
                                     <p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");
 									echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?></p>
@@ -209,9 +222,9 @@
  function int2str($a)
 {
 $convert = explode('.',$a);
-if (isset($convert[1]) && $convert[1]!=''){
-return int2str($convert[0]).'Dinars'.' et '.int2str($convert[1]).'Centimes' ;
-}
+// if (isset($convert[1]) && $convert[1]!=''){
+// return int2str($convert[0]).'Dinars'.' et '.int2str($convert[1]).'Centimes' ;
+// }
 if ($a<0) return 'moins '.int2str(-$a);
 if ($a<17){
 switch ($a){
