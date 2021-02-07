@@ -64,22 +64,22 @@ class CommandeController extends Controller
         // Mail::to($user->email_user)->send(new EnvoiFacture($user->nom_user, $user->prenom_user, $user->email_user,$user->telephone_user));
         // Mail::to("cagebat@gmail.com")->send(new TestMail($user->nom_user, $user->prenom_user, "null","null"));
               
-                $e_nom = "Commande de $user->nom_user  $user->prenom_user" ;
-                $email = "fofanabilali2014@gmail.com"; 
-                // titre du mail
-                $titre ="Alert Commande"; 
+            //     $e_nom = "Commande de $user->nom_user  $user->prenom_user" ;
+            //     $email = "fofanabilali2014@gmail.com"; 
+            //     // titre du mail
+            //     $titre ="Alert Commande"; 
 				
-                $description ="Une commande vient d'etre passee merci de prendre en compte" ; 
+            //     $description ="Une commande vient d'etre passee merci de prendre en compte" ; 
 
-                $contact = "Contact: +228 70 45 37 85 | 96 35 80 90 | 90 90 49 03 </br> Email: cagetogo@gmail.com </br>  Site Web : www.cagebatiment.com" ;
+            //     $contact = "Contact: +228 70 45 37 85 | 96 35 80 90 | 90 90 49 03 </br> Email: cagetogo@gmail.com </br>  Site Web : www.cagebatiment.com" ;
 
-                $contenu = $e_nom . '<br /><br />' . $description .'<br /><br /><br />'.$contact ;
+            //     $contenu = $e_nom . '<br /><br />' . $description .'<br /><br /><br />'.$contact ;
 
-                // envoi du mail HTML
-                $from = "From: CAGE Bâtiment <cagetogo@gmail.com>\nMime-Version:";
-                $from .= " 1.0\nContent-Type: text/html; charset=ISO-8859-1\n";
-                // envoie du mail
-               mail($email,$titre,$contenu,$from);
+            //     // envoi du mail HTML
+            //     $from = "From: CAGE Bâtiment <cagetogo@gmail.com>\nMime-Version:";
+            //     $from .= " 1.0\nContent-Type: text/html; charset=ISO-8859-1\n";
+            //     // envoie du mail
+            //    mail($email,$titre,$contenu,$from);
          
          $chars = "abcdefghijkmnopqrstuvwxyz023456789";
          srand((double)microtime()*1000000);
@@ -122,7 +122,7 @@ class CommandeController extends Controller
 
          foreach($items as $item){
            
-            $ligne_commande = new LigneCommande();
+         $ligne_commande = new LigneCommande();
          
          $ligne_commande->reference_commande= $code;
          $ligne_commande->quantite_commande= $item->qty;
@@ -131,6 +131,7 @@ class CommandeController extends Controller
          $ligne_commande->id_produit= $item->id;
     
          $ligne_commande->save();
+
 
          }
 
@@ -295,6 +296,8 @@ class CommandeController extends Controller
     {
         $user = User::where(['id_user' =>$id])->first() ;
 
+        $villes = Ville::all() ;
+
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
         $remise = Remise::where(['reference_commande' =>$reference_commande])->first() ;
@@ -321,7 +324,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes'));
 
         // si la commande est deja valider
 
@@ -329,7 +332,6 @@ class CommandeController extends Controller
 
         $commandes = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
-        //->join('user', 'user.id_user', '=', 'commande.id_user')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
         ->where('commande.id_user', '=', $id)
         ->where('commande.reference_commande', '=', $reference_commande)
@@ -340,14 +342,13 @@ class CommandeController extends Controller
 
         $prix_total = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
-        //->join('user', 'user.id_user', '=', 'commande.id_user')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
         ->where('commande.id_user', '=', $id)
         ->where('commande.reference_commande', '=', $reference_commande)
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise'));
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes'));
 
         }
     }
@@ -422,11 +423,27 @@ class CommandeController extends Controller
     public function destroy($id)
     {
          $date_jour=date('Y-m-d');
-         $commande = Commande::where(['id_commande' =>$id])->first() ;
+         $commandee = Commande::where(['id_commande' =>$id])->first() ;
 
-         $commande->etat_commande=1;
-         $commande->date_livraison=$date_jour;
-         $commande->save();
+         $commandes = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $commandee->id_user)
+        ->where('commande.reference_commande', '=', $commandee->reference_commande)
+        ->where('commande.etat_commande', '=', 0)
+        ->get();
+
+         foreach($commandes as $commande){
+
+        $produit = Produit::where(['id_produit' =>$commande->id_produit])->first() ;
+        $produit->quantite_produit=$produit->quantite_produit-$commande->quantite_commande;
+        $produit->save();
+
+         }
+        
+         $commandee->etat_commande=1;
+         $commandee->date_livraison=$date_jour;
+         $commandee->save();
 
         return redirect()->back()->with('success', 'Conmande validée avec succè');;
     }

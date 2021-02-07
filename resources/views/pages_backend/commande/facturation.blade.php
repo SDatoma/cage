@@ -61,13 +61,20 @@
                     </div> <br />
                     <div class="row">
                        <?php  $annee=date('Y');
-                          $numero= $annee."/CAGE-BAT/0000".$commande->numero_facture;
+                          $numero= $annee."/CAGE-BAT/000".$commande->numero_facture;
                         ?>
                         <div class="col-md-12 text-center float">
                             <h2><u>FACTURE N° {{$numero}}</u></h2> 
                         </div>
                         <div class="col-md-6 text-left">
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
+                            <p>
+                            @foreach($villes as $ville)
+                                @if($ville->id_ville==$user->id_ville)
+                                  {{$ville->libelle_ville}} 
+                                @endif
+                            @endforeach
+                            , {{$user->quartier_user}}</p>
                             <p>{{$user->email_user}}</p>
                             <p>(+228) {{$user->telephone_user}}</p>
                         </div>
@@ -94,7 +101,7 @@
                                         Prix Unitaire
                                     </th>
                                     <th>
-                                        Total
+                                        Montant
                                     </th>
 
                                 </tr>
@@ -110,13 +117,13 @@
                             @endforeach 
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" > SOUS TOTAL</th>
-									<th colspan="2" > <?php echo $prix_total?> F CFA</th>
+									<th colspan="3">SOUS TOTAL</th>
+									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" > MONTANT HORS TAXE</th>
-									<th colspan="2" > <?php echo $prix_total?> F CFA</th>
+									<th colspan="3"> MONTANT HORS TAXE</th>
+									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
 								</tr>
 
                                 @if($remise)
@@ -125,14 +132,14 @@
                                   $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" >REMISE</th>
-									<th colspan="2" >{{$remise->pourcentage_remise}} %</th>
+									<th colspan="3">REMISE</th>
+									<th colspan="2">{{$remise->pourcentage_remise}} %</th>
 								</tr>
                                 @endif
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  >TVA</th>
-									<th colspan="2"  >18 %</th>
+									<th colspan="3">TVA</th>
+									<th colspan="2">18 %</th>
 								</tr>
                                 @if($remise)
                                 <?php
@@ -140,20 +147,20 @@
                                   $prix_revient= ($prix_total - $remisee);
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" >NET A PAYER</th>
-									<th colspan="2" > <?php echo $prix_revient?> F CFA </th>
+									<th colspan="3">NET A PAYER</th>
+									<th colspan="2"> <?php echo $prix_revient?> F CFA </th>
 								</tr>
                                 @else
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" >NET A PAYER</th>
-									<th colspan="2" > <?php echo $prix_total?> F CFA </th>
+									<th colspan="3">NET A PAYER</th>
+									<th colspan="2"> <?php echo $prix_total?> F CFA </th>
 								</tr>
 
                                 @endif
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3" >FRAIS DE LIVRAISON</th>
-									<th colspan="2" > {{$commande->frais_livraison ?? '0'}} F CFA</th>
+									<th colspan="3">FRAIS DE LIVRAISON</th>
+									<th colspan="2"> {{$commande->frais_livraison ?? '0'}} F CFA</th>
 								</tr>
                                 
                                 @if($remise)

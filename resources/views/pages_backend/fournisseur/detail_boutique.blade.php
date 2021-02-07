@@ -56,9 +56,6 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="header">
-                            <h2>Adresse - Contact</h2>
-                        </div>
                         <div class="body">
                             <small class="text-muted">Pays : </small>
                             <p>{{$boutique->pays_boutique}}</p>

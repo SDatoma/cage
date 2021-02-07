@@ -7,7 +7,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5>LISTE DES COMMANDES DEJA VALIDER</h5>
+                       <h5>LISTE DES COMMANDES CLOTUREES</h5>
                     <!-- 
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Aero</a></li>
@@ -36,18 +36,20 @@
                                 <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
                                     <thead>
                                         <tr style="background-color:#0069d9;color:white">
-                                            <th>REFERENCE</th>
+                                            <th>FACTURE N°</th>
+                                            <!-- <th>REFERENCE</th> -->
                                             <th>NOM & PRENOM</th>
-                                            <th>NOMBRE DE PRODUIT</th>
-                                            <th>DATE COMMANDE</th>
+                                            <th>PRODUITS</th>
+                                            <th>MONTANT</th>
+                                            <th>DATE LIVRAISON</th>
                                             <th>ETAT</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
                                     @foreach($commandes as $commande)
-                                       <?php
 
+                                          <?php
                                              $user = \App\Models\User::where(['id_user' =>$commande->id_user])->first() ;
 
                                              $produit_total_commande = DB::table('ligne_commande')
@@ -57,14 +59,29 @@
                                              ->where('commande.id_user', '=', $commande->id_user)
                                              ->where('commande.reference_commande', '=', $commande->reference_commande)
                                              ->where('commande.etat_commande', '=', 1)
-                                             ->count('ligne_commande.id_produit');
-                                       ?>
+                                             ->sum('ligne_commande.quantite_commande');
+
+                                             $prix_total_commande = DB::table('ligne_commande')
+                                             ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+                                             //->join('user', 'user.id_user', '=', 'commande.id_user')
+                                             ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+                                             ->where('commande.id_user', '=', $commande->id_user)
+                                             ->where('commande.reference_commande', '=', $commande->reference_commande)
+                                             ->where('commande.etat_commande', '=', 1)
+                                             ->sum('ligne_commande.prix_commande');
+
+                                                 $annee=date('Y');
+                                                 $numero= $annee."/CAGE-BAT/000".$commande->numero_facture;
+                      
+                                            ?>
                                         <tr>
-                                            <td>{{$commande->reference_commande}}</td>
+                                            <td>{{$numero}}</td>
+                                            <!-- <td>{{$commande->reference_commande}}</td> -->
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$produit_total_commande}}</td>
-                                            <td>{{$commande->date_commande}}</td>
-                                            <td><strong class="col-green">Valider</strong></td>
+                                            <td>{{$prix_total_commande}} FCFA</td>
+                                            <td>{{$commande->date_livraison}}</td>
+                                            <td><strong class="col-green">Clôturée</strong></td>
                                             <td>
                                             <a href="{{route('voir.facture',[$commande->id_user,$commande->reference_commande])}}">
                                             <button class="btn btn-succes btn-sm" title="Voir facture" data-toggle="modal" data-target="#"><i class="zmdi zmdi-eye"></i></i></button> 

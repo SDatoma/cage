@@ -47,12 +47,11 @@
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
-			<div class="col-md-4 logo_agile">
+			<div class="col-md-3 logo_agile">
 				<h1>
 					<a href="/">
 					<img src="{{asset('files_upload/logo1.jpeg')}}" alt=" " height="100px" widht="100px"></br>
-						<span>CAGE</span>
-						<span>BÄT</span>IMENT
+						<span style="font-size:25px;color:black">CAGE BÄTIMENT</span>
 					</a>
 				</h1>
 			</div>

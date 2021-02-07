@@ -17,7 +17,7 @@
     <div class="body_scroll">
         <div class="block-header">
             <div class="row">
-                <div class="col-lg-7 col-md-6 col-sm-12">
+                <div class="col-lg-8 col-md-6 col-sm-12">
                        <h5><strong>LISTE DES COMMANDES EN ATTENTE DE RECEPTION</strong></h5>
                     <!-- 
                     <ul class="breadcrumb">
@@ -47,18 +47,20 @@
                                 <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
                                     <thead>
                                         <tr style="background-color:#0069d9;color:white">
-                                            <th>REFERENCE</th>
+                                            <th>FACTURE N°</th>
+                                            <!-- <th>REFERENCE</th> -->
                                             <th>NOM & PRENOM</th>
                                             <th>PRODUITS</th>
-                                            <th>DATE</th>
-                                            <th>ETAT COMMANDE</th>
+                                            <th>MONTANT</th>
+                                            <th>DATE COMMANDE</th>
+                                            <th>ETAT</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
                                     @foreach($commandes as $commande)
-                                       <?php
+                                           <?php
 
                                              $user = \App\Models\User::where(['id_user' =>$commande->id_user])->first() ;
 
@@ -69,12 +71,27 @@
                                              ->where('commande.id_user', '=', $commande->id_user)
                                              ->where('commande.reference_commande', '=', $commande->reference_commande)
                                              ->where('commande.etat_commande', '=', 0)
-                                             ->count('ligne_commande.id_produit');
-                                       ?>
+                                             ->sum('ligne_commande.quantite_commande');
+
+                                             $prix_total_commande = DB::table('ligne_commande')
+                                             ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+                                             //->join('user', 'user.id_user', '=', 'commande.id_user')
+                                             ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+                                             ->where('commande.id_user', '=', $commande->id_user)
+                                             ->where('commande.reference_commande', '=', $commande->reference_commande)
+                                             ->where('commande.etat_commande', '=', 0)
+                                             ->sum('ligne_commande.prix_commande');
+
+                                                 $annee=date('Y');
+                                                 $numero= $annee."/CAGE-BAT/000".$commande->numero_facture;
+
+                                           ?>
                                         <tr>
-                                            <td>{{$commande->reference_commande}}</td>
+                                            <!-- <td>{{$commande->reference_commande}}</td> -->
+                                            <td>{{$numero}}</td>
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$produit_total_commande}}</td>
+                                            <td> {{$prix_total_commande}} FCFA</td>
                                             <td>{{$commande->date_commande}}</td>
                                             <td><strong class="col-red blink">En attente de reception</strong></td>
                                             <td>

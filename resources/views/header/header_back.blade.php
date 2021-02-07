@@ -104,8 +104,10 @@
             </li>
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion commande</span></a>
                 <ul class="ml-menu">
-                    <li><a href="/list/commande/attente"> Commande en attente</a></li>
-                    <li><a href="/list/commande/valider"> Commande valider</a></li>
+                    <li><a href="/list/commande/attente"> Commandes en attente</a></li>
+                    <li><a href="/list/commande/valider"> Commandes clôturées</a></li>
+                    <li><a href="#"> Suivi des commandes</a></li>
+                    <li><a href="#"> Commande rejetée </a></li>
                 </ul>
             </li>
 
