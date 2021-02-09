@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	<title>CAGE BATIMENT | BIENVENUE</title>
+	<title>CAGE-BATIMENT</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,6 +29,7 @@
 	<!--//pop-up-box-->
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="{{asset('css_frontend/css/jquery-ui1.css')}}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('files_upload/logo1.jpeg')}}" />
 	<!-- fonts 
 	<!-- flexslider -->
 	<link rel="stylesheet" href="{{asset('css_frontend/css/flexslider.css')}}" type="text/css" media="screen" />

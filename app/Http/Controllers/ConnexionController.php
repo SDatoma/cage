@@ -51,7 +51,7 @@ class ConnexionController extends Controller
     public function store(Request $request)
     {
         
-        if ($request->username=="admin" && $request->userpassword=="admin") {
+        if ($request->username=="admin@gmail.com" && $request->userpassword=="admin") {
             return redirect()->to('/admin');
         }  
         

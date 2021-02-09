@@ -13,13 +13,15 @@ if (Cookie::get('id_user')== null)
                     <div class="row mt-2">
                        
                         <div class="col-md-12">
-                        <h3 class="tittle-w3l1" style="font-size:20px;margin-top:12px"><img src="/{{$categoriee->image_categorie}}" height=150 width=200 class="thumbnail" alt="">{{$categoriee->libelle_categorie}}
-                           <div class="pull-right">
-                               <!-- <label>Recherches : </label> -->
+                        <h3 class="tittle-w3l1" style="font-size:20px;margin-top:px"><img src="/{{$categoriee->image_categorie}}" height=150 width=200 class="thumbnail" alt="">{{$categoriee->libelle_categorie}} </h3>
+						<div class="product-single-w3l"></div>
+						<br/><h3 class="tittle-w3l1" style="font-size:15px;  margin-bottom:-10px">
+						<strong style="color:blue;">Il y a {{count($produits)}} produit(s)</strong></h3>
+                           <!-- <div class="pull-right mb-4">
+                            <label>Recherches : </label> 
                                <input type="text" id="recherche" class="col-md-8 ml-2 form" placeholder="Rechercher...">
                            </div>
-                          </h3>
-                           <!-- Slider Start -->
+                          -->
                            <div class="row" id="documents">
                            @foreach($produits as $produit)
 						<div class="col-md-3 product-men">
