@@ -33,6 +33,7 @@
 	<link rel="stylesheet" href="{{asset('css_front_end/assets/css/vendor/vendor.min.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css_front_end/assets/css/plugins/plugins.min.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css_front_end/assets/css/style.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css_backend/style_seach.css')}}">
 
 <body>
 	<!-- top-header -->
@@ -102,7 +103,7 @@
 								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
 							</button>
 						
-							<strong style="color:black"> Panier : {{ShoppingCart::countRows() ?? '0'}} Produits - {{ShoppingCart::total() ?? '0'}} FCFA </strong>
+							<strong style="color:black"> Panier : {{ShoppingCart::count() ?? '0'}} Produits - {{ShoppingCart::total() ?? '0'}} FCFA </strong>
 						 </a>
 					</div>
 				</div>

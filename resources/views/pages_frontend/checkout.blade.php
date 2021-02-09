@@ -139,7 +139,7 @@ if (Cookie::get('id_user')== null)
 									   <div class="title-wrap">
                                             <h4 class="cart-bottom-title section-bg-gray">Votre commande</h4>
                                         </div>
-                                        <h5>Total Produit<span> {{ShoppingCart::countRows() ?? '0'}}</span></h5>
+                                        <h5>Total Produit<span> {{ShoppingCart::count() ?? '0'}}</span></h5>
                                         <h5>Prix Total<span>{{ShoppingCart::total() ?? '0'}} FCFA</span></h5>
                                        
                                         <div class="total-shipping">

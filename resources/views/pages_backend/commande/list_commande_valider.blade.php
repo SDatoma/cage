@@ -80,8 +80,9 @@
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$produit_total_commande}}</td>
                                             <td>{{$prix_total_commande}} FCFA</td>
-                                            <td>{{$commande->date_livraison}}</td>
-                                            <td><strong class="col-green">Clôturée</strong></td>
+                                            <td><?php  echo $newDate = date("d/n/Y", strtotime($commande->date_livraison));?>
+                                            </td>
+                                            <td><strong class="col-green">Clôturé</strong></td>
                                             <td>
                                             <a href="{{route('voir.facture',[$commande->id_user,$commande->reference_commande])}}">
                                             <button class="btn btn-succes btn-sm" title="Voir facture" data-toggle="modal" data-target="#"><i class="zmdi zmdi-eye"></i></i></button> 

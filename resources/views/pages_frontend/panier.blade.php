@@ -87,7 +87,7 @@ if (Cookie::get('id_user')== null)
                                 <div class="col-lg-7 col-md-12 mt-md-30px">
                                     <div class="grand-totall">
                                         <!-- <h5>Total Produit<span> {{ShoppingCart::countRows() ?? '0'}}</span></h5> -->
-                                        <h4 class="grand-totall-title" style="color:black">Total Produit<span>{{ShoppingCart::countRows() ?? '0'}}</span></h4>
+                                        <h4 class="grand-totall-title" style="color:black">Total Produit<span>{{ShoppingCart::count() ?? '0'}}</span></h4>
                                         <h4 class="grand-totall-title" style="color:black">Prix Total<span>{{ShoppingCart::total() ?? '0'}} FCFA</span></h4>
                                        <!-- <div class="total-shipping">
                                             <h5>Frais accessoirs</h5>

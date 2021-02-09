@@ -37,7 +37,7 @@ if (Cookie::get('id_user')== null)
 								@endif
                                     <br/><br/>
                                     <div  style="background-color:#fff">
-									<center><h4 class="mt-4">Creation du compte</h4></center>
+									<center><h4 class="mt-4">CRÉEZ VOTRE COMPTE</h4></center>
                                         <div class="login-form-container">
                                             <div class="login-register-form" style="color:#000; text-align : right;">
                                                 <form action="{{route('client.store')}}" method="post" enctype="multipart/form-data">

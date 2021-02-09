@@ -121,7 +121,7 @@
                                             <a href="/list/commande/valider">
                                             <div>
                                                <center> <h5>{{$commande_valider}}</h5> </center>
-                                                <span>Commandes valider</span>
+                                                <span>Commandes cloturees</span>
                                             </div>
                                             </a>
                                         </div>

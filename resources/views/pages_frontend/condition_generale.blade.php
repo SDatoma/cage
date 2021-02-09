@@ -24,8 +24,8 @@ if (Cookie::get('id_user')== null)
             <!-- contact area start -->
 	<div class="container"><br/>
         <div class="product-sec1">
-			 <div class="contact-area ml-5" style="margin-top:20px; margin-bottom:0px">
-              <center> <h4>CONDITIONS GÉNÉRALE DE VENTE</h4></center> </br>              
+		<div class="contact-area" style="margin-top:20px; margin-bottom:0px">
+        <center> <h4>CONDITIONS GÉNÉRALE DE VENTE</h4></center> </br>              
 <h4 style="color:blue">PRÉAMBULE</h5> 
 <p style="color:black; text-align:justify">
 Les dispositions suivantes ont pour objet de définir les conditions générales de vente sur le site <strong style="color:red">www.</strong> 

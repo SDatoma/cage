@@ -57,11 +57,13 @@
                                             <td>{{$utilisateur->email_user}}</td>
                                             <td>{{$utilisateur->password_visible}}</td>
                                             <td>
-                                            @foreach($roles as $role)
-                                                @if($role->id_role == $utilisateur->id_role)
-                                                   {{$role->libelle_role}}
+                                                @if($utilisateur->id_role==1)
+                                                   Comptable
+                                                @elseif($utilisateur->id_role==2)
+                                                    Commerciaux
+                                                @else
+                                                    Gestionnaire de stock
                                                 @endif
-                                            @endforeach
                                             </td>
                                             <td> 
                                             <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#mu{{$utilisateur->id_user}}"><i class="zmdi zmdi-edit"></i></button> 

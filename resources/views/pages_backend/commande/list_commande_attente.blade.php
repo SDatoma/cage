@@ -92,7 +92,7 @@
                                             <td>{{$user->nom_user}} {{$user->prenom_user}}</td>
                                             <td>{{$produit_total_commande}}</td>
                                             <td> {{$prix_total_commande}} FCFA</td>
-                                            <td>{{$commande->date_commande}}</td>
+                                            <td><?php  echo $newDate = date("d/n/Y", strtotime($commande->date_commande));?></td>
                                             <td><strong class="col-red blink">En attente de reception</strong></td>
                                             <td>
                                             <a href="{{route('voir.facture',[$commande->id_user,$commande->reference_commande])}}">

@@ -13,7 +13,7 @@
           <!--Body-->
           <div class="modal-body">
           <center>
-          <a href="/login">
+          <a href="/inscription">
                Créer un compte
           </a></br></br>
           <a href="/login">

@@ -38,7 +38,7 @@ class AdminController extends Controller
 
         $commande_valider = Commande::where(['etat_commande' =>1])->count() ;
 
-        $nombre_client = user::all()->count() ;
+        $nombre_client = user::where(['id_role' =>NULL])->count()  ;
 
         return view('pages_backend/index',compact('nombre_boutique','nombre_categorie','nombre_produit','nombre_sous_categorie','commande_en_attente','commande_valider','nombre_client'));
     }

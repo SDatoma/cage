@@ -204,8 +204,7 @@
 									<p class="text-right" style="text-align: right; margin-top:40px"><b>Signature</b></p>
 
                                 @if($commande->etat_commande != 0 )  
-						        <span class="text-right" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php setlocale(LC_TIME, "fr_FR","French");
-						           echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_livraison))); ?> 
+						        <span class="text-right" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php echo $newDate = date("d/n/Y", strtotime($commande->date_livraison));?> 
                                     </b> 
                                 </span>
 						        @endif 

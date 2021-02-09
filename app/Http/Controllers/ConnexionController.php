@@ -76,11 +76,13 @@ class ConnexionController extends Controller
             
             return redirect()->to('/detail-profil-client');
          
-        }else if($result->type_user == 1){
+        }else if($result->type_user == 1 && password_verify($request->userpassword, $result->password_user)){
 			
 			//**** mise en cookie des données de l'utilisateur**//
             Cookie::queue('nom_user', $result->nom_user , 5000);
             Cookie::queue('prenom_user', $result->prenom_user , 5000);
+            Cookie::queue('id_role', $result->id_role , 5000);
+            Cookie::queue('id_user', $result->id_user , 5000);
             return redirect()->to('/admin');
 		}else{
 
