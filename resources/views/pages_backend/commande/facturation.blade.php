@@ -49,13 +49,13 @@
             <div class="col-md-12 body-main">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">CAGE BAT E-commerce</p>
+                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
 						 </div>
 						
                         <div class="col-md-6 text-right">
                             <h4 style="color: #F81D2D;"><strong>CAGE - BATIMENT</strong></h4>
                             <p>Togo, Lomé, Agoè Démakpoè</p>
-                            <p>+228 70 45 37 85 | 96 35 80 90</p>
+                            <p>(+228) 70 45 37 85 | 96 35 80 90</p>
                             <p>	cagetogo@gmail.com</p>
                         </div>
                     </div> <br />
@@ -95,7 +95,7 @@
                                        Libelle
                                     </th>
 									<th>
-                                        Quantite
+                                        Quantité
                                     </th>
 									<th>
                                         Prix Unitaire
@@ -117,13 +117,13 @@
                             @endforeach 
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3">SOUS TOTAL</th>
+									<th colspan="3">TOTAL</th>
 									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"> MONTANT HORS TAXE</th>
-									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
+									<th colspan="2"> <?php echo $prix_total_ht?> F CFA</th>
 								</tr>
 
                                 @if($remise)
@@ -138,13 +138,13 @@
                                 @endif
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3">TVA</th>
-									<th colspan="2">18 %</th>
+									<th colspan="3">MONTANT TVA</th>
+									<th colspan="2">{{$prix_total_tva}} FCFA</th>
 								</tr>
                                 @if($remise)
                                 <?php
                                  $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
-                                  $prix_revient= ($prix_total - $remisee);
+                                  $prix_revient= ($prix_total - $remisee) ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">NET A PAYER</th>

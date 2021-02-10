@@ -12,7 +12,7 @@ if (Cookie::get('id_user')== null)
             <!-- cart area start -->
             <div class="cart-main-area mtb-60px">
                 <div class="container">
-                   <center> <h3 class="cart-page-title">Votre panier comporte <strong style="color:red">{{ShoppingCart::countRows() ?? '0'}}</strong> Produit(s)</h3>
+                   <center> <h3 class="cart-page-title">Votre panier comporte <strong style="color:red">{{ShoppingCart::count() ?? '0'}}</strong> Produit(s)</h3>
                     <div class="row"></center>
                      @if(ShoppingCart::countRows()==0)
                     <center> 

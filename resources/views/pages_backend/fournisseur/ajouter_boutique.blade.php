@@ -49,7 +49,7 @@
                                     <input type="text" class="form-control" placeholder="Nom de la boutique" name="nom_boutique" value="{{ old('nom_boutique') }}" required>
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="text" class="form-control" placeholder="Slogan" value="{{ old('slogan_boutique') }}" name="slogan_boutique" required>
+                                    <input type="text" class="form-control" placeholder="Slogan" value="{{ old('slogan_boutique') }}" name="slogan_boutique" >
                                 </div>
                                 <div class="form-group form-float">
                                     <input type="email" class="form-control" placeholder="Adresse email" value="{{ old('email_boutique') }}" name="email_boutique" required>
@@ -61,13 +61,13 @@
                                     <input type="text" class="form-control" placeholder="Ville" name="ville_boutique" value="{{ old('ville_boutique') }}" required>
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="text" class="form-control" placeholder="Quartier" name="quartier_boutique" value="{{ old('quartier_boutique') }}" required>
+                                    <input type="text" class="form-control" placeholder="Quartier" name="quartier_boutique" value="{{ old('quartier_boutique') }}" >
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="text" class="form-control" placeholder="Rue" name="rue_boutique" value="{{ old('rue_boutique') }}" required>
+                                    <input type="text" class="form-control" placeholder="Rue" name="rue_boutique" value="{{ old('rue_boutique') }}" >
                                 </div>
                                 <div class="form-group form-float">
-                                    <input type="text" class="form-control" placeholder="Batiment" name="batiment_boutique" value="{{ old('batiment_boutique') }}" required>
+                                    <input type="text" class="form-control" placeholder="Batiment" name="batiment_boutique" value="{{ old('batiment_boutique') }}" >
                                 </div>
                                 <div class="form-group form-float">
                                     <input type="number" class="form-control" placeholder="Contact 1 sans indicatif ( Ex. 90 00 00 00 )" value="{{ old('contact_boutique1') }}" name="contact_boutique1" required>

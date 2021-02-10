@@ -46,12 +46,12 @@
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                     <tr style="background-color:#0069d9;color:white">
-                                        <th>CODE</th>
                                         <th>IMAGE</th>
                                         <th>LIBELLE</th>
                                         <th data-breakpoints="sm xs">QANTITE</th>
                                         <th data-breakpoints="xs">PRIX_HT</th>
-                                        <th data-breakpoints="xs">TVA</th>
+                                        <th data-breakpoints="xs">TAUX TVA</th>
+                                        <th data-breakpoints="xs">MONTANT TVA</th>
                                         <th data-breakpoints="xs">PRIX TTC</th>
                                         <th data-breakpoints="xs md">ETAT</th>
                                         <th data-breakpoints="sm xs md">ACTION</th>
@@ -60,12 +60,12 @@
                                 <tbody>
                                 @foreach($produits as $produit)
                                     <tr>
-                                        <td></td>
                                         <td><img src="/{{$produit->image_produit}}" width="48" alt="Product img"></td>
                                         <td>{{$produit->nom_produit}}</td>
                                         <td><span class="text-muted">{{$produit->quantite_produit ?? 0}}</span></td>
                                         <td>{{$produit->prix_ht_produit ?? '0'}} FCFA</td>
                                         <td>{{$produit->taux_tva ?? '0'}} %</td>
+                                        <td>{{$produit->montant_tva ?? '0'}} FCFA</td>
                                         <td>{{$produit->prix_ttc ?? '0'}} FCFA</td>
                                         <td>
                                         @if($produit->quantite_produit>3) 
