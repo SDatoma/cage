@@ -142,15 +142,6 @@ if (Cookie::get('id_user')== null)
                                         <h5>Total Produit<span> {{ShoppingCart::count() ?? '0'}}</span></h5>
                                         <h5>Prix Total<span>{{ShoppingCart::total() ?? '0'}} FCFA</span></h5>
                                        
-                                        <div class="total-shipping">
-                                            <h5>Frais accessoirs</h5>
-                                            <ul>
-                                                <li> TVA <span>18 %</span></li>
-                                                <li> HTTC <span> {{ShoppingCart::total() ?? '0'}} FCFA</span></li>
-                                                <!-- <li> LIVRAISON <span>0 FCFA</span></li> -->
-                                               
-                                            </ul>
-                                        </div>
 										<h4 class="grand-totall-title" style="color:red">Net à payer<span>{{ShoppingCart::totalPrice() ?? '0'}} FCFA</span></h4>
                                         @if(count($adresses)>0)
 										 <button class="cart-btn-2 btn-sm" type="submit"><a>Commander</a></button>
