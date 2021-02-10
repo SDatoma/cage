@@ -122,13 +122,20 @@ class CommandeController extends Controller
 
          foreach($items as $item){
            
-         $ligne_commande = new LigneCommande();
+        $produit = Produit::where(['id_produit' =>$item->id])->first() ;
+
+         $prix=$produit->prix_ht_produit*$item->qty;
+         $montant_tva= ($prix*$produit->taux_tva)/100 ;
+
+        $ligne_commande = new LigneCommande();
          
          $ligne_commande->reference_commande= $code;
          $ligne_commande->quantite_commande= $item->qty;
          $ligne_commande->prix_commande= $item->total;
          $ligne_commande->id_commande= $commande->id_commande;
          $ligne_commande->id_produit= $item->id;
+         $ligne_commande->montant_tva= $montant_tva;
+         $ligne_commande->prix_ht= $prix;
     
          $ligne_commande->save();
 
@@ -315,7 +322,7 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->get();
 
-        $prix_total = DB::table('ligne_commande')
+         $prix_total = DB::table('ligne_commande')
         ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
         //->join('user', 'user.id_user', '=', 'commande.id_user')
         ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
@@ -324,7 +331,25 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 0)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes'));
+        $prix_total_ht = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->where('commande.etat_commande', '=', 0)
+        ->sum('ligne_commande.prix_ht');
+
+         $prix_total_tva = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->where('commande.etat_commande', '=', 0)
+        ->sum('ligne_commande.montant_tva');
+
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes','prix_total_tva','prix_total_ht'));
 
         // si la commande est deja valider
 
@@ -348,7 +373,25 @@ class CommandeController extends Controller
         ->where('commande.etat_commande', '=', 1)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes'));
+        $prix_total_ht = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->where('commande.etat_commande', '=', 1)
+        ->sum('ligne_commande.prix_ht');
+
+        $prix_total_tva = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->where('commande.etat_commande', '=', 1)
+        ->sum('ligne_commande.montant_tva');
+
+        return view('pages_backend/commande/facturation',compact('commandes','user','prix_total','adresse','commande','remise','villes','prix_total_tva','prix_total_ht'));
 
         }
     }

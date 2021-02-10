@@ -123,7 +123,7 @@
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"> MONTANT HORS TAXE</th>
-									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
+									<th colspan="2"> <?php echo $prix_total_ht?> F CFA</th>
 								</tr>
 
                                 @if($remise)
@@ -138,13 +138,13 @@
                                 @endif
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3">TVA</th>
-									<th colspan="2">18 %</th>
+									<th colspan="3">MONTANT TVA</th>
+									<th colspan="2">{{$prix_total_tva}} FCFA</th>
 								</tr>
                                 @if($remise)
                                 <?php
                                  $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
-                                  $prix_revient= ($prix_total - $remisee);
+                                  $prix_revient= ($prix_total - $remisee) ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">NET A PAYER</th>

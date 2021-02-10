@@ -96,13 +96,16 @@ class ProduitController extends Controller
             $produit->tva_applicable= $request->tva_applicable;
             $produit->taux_tva= $request->taux_tva;
 
-            $taux=($request->prix_produit*$request->taux_tva)/100;
-            $montant_tva= $request->prix_produit-$taux ;
-            $produit->prix_ttc=  $montant_tva;
+            $montant_tva=($request->prix_produit*$request->taux_tva)/100;
+            $produit->montant_tva= $montant_tva;
+
+            $prix_ttc= $request->prix_produit-$montant_tva ;
+            $produit->prix_ttc= $prix_ttc;
 
         }else{
             $produit->tva_applicable= $request->tva_applicable;
             $produit->taux_tva= 'NULL';
+            $produit->montant_tva= 'NULL';
             $produit->prix_ttc=  $request->prix_produit;
         }
         $produit->image_produit=$file_name;
@@ -317,13 +320,16 @@ class ProduitController extends Controller
             $produit->tva_applicable= $request->tva_applicable;
             $produit->taux_tva= $request->taux_tva;
 
-            $taux=($request->prix_produit*$request->taux_tva)/100;
-            $montant_tva= $request->prix_produit-$taux ;
-            $produit->prix_ttc=  $montant_tva;
+            $montant_tva=($request->prix_produit*$request->taux_tva)/100;
+            $produit->montant_tva= $montant_tva;
+
+            $prix_ttc= $request->prix_produit-$montant_tva ;
+            $produit->prix_ttc= $prix_ttc;
 
         }else{
             $produit->tva_applicable= $request->tva_applicable;
             $produit->taux_tva= 'NULL';
+            $produit->montant_tva= 'NULL';
             $produit->prix_ttc=  $request->prix_produit;
         }
         $produit->image_produit=$file_name;
