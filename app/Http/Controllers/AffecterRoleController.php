@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produit;
-use App\Models\Categorie;
-use App\Models\SousCategorie;
-use App\Models\Boutique;
-use App\Models\Commande;
-use App\Models\User;
+use App\Models\Role;
+use App\Models\AffecterRoles;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -16,8 +12,9 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Alert;
 
-class AdminController extends Controller
+class AffecterRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,24 +23,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $nombre_boutique = Boutique::where(['etat_boutique' =>1])->count() ;
-
-        $nombre_produit = Produit::where(['etat_produit' =>1])->count() ;
-
-        $nombre_categorie = Categorie::where(['etat_categorie' =>1])->count() ;
-
-        $nombre_sous_categorie = SousCategorie::all()->count() ;
-
-        $commande_en_attente = Commande::where(['etat_commande' =>0])->count() ;
-
-        $commande_valider = Commande::where(['etat_commande' =>1])->count() ;
-
-        $nombre_client = user::where(['id_role' =>NULL])->count()  ;
-		
-        return view('pages_backend/index', compact('nombre_boutique','nombre_categorie', 'nombre_produit',
-		'nombre_sous_categorie', 'commande_en_attente','commande_valider', 'nombre_client'));
+        //
     }
-	
 
     /**
      * Show the form for creating a new resource.
@@ -63,8 +44,31 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $affecter_role = new AffecterRoles();
+
+		$affecter_role->id_role = $request->libelle_role;
+		$affecter_role->id_user = $request->email_user;
+		
+        $affecter_role->save();
+
+        return back()->with('success', 'Enregistrement effectué avec succè');
     }
+
+//List des villes
+     public function UtilisateurRole()
+     {
+         $utilisateurs = DB::table('affecter_roles')->get();
+
+         $roles = Role::all();
+		 
+		 $users = DB::table('user')
+        ->where('user.type_user', '!=', 1)
+        ->get();
+ 
+         return view('modals/ajout/affecte_role',compact('utilisateurs','users', 'roles'));
+                 
+     }
 
     /**
      * Display the specified resource.
@@ -100,7 +104,7 @@ class AdminController extends Controller
         //
     }
 
-    /**
+	/**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

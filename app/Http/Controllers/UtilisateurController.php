@@ -64,10 +64,12 @@ class UtilisateurController extends Controller
 		$user->nom_user = $request->username;
 		$user->prenom_user = $request->userprenom;
         $user->email_user = $request->useremail;
-        $user->id_role = $request->id_role;
+        
         $user->password_user = password_hash($request->userpassword, PASSWORD_DEFAULT);
         $user->password_visible = $request->userpassword ;
 		$user->type_user = 1 ;
+		
+		
 	   
         $user->save();
         
@@ -86,6 +88,25 @@ class UtilisateurController extends Controller
          $roles = Role::all();
  
          return view('pages_backend/utilisateur/list_utilisateur',compact('utilisateurs','roles'));
+                 
+     }
+
+
+	//List des villes
+     public function utilisateurRole()
+     {
+         $utilisateurs = DB::table('affecter_roles')
+        ->get();
+
+         $roles = Role::all();
+		 
+		  $users = User::all();
+		  
+		   $users_aff = DB::table('user')
+			->where('user.type_user', '!=', 1)
+			->get();
+ 
+         return view('pages_backend/utilisateur/role_utilisateur',compact('users_aff', 'utilisateurs','users', 'roles'));
                  
      }
 

@@ -51,9 +51,9 @@ class ConnexionController extends Controller
     public function store(Request $request)
     {
         
-        if ($request->username=="admin@gmail.com" && $request->userpassword=="admin") {
+        /*if ($request->username=="admin@gmail.com" && $request->userpassword=="admin") {
             return redirect()->to('/admin');
-        }  
+        }  */
         
 		$result = User::where(['email_user' => $request->username])->first();
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/
@@ -83,7 +83,11 @@ class ConnexionController extends Controller
             Cookie::queue('prenom_user', $result->prenom_user , 5000);
             Cookie::queue('id_role', $result->id_role , 5000);
             Cookie::queue('id_user', $result->id_user , 5000);
-            return redirect()->to('/admin');
+			
+			$result = User::where(['email_user' => $request->username])->first();
+            
+			return redirect()->to('/admin');
+		
 		}else{
 
             Session()->flash('error','Nom d\'utilisateur ou mot de passe incorrecte ');

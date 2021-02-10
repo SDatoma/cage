@@ -14,7 +14,12 @@
             <label for="recipient-name" class="col-form-label">Libelle</label>
             <input type="text" class="form-control" id="recipient-name" name="libelle_role" required="">
           </div>
-        
+		
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Code rôle</label>
+            <input type="text" class="form-control" id="recipient-name" name="code_role" required="">
+          </div>
+		  
         </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" >Enregistrer</button>
