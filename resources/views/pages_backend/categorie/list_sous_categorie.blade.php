@@ -38,13 +38,14 @@
                                         <tr style="background-color:#0069d9;color:white">
                                             <th>CATEGORIE</th>
                                             <th>SOUS CATEGORIE</th>
+                                            <th>ACTION</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
                                     @foreach($categories as $categorie)
                                         <tr>
-                                            <td>{{$categorie->libelle_categorie}}</td>
+                                            <td>{{$categorie->libelle_categorie}} </td>
                                             <?php
                                               $sous_categories = \App\Models\SousCategorie::where(['id_categorie' =>$categorie->id_categorie])->get();
                                              ?>
@@ -54,7 +55,12 @@
                                              @include('modals/modification/edit_sous_categorie')
                                             @endforeach
                                             </td>
+                                            <td>
+                                            <button class="btn btn-succes btn-sm" title="Sous categorie"  data-toggle="modal"   data-target="#sous-c{{$categorie->id_categorie}}"><i class="zmdi zmdi-plus"></i></i>
+                                            </button> 
+                                            </td>
                                         </tr>
+                                        @include('modals/ajout/ajouter_sous_categorie')
                                     @endforeach  
                                     </tbody>
                                 </table>

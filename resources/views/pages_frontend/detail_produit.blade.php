@@ -85,23 +85,8 @@ if (Cookie::get('id_user')== null)
 				       <div class="occasion-cart">
 				            	<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 								@if($produit->quantite_produit>3)
-					                  <form  method="POST"  action="{{route('cart.store')}}">
-                                         {{ csrf_field() }}
-											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$produit->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$produit->nom_produit}}"/>
-												<input type="hidden" name="business" value="" />
-												<input type="hidden" name="item_name" value="Almonds, 100g" />
-											@if($promotion)
-										    <?php 
-										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ttc - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ttc}} @endif"/>
-												<input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
+								<input type="submit" data-toggle="modal"   data-target="#cm{{$produit->id_produit}}"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp"/>
+									@include('modals/detail/confirm_commande')
 								@else
 								<input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9" value="Ajouter au panier" class="button cart-resp" />
 								@endif
@@ -285,35 +270,35 @@ if (Cookie::get('id_user')== null)
 			</h3>
 			<div class="content-bottom-in">
 				<ul id="flexiselDemo1">
-					@foreach($produits_idem_cats as $produits_idem_ss_cat)
+					@foreach($produits_idem_cats as $produit)
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="{{route('detail-produit.produit', $produits_idem_ss_cat->id_produit)}}">
-									<img src="/{{$produits_idem_ss_cat->image_produit}}" height=250 width=350 alt="">
+								<a href="{{route('detail-produit.produit', $produit->id_produit)}}">
+									<img src="/{{$produit->image_produit}}" height=250 width=350 alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="{{route('detail-produit.produit', $produits_idem_ss_cat->id_produit)}}">{{$produits_idem_ss_cat->nom_produit}}</a>
+									<a href="{{route('detail-produit.produit', $produit->id_produit)}}">{{$produit->nom_produit}}</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>{{$produits_idem_ss_cat->prix_ttc}} F CFA</h6>
+									<h6>{{$produit->prix_ttc}} F CFA</h6>
 								</div>
 								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-								@if($produits_idem_ss_cat->quantite_produit>3)
+								@if($produit->quantite_produit>3)
 									    <form  method="POST"  action="{{route('cart.store')}}">
                                            {{csrf_field()}}
 											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$produits_idem_ss_cat->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$produits_idem_ss_cat->nom_produit}}"/>
+												<input type="hidden" name="id_produit" value="{{$produit->id_produit}}"/>
+												<input type="hidden" name="nom_produit" value="{{$produit->nom_produit}}"/>
 											@if($promotion)
 										    <?php 
-										    $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produits_idem_ss_cat->prix_ttc - $reduction;
+										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										    $prix_ht_promo= $produit->prix_ttc - $reduction;
 										    ?>
                                             @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ttc}} @endif"/>
+											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ttc}} @endif"/>
 											<input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
 											</fieldset>
 										</form>
@@ -334,59 +319,48 @@ if (Cookie::get('id_user')== null)
 		<div class="container">
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">Produits de la même catégorie que <strong style="color:red"> {{$produit->nom_produit}} </strong></h3>
-						@foreach($produits_idem_cats as $produits_idem_ss_cat)
+						@foreach($produits_idem_cats as $produit)
 						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="/{{$produits_idem_ss_cat->image_produit}}"  height=150 width=200  alt="">
+									<img src="/{{$produit->image_produit}}"  height=150 width=200  alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $produits_idem_ss_cat->id_produit)}}" class="link-product-add-cart">Detail</a>
+											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
-										<a href="single.html">{{$produits_idem_ss_cat->nom_produit}}</a>
+										<a href="single.html">{{$produit->nom_produit}}</a>
 									</h4>
 									<?php
-									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produits_idem_ss_cat->id_produit])->first();
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
 									?>
 									   
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
 										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ttc}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$produits_idem_ss_cat->prix_ttc}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									@if($produits_idem_ss_cat->quantite_produit>3)
-									    <form  method="POST"  action="{{route('cart.store')}}">
-                                           {{csrf_field()}}
-											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$produits_idem_ss_cat->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$produits_idem_ss_cat->nom_produit}}"/>
-											@if($promotion)
-										    <?php 
-										    $reduction= ($produits_idem_ss_cat->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produits_idem_ss_cat->prix_ttc - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produits_idem_ss_cat->prix_ttc}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
+									@if($produit->quantite_produit>3)
+
+									<i class="fa fa-cart-arrow-down"></i><input type="submit" data-toggle="modal"   data-target="#cm{{$produit->id_produit}}"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp"/>
+									@include('modals/detail/confirm_commande')
 									@else
 									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9" value="Ajouter au panier" class="button cart-resp" />
 									@endif
+
 									</div> </br>
-									@if($produits_idem_ss_cat->quantite_produit>3)
+									@if($produit->quantite_produit>3)
 									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>En Stock</b> </span>
 									@else
 									<span class="item_price" style="font-size:15px;color:red"><b>En rupture</b> </span>
@@ -397,7 +371,7 @@ if (Cookie::get('id_user')== null)
 						@endforeach
 						<div class="clearfix"></div>
 						<div class="d-flex justify-content-center mt-4">
-                          {{ $produits_idem_ss_cats->links() }}
+                          {{$produits_idem_cats->links() }}
                        </div>
 					</div>
 					</div>
@@ -407,14 +381,14 @@ if (Cookie::get('id_user')== null)
 		<div class="container">
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">Nouveaux produits</h3>
-                        @foreach($nouveau_produits as $nouveau_produit)
+                        @foreach($nouveau_produits as $produit)
 						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="/{{$nouveau_produit->image_produit}}"  height=150 width=200  alt="">
+									<img src="/{{$produit->image_produit}}"  height=150 width=200  alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $nouveau_produit->id_produit)}}" class="link-product-add-cart">Detail</a>
+											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
 									<span class="product-new-top">Neuf</span>
@@ -422,46 +396,35 @@ if (Cookie::get('id_user')== null)
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
-										<a href="single.html">{{$nouveau_produit->nom_produit}}</a>
+										<a href="single.html">{{$produit->nom_produit}}</a>
 									</h4>
 									<?php
-									 $promotion = \App\Models\Promotion::where(['id_produit' =>$nouveau_produit->id_produit])->first();
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
 									?>
 									   
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($nouveau_produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
 										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									@if($nouveau_produit->quantite_produit>3)
-									    <form  method="POST"  action="{{route('cart.store')}}">
-                                           {{csrf_field()}}
-											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$nouveau_produit->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$nouveau_produit->nom_produit}}"/>
-											@if($promotion)
-										    <?php 
-										    $reduction= ($nouveau_produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $nouveau_produit->prix_ttc - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ttc}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
+									@if($produit->quantite_produit>3)
+
+									<i class="fa fa-cart-arrow-down"></i><input type="submit" data-toggle="modal"   data-target="#cm{{$produit->id_produit}}"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp"/>
+									@include('modals/detail/confirm_commande')
+
 									@else
 									<i class="fa fa-cart-arrow-down"></i> <input type="submit" name="submit"  style="font-size:10px;background-color:#a9a9a9" value="Ajouter au panier" class="button cart-resp" />
 									@endif
 									</div> </br>
-									@if($nouveau_produit->quantite_produit>3)
+									@if($produit->quantite_produit>3)
 									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>En Stock</b> </span>
 									@else
 									<span class="item_price" style="font-size:15px;color:red"><b>En rupture</b> </span>

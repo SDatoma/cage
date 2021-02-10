@@ -49,13 +49,13 @@
             <div class="col-md-12 body-main">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">CAGE BAT E-commerce</p>
+                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
 						 </div>
 						
                         <div class="col-md-6 text-right">
                             <h4 style="color: #F81D2D;"><strong>CAGE - BATIMENT</strong></h4>
                             <p>Togo, Lomé, Agoè Démakpoè</p>
-                            <p>+228 70 45 37 85 | 96 35 80 90</p>
+                            <p>(+228) 70 45 37 85 | 96 35 80 90</p>
                             <p>	cagetogo@gmail.com</p>
                         </div>
                     </div> <br />
@@ -95,7 +95,7 @@
                                        Libelle
                                     </th>
 									<th>
-                                        Quantite
+                                        Quantité
                                     </th>
 									<th>
                                         Prix Unitaire
@@ -117,7 +117,7 @@
                             @endforeach 
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3">SOUS TOTAL</th>
+									<th colspan="3">TOTAL</th>
 									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
 								</tr>
 

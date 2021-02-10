@@ -224,23 +224,9 @@ if (Cookie::get('id_user')== null)
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form  method="POST"  action="{{route('cart.store')}}">
-                                         {{ csrf_field() }}
-											<fieldset>
-												<input type="hidden" name="id_produit" value="{{$produit->id_produit}}"/>
-												<input type="hidden" name="nom_produit" value="{{$produit->nom_produit}}"/>
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Almonds, 100g" />
-											@if($promotion)
-										    <?php 
-										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ttc - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$produit->prix_ttc}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
+
+									<i class="fa fa-cart-arrow-down"></i><input type="submit" data-toggle="modal"   data-target="#cm{{$produit->id_produit}}"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp"/>
+									@include('modals/detail/confirm_commande')
 									</div> </br>
 									@if($produit->stock_produit=="En stock")
 									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$produit->stock_produit}}</b> </span>
@@ -265,14 +251,14 @@ if (Cookie::get('id_user')== null)
 					<div class="product-sec1">
 						<h3 class="heading-tittle" style="font-size:25px">NOUVEAUX PRODUITS</h3>
 						</br></br>
-                        @foreach($nouveau_produits as $nouveau_produit)
+                        @foreach($nouveau_produits as $produit)
 						<div class="col-md-3 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="/{{$nouveau_produit->image_produit}}"  height=150 width=200  alt="">
+									<img src="/{{$produit->image_produit}}"  height=150 width=200  alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail-produit.produit', $nouveau_produit->id_produit)}}" class="link-product-add-cart">Detail</a>
+											<a href="{{route('detail-produit.produit', $produit->id_produit)}}" class="link-product-add-cart">Detail</a>
 										</div>
 									</div>
 									<span class="product-new-top">Neuf</span>
@@ -280,45 +266,34 @@ if (Cookie::get('id_user')== null)
 								</div>
 								<div class="item-info-product ">
 									<h4 class="mb">
-										<a href="single.html">{{$nouveau_produit->nom_produit}}</a>
+										<a href="single.html">{{$produit->nom_produit}}</a>
 									</h4>
 									<?php
-									 $promotion = \App\Models\Promotion::where(['id_produit' =>$nouveau_produit->id_produit])->first();
+									 $promotion = \App\Models\Promotion::where(['id_produit' =>$produit->id_produit])->first();
 									?>
 									   
 									<div class="info-product-price">
 									   @if($promotion)
 										 <?php 
-										   $reduction= ($nouveau_produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
+										   $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
 										   $prix_ht_promo= $produit->prix_ttc - $reduction;
 										 ?>
 										<span class="item_price" style="font-size:15px;color:red">{{$prix_ht_promo}} F CFA</span>
-										<del> <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span></del>
+										<del> <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span></del>
 										@else
-									   <span class="item_price" style="font-size:15px;color:red">{{$nouveau_produit->prix_ttc}} F CFA</span>
+									   <span class="item_price" style="font-size:15px;color:red">{{$produit->prix_ttc}} F CFA</span>
 									    @endif
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form  method="POST"  action="{{route('cart.store')}}">
-                                         {{ csrf_field() }}
-											<fieldset>
-											<input type="hidden" name="id_produit" value="{{$nouveau_produit->id_produit}}"/>
-											<input type="hidden" name="nom_produit" value="{{$nouveau_produit->nom_produit}}"/>
-											@if($promotion)
-										    <?php 
-										    $reduction= ($produit->prix_ttc*$promotion->pourcentage_promotion)/100 ; 
-										    $prix_ht_promo= $produit->prix_ttc - $reduction;
-										    ?>
-                                            @endif
-											<input type="hidden" name="prix_produit" value="@if($promotion) {{$prix_ht_promo}} @else {{$nouveau_produit->prix_ttc}} @endif"/>
-												<i class="fa fa-cart-arrow-down"></i><input type="submit" name="submit"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp" />
-											</fieldset>
-										</form>
+
+									<i class="fa fa-cart-arrow-down"></i><input type="submit" data-toggle="modal"   data-target="#cm{{$produit->id_produit}}"  style="font-size:10px" value="Ajouter au panier" class="button cart-resp"/>
+									@include('modals/detail/confirm_commande')
+
 									</div> </br>
-									@if($nouveau_produit->stock_produit=="En stock")
-									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$nouveau_produit->stock_produit}}</b> </span>
+									@if($produit->stock_produit=="En stock")
+									<i class="fa fa-check" aria-hidden="true"></i> <span class="item_price" style="font-size:15px;color:black"><b>{{$produit->stock_produit}}</b> </span>
 									@else
-									<span class="item_price" style="font-size:15px;color:red"><b>{{$nouveau_produit->stock_produit}}</b> </span>
+									<span class="item_price" style="font-size:15px;color:red"><b>{{$produit->stock_produit}}</b> </span>
 									@endif
                                </div>
 							</div>

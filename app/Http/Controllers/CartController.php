@@ -38,7 +38,7 @@ class CartController extends Controller
     {
         ShoppingCart::associate('App\Models\Produit');
 
-        ShoppingCart::add($request->id_produit,$request->nom_produit,1,$request->prix_produit);
+        ShoppingCart::add($request->id_produit,$request->nom_produit,$request->quantite,$request->prix_produit);
         //return redirect()->back();
         return back()->with('success', 'Ajout au panier avec succes!');
       
