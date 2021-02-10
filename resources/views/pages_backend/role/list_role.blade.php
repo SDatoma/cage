@@ -42,6 +42,7 @@
                                     <thead>
                                         <tr style="background-color:#0069d9;color:white">
                                             <th>LIBELLE</th>
+                                            <th>CODE</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -50,6 +51,7 @@
                                     @foreach($roles as $role)
                                         <tr>
                                             <td>{{$role->libelle_role}}</td>
+                                            <td>{{$role->code_role}}</td>
                                              <td>
                                              
                                              <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#mv{{$role->id_role}}"><i class="zmdi zmdi-edit"></i></button> 

@@ -54,6 +54,7 @@ class RoleController extends Controller
         $role= new Role();
 
         $role->libelle_role=$request->libelle_role;
+        $role->code_role=$request->code_role;
 
         $role->save();
 
@@ -67,6 +68,14 @@ class RoleController extends Controller
         $roles = Role::all();
 
         return view('pages_backend/role/list_role')->with(["roles" => $roles])->with(["page" => "liste-ville"]);
+				
+    }
+	
+	public function liste_role()
+    {
+        $roles = Role::all();
+
+        return view('modals/ajout/add_utilisateur', compact('roles'));
 				
     }
 

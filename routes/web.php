@@ -123,6 +123,7 @@ Route::get('/list/role', 'RoleController@getAllRole');
 
 //Utilisateur
 Route::get('/list/utilisateur', 'UtilisateurController@getAllUtilisateur');
+Route::get('/affecte/role', 'UtilisateurController@utilisateurRole');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
@@ -154,4 +155,5 @@ Route::resource('news', 'NewsController');
 Route::resource('adresse', 'AdresseController');
 Route::resource('message', 'ContactController');
 Route::resource('password', 'ForgetPasseController');
+Route::resource('affectation', 'AffecterRoleController');
 
