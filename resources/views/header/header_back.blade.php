@@ -65,7 +65,7 @@
             <li class="active open"><a href="/admin"><i class="zmdi zmdi-home"></i><span>Tableau de board</span></a></li>
 			
 			<?php
-			  $roles = DB::table('affecter_roles')
+			     $roles = DB::table('affecter_roles')
 				->join('role', 'role.id_role', '=', 'affecter_roles.id_role')
 				->join('user', 'user.id_user', '=', 'affecter_roles.id_user')
 				->where('affecter_roles.id_user', '=', Cookie::get('id_user'))
