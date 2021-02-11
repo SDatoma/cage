@@ -26,18 +26,6 @@
           </div>
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Role</label>
-			
-            <select name="id_role" class="form-control" required="">
-                <option value=""> Choisissez le role </option>
-                @foreach($roles as $role)
-					<option value="{{$role->code_role}}"> {{$role->libelle_role}}</option>
-				@endforeach
-            </select>
-			
-          </div>
-
-          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mot de passe</label>
             <input type="password" class="form-control" id="recipient-name" name="userpassword" required="">
           </div>

@@ -123,7 +123,7 @@ Route::get('/list/role', 'RoleController@getAllRole');
 
 //Utilisateur
 Route::get('/list/utilisateur', 'UtilisateurController@getAllUtilisateur');
-Route::get('/affecte/role', 'UtilisateurController@utilisateurRole');
+Route::get('/affecte/role/{id}', 'UtilisateurController@utilisateurRole')->name('affecte.role');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');

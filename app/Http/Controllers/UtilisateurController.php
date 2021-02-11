@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\AffecterRoles;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -82,7 +83,7 @@ class UtilisateurController extends Controller
      public function getAllUtilisateur()
      {
          $utilisateurs = DB::table('user')
-        ->where('user.id_role', '!=', null)
+        ->where('user.type_user', '=', 1)
         ->get();
 
          $roles = Role::all();
@@ -93,20 +94,30 @@ class UtilisateurController extends Controller
 
 
 	//List des villes
-     public function utilisateurRole()
+     public function utilisateurRole($id)
      {
-         $utilisateurs = DB::table('affecter_roles')
+        $utilisateurs = DB::table('affecter_roles')
+		->where('affecter_roles.id_user', '=', $id)
         ->get();
-
-         $roles = Role::all();
+		
+		$roles = Role::all();
+		
+		$roles_aff = DB::select("select * from role where id_role not in 
+		   (select id_role from affecter_roles where id_user  = ".$id.")");
+		   
+		$roles_affs = AffecterRoles::all();
 		 
-		  $users = User::all();
+		$users = User::all();
 		  
-		   $users_aff = DB::table('user')
-			->where('user.type_user', '!=', 1)
-			->get();
+		$users_aff = DB::table('user')
+		->where('user.type_user', '=', 1)
+		->get();
+			
+		$users_ligne = DB::table('user')
+		->where('user.id_user', '=', $id)
+		->first();
  
-         return view('pages_backend/utilisateur/role_utilisateur',compact('users_aff', 'utilisateurs','users', 'roles'));
+         return view('pages_backend/utilisateur/role_utilisateur',compact('roles_aff', 'users_ligne', 'users_aff', 'utilisateurs','users', 'roles'));
                  
      }
 

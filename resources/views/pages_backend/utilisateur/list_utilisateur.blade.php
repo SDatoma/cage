@@ -45,7 +45,7 @@
                                             <th>NOM & PRENOM</th>
                                             <th>ADRESSE MAIL</th>
                                             <th>MOT DE PASSE</th>
-                                            <th>ROLE</th>
+                                            <!--th>ROLE</th-->
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -56,7 +56,7 @@
                                             <td>{{$utilisateur->nom_user}} {{$utilisateur->prenom_user}}</td>
                                             <td>{{$utilisateur->email_user}}</td>
                                             <td>{{$utilisateur->password_visible}}</td>
-                                            <td>
+                                            <!--td>
                                                 @if($utilisateur->id_role==1)
                                                    Comptable
                                                 @elseif($utilisateur->id_role==2)
@@ -64,11 +64,13 @@
                                                 @else
                                                     Gestionnaire de stock
                                                 @endif
-                                            </td>
+                                            </td-->
                                             <td> 
                                             <button class="btn btn-primary btn-sm" title="Modifier" data-toggle="modal" data-target="#mu{{$utilisateur->id_user}}"><i class="zmdi zmdi-edit"></i></button> 
 
                                             <button class="btn btn-danger btn-sm" title="Supprimer" data-toggle="modal" data-target="#su{{$utilisateur->id_user}}"><i class="zmdi zmdi-delete"></i></button>
+                                            
+											<button class="btn btn-success btn-sm" title="Affecter"><a href="{{route('affecte.role', $utilisateur->id_user)}}" style="color:#fff"><i class="zmdi zmdi"></i>Affecter</a></button>
                                             
                                             </td>
                                             @include('modals/modification/edit_utilisateur')

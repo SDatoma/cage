@@ -3,7 +3,7 @@ aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><strong>Affectation de rôles</strong></h5></br></br>
+        <h5 class="modal-title"><strong>Affectation des rôles</strong></h5></br></br>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -28,10 +28,10 @@ aria-hidden="true">
             <label for="recipient-name" class="col-form-label">Rôle</label>
 			
             <select name="libelle_role" class="form-control" required="">
-                <option value=""> Choisissez le role </option>
-                @foreach($roles as $role)
-					<option value="{{$role->id_role}}"> {{$role->libelle_role}}</option>
-				@endforeach
+                <option value=""> Choisissez le rôle </option>
+					@foreach($roles_aff as $role)
+						<option value="{{$role->id_role}}"> {{$role->libelle_role}}</option>
+					@endforeach
             </select>
 			
           </div>

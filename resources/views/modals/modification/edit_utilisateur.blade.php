@@ -26,15 +26,6 @@
             <input type="email" class="form-control" value="{{$utilisateur->email_user}}" id="recipient-name" name="useremail" required="">
           </div>
 
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Role</label>
-            <select name="id_role" class="form-control">
-                @foreach($roles as $role)
-                <option value="{{$role->id_role}}" @if($role->id_role==$utilisateur->id_role) selected @endif > {{$role->libelle_role}}</option>
-                @endforeach
-            </select>
-          </div>
-         
          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mot de passe</label>
             <input type="password" class="form-control" value="{{$utilisateur->password_visible}}" id="recipient-name" name="userpassword" required="">

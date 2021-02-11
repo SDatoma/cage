@@ -51,9 +51,9 @@ class ConnexionController extends Controller
     public function store(Request $request)
     {
         
-        /*if ($request->username=="admin@gmail.com" && $request->userpassword=="admin") {
+        if ($request->username=="admin@cagebatiment.com" && $request->userpassword=="admin") {
             return redirect()->to('/admin');
-        }  */
+        }
         
 		$result = User::where(['email_user' => $request->username])->first();
         /* verifie si le les identifiant de l'utilisateur sont null il envoi erruer*/

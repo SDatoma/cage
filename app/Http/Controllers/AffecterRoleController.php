@@ -56,12 +56,16 @@ class AffecterRoleController extends Controller
     }
 
 //List des villes
-     public function UtilisateurRole()
+     public function UtilisateurRole($id)
      {
          $utilisateurs = DB::table('affecter_roles')->get();
 
-         $roles = Role::all();
-		 
+         $roles = DB::table('role')
+		 ->join('affecter_roles', 'role.id_role', '=', 'affecter_roles.id_role')
+        ->where('affecter_roles.id_role', '!=', 'role.id_role')
+		//->where('affecter_roles.id_user', '=', $id)
+		->get();
+		  
 		 $users = DB::table('user')
         ->where('user.type_user', '!=', 1)
         ->get();
@@ -112,6 +116,11 @@ class AffecterRoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $affecter_role = AffecterRoles::where(['id_affecter_roles' =>$id])->first() ;
+
+        $affecter_role->delete();
+		
+		Session()->flash('success','Suppression effectuee avec succès.');	
+		return redirect()->back();
     }
 }

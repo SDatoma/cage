@@ -7,8 +7,8 @@
     <div class="body_scroll">
         <div class="block-header">
             <div class="row">
-                <div class="col-lg-7 col-md-6 col-sm-12">
-                       <h5><strong>LISTE DES UTILISATEURS</strong></h5>
+                <div class="col-lg-7 col-md-6 col-sm-12"> <br/>
+                       <h5><strong>AFFECTATION/DESAFFECTATION DE ROLE A <a href="">{{$users_ligne->nom_user}} {{$users_ligne->prenom_user}} </a> </strong></h5>
                            <div class="pull-right mt-4">
                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Afrole">
                                    <i class="zmdi zmdi-plus"></i> Affecter des rôles
@@ -31,9 +31,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr style="background-color:#0069d9;color:white">
-                                            <th>NOM & PRENOM</th>
-                                            <th>ADRESSE MAIL</th>
-                                            <th>ROLE</th>
+                                            <th>LIBELLE ROLE</th>
+                                            <th>CODE ROLE</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -42,28 +41,20 @@
                                     @foreach($utilisateurs as $utilisateur)
 										
                                         <tr>
-                                            <td>@foreach($users as $user)
-												@if($user->id_user == $utilisateur->id_user)
-													{{$user->nom_user}} {{$user->prenom_user}}
+                                            <td>@foreach($roles as $role)
+												@if($role->id_role == $utilisateur->id_role)
+													{{$role->libelle_role}}
 												@endif
 												@endforeach
 											</td>
-                                            <td>@foreach($users as $user)
-												@if($user->id_user == $utilisateur->id_user)
-													{{$user->email_user}}
+                                            <td>@foreach($roles as $role)
+												@if($role->id_role == $utilisateur->id_role)
+													{{$role->code_role}}
 												@endif
 												@endforeach
 											</td>
-                                            <td>
-											@foreach($roles as $role)
-											@if($role->id_role == $utilisateur->id_role)
-												{{$role->libelle_role}}
-											@endif
-											@endforeach  
-                                            </td>
                                             <td> 
-												<button class="btn btn-danger btn-sm" title="Retirer" data-toggle="modal" data-target="#ar{{$utilisateur->id_user}}"><i class="zmdi zmdi-delete"></i></button>
-                                            
+												<button class="btn btn-danger btn-sm" title="Retirer" data-toggle="modal" data-target="#ar{{$utilisateur->id_affecter_roles}}"><i class="zmdi zmdi-delete"></i>  Retirer</button>
                                             </td>
                                         </tr>
 										 @include('modals/suppression/delete_role_affecter')

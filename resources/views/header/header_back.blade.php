@@ -90,7 +90,7 @@
 					</a>
 						<ul class="ml-menu">               
 							<li><a href="/list/utilisateur">Liste des utilisateurs</a></li>
-							<li><a href="/affecte/role">Affectation des rôles</a></li>
+							<!--li><a href="/affecte/role">Affectation des rôles</a></li-->
 						</ul>
 					</li>
 				@endif
