@@ -9,8 +9,8 @@
       {{ method_field('PUT') }}
       {{ csrf_field() }}
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Quantite a ajouter</label>
-            <input type="number" class="form-control" id="recipient-name" name="quantite" required="">
+            <label for="recipient-name" class="col-form-label">Quantité a ajouter</label>
+            <input type="number" class="form-control" id="recipient-name" min="1" name="quantite" required="">
           </div>
         </div>
       <div class="modal-footer">

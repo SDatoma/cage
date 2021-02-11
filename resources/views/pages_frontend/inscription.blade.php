@@ -51,7 +51,7 @@ if (Cookie::get('id_user')== null)
 
                                                     <div class="col-lg-4">Prénom : </div> <div class="col-lg-8"> <input required type="text" name="userprenom" value="{{ old('userprenom') }}" placeholder="Prénom " /> </div>
 
-													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" value="{{ old('usertelephone') }}" placeholder="N° Téléphone" type="numeric" /> </div>
+													<div class="col-lg-4">N° Téléphone : </div> <div class="col-lg-8"> <input required name="usertelephone" value="{{ old('usertelephone') }}" placeholder="N° Téléphone (Sans indicatif)" type="numeric" /> </div>
 
                                                     <div class="col-lg-4">Email : </div> <div class="col-lg-8"> <input required name="useremail" placeholder="Email" value="{{ old('useremail') }}" type="email" /> </div>
 

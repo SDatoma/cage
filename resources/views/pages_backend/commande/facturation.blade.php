@@ -118,12 +118,12 @@
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">TOTAL</th>
-									<th colspan="2"> <?php echo $prix_total?> F CFA</th>
+									<th colspan="2"> <?php echo ceil($prix_total)?> F CFA</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"> MONTANT HORS TAXE</th>
-									<th colspan="2"> <?php echo $prix_total_ht?> F CFA</th>
+									<th colspan="2"> <?php echo ceil($prix_total_ht)?> F CFA</th>
 								</tr>
 
                                 @if($remise)
@@ -148,13 +148,13 @@
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">NET A PAYER</th>
-									<th colspan="2"> <?php echo $prix_revient?> F CFA </th>
+									<th colspan="2"> <?php echo (round($prix_revient,0))?> F CFA </th>
 								</tr>
                                 @else
                                
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">NET A PAYER</th>
-									<th colspan="2"> <?php echo $prix_total?> F CFA </th>
+									<th colspan="2"> <?php echo (round($prix_total,0))?> F CFA </th>
 								</tr>
 
                                 @endif
@@ -170,12 +170,12 @@
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3" style="color:red"> TOTAL A PAYER</th>
-									<th colspan="2" style="color:red"> <?php echo $prix_revient?> F CFA</th>
+									<th colspan="2" style="color:red"> <?php echo (round($prix_revient,0))?> F CFA</th>
 								</tr>
                                 @else
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3" style="color:red"> TOTAL A PAYER</th>
-									<th colspan="2" style="color:red"> <?php echo $prix_total+$commande->frais_livraison?> F CFA</th>
+									<th colspan="2" style="color:red"> <?php echo (round($prix_total+$commande->frais_livraison,0)) ?> F CFA</th>
 								</tr>
                                 @endif
 
@@ -191,10 +191,10 @@
                                      <?php
                                       $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
                                       $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
-                                      echo int2str($prix_revient)
+                                      echo int2str((round($prix_revient,0)))
                                       ?> F CFA</b>
                                      @else
-                                     <?php echo int2str($prix_total+$commande->frais_livraison)?> F CFA</b>
+                                     <?php echo int2str((round($prix_total+$commande->frais_livraison,0)))?> F CFA</b>
                                      </p>
 									 @endif	
 
