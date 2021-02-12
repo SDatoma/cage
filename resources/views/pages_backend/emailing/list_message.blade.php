@@ -44,7 +44,7 @@
                         @endif
 
                         <div class="body">
-                        <h5>ENVOYER UN NOUVEAU MESSAGE</h5>
+                            <h5>ENVOYER UN NOUVEAU MESSAGE</h5>
                            <form id="form_validation" method="POST" action="{{route('email.store')}}">
                               {{csrf_field()}}
                                <div class="form-group form-float">

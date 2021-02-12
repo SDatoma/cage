@@ -49,7 +49,7 @@
             <div class="col-md-12 body-main">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
+                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/LOGOT.png')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
 						 </div>
 						
                         <div class="col-md-6 text-right">
@@ -120,6 +120,11 @@
 									<th colspan="3">TOTAL</th>
 									<th colspan="2"> <?php echo ceil($prix_total)?> F CFA</th>
 								</tr>
+                                  
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3">MONTANT TVA</th>
+									<th colspan="2">{{$prix_total_tva}} FCFA</th>
+								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3"> MONTANT HORS TAXE</th>
@@ -137,18 +142,14 @@
 								</tr>
                                 @endif
 
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3">MONTANT TVA</th>
-									<th colspan="2">{{$prix_total_tva}} FCFA</th>
-								</tr>
-                                @if($remise)
+                               @if($remise)
                                 <?php
                                  $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
                                   $prix_revient= ($prix_total - $remisee) ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
 									<th colspan="3">NET A PAYER</th>
-									<th colspan="2"> <?php echo (round($prix_revient,0))?> F CFA </th>
+									<th colspan="2"> <?php echo(round($prix_revient,0))?> F CFA </th>
 								</tr>
                                 @else
                                

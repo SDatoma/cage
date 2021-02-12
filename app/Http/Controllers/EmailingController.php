@@ -109,6 +109,36 @@ class EmailingController extends Controller
         return back()->with('success', 'Email envoyes avec succè');
     }
 
+
+    public function EmailPersonnaliser(Request $request)
+    {
+        $tab = json_decode($request->selectedids);
+        for ($i =0 ; $i <= count($tab) - 1; $i++){
+            $user = User::where(['id_user' =>$tab[$i]])->first() ;
+            $email = $user->email_user; 
+            $e_nom = "Bonjour Mr/Mme $user->nom_user $user->prenom_user " ;
+
+            // titre du mail
+            $titre =$request->titre_email; 
+            
+            $description =$request->description_email ; 
+
+            $contact = "Contact: +228 70 45 37 85 | 96 35 80 90 | 90 90 49 03 </br> Email: cagetogo@gmail.com </br>  Site Web : www.cagebatiment.com" ;
+
+           $logo='<img src="{{asset("files_upload/LOGOT.png")}}" alt=" " height="50px" widht="50px"></br>';
+
+            $contenu = $e_nom . '<br/><br/>'. $description .'<br /><br /><br />'.$contact.'<br /><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$logo ;
+
+            // envoi du mail HTML
+            $from = "From: CAGE Bâtiment <cagetogo@gmail.com>\nMime-Version:";
+            $from .= " 1.0\nContent-Type: text/html; charset=ISO-8859-1\n";
+            // envoie du mail
+           mail($email,$titre,$contenu,$from);
+        }
+        
+        return back()->with('success', 'Email envoyes avec succè');
+    }
+
     /**
      * Display the specified resource.
      *

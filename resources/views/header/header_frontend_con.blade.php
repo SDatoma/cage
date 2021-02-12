@@ -49,8 +49,8 @@
 			<div class="col-md-4 logo_agile">
 				<h1>
 				<a href="/">
-					<img src="{{asset('files_upload/logo.jpeg')}}" alt=" " height="100px" widht="100px"></br>
-						<span style="font-size:25px;color:black">CAGE BÄTIMENT</span>
+					<img src="{{asset('files_upload/LOGOT.png')}}" alt=" " height="100px" widht="100px"></br>
+						<span style="font-size:20px;color:black">CAGE BÄTIMENT</span>
 					</a>
 				</h1>
 			</div>

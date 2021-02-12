@@ -7,7 +7,7 @@
     <div class="body_scroll">
         <div class="block-header">
             <div class="row">
-                <div class="col-lg-7 col-md-6 col-sm-12"> <br/>
+                <div class="col-lg-12 col-md-6 col-sm-12"> <br/>
                        <h5><strong>AFFECTATION/DESAFFECTATION DE ROLE A <a href="">{{$users_ligne->nom_user}} {{$users_ligne->prenom_user}} </a> </strong></h5>
                            <div class="pull-right mt-4">
                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Afrole">
@@ -54,7 +54,7 @@
 												@endforeach
 											</td>
                                             <td> 
-												<button class="btn btn-danger btn-sm" title="Retirer" data-toggle="modal" data-target="#ar{{$utilisateur->id_affecter_roles}}"><i class="zmdi zmdi-delete"></i>  Retirer</button>
+												<button class="btn btn-danger btn-sm" title="Retirer" data-toggle="modal" data-target="#ar{{$utilisateur->id_affecter_roles}}"><i class="zmdi zmdi-delete"></i> Retirer</button>
                                             </td>
                                         </tr>
 										 @include('modals/suppression/delete_role_affecter')
