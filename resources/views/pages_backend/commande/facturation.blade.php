@@ -200,7 +200,7 @@
 
                                     <p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");
-									echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?></p>
+									echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?>b</p>
 									<p class="text-right" style="text-align: right; margin-top:40px"><b>Signature</b></p>
 
                                 @if($commande->etat_commande != 0 )  

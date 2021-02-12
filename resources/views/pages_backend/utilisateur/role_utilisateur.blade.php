@@ -41,18 +41,17 @@
                                     @foreach($utilisateurs as $utilisateur)
 										
                                         <tr>
-                                            <td>@foreach($roles as $role)
-												@if($role->id_role == $utilisateur->id_role)
+										@foreach($roles as $role)
+											@if($role->id_role == $utilisateur->id_role)
+                                            <td>
 													{{$role->libelle_role}}
-												@endif
-												@endforeach
 											</td>
-                                            <td>@foreach($roles as $role)
-												@if($role->id_role == $utilisateur->id_role)
+                                            <td>
 													{{$role->code_role}}
-												@endif
-												@endforeach
+												
 											</td>
+											@endif
+										@endforeach
                                             <td> 
 												<button class="btn btn-danger btn-sm" title="Retirer" data-toggle="modal" data-target="#ar{{$utilisateur->id_affecter_roles}}"><i class="zmdi zmdi-delete"></i>  Retirer</button>
                                             </td>
