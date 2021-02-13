@@ -123,11 +123,11 @@ Route::get('/list/role', 'RoleController@getAllRole');
 
 //Utilisateur
 Route::get('/list/utilisateur', 'UtilisateurController@getAllUtilisateur');
-Route::get('/affecte/role/{id}', 'UtilisateurController@utilisateurRole')->name('affecte.role');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
 Route::get('/envoi/email/{id}', 'EmailingController@reenvoiMail')->name('reenvoi.mail');
+Route::post('/envoi/email/personnaliser', 'EmailingController@EmailPersonnaliser');
 
 //cart
 Route::get('/empty', 'CartController@emptyCart');
@@ -155,5 +155,4 @@ Route::resource('news', 'NewsController');
 Route::resource('adresse', 'AdresseController');
 Route::resource('message', 'ContactController');
 Route::resource('password', 'ForgetPasseController');
-Route::resource('affectation', 'AffecterRoleController');
 

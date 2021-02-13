@@ -44,23 +44,25 @@
                         @endif
 
                         <div class="body">
-                        <h5>ENVOYER UN NOUVEAU MESSAGE</h5>
+                            <h5>ENVOYER UN NOUVEAU MESSAGE</h5>
                            <form id="form_validation" method="POST" action="{{route('email.store')}}">
                               {{csrf_field()}}
                                <div class="form-group form-float">
-                                    <select name="id_ville" class="form-control show-tick ms select2" data-placeholder="Select" required >
-										<option value=""> Choisissez la ville </option> 
+                                    <label> Ville de destination </label>
+                                    <select name="ville[]" class="form-control  ms select2 chosen-select" multiple tabindex="4" data-placeholder="Select" required >
+										<!-- <option value=""> Choisissez la ville </option>  -->
 										@foreach($villes as $ville) 
 										<option value="{{$ville->id_ville}}"> {{$ville->libelle_ville}} </option> 
 										@endforeach
-                                        <option value="0"> Toutes les villes </option>
 								    </select>
                                 </div>
 
                                 <div class="form-group form-float">
+                                  <label> Titre du message </label>
                                     <input type="text" class="form-control" placeholder="Titre du message" name="titre_email" value="{{ old('titre_email') }}" required>
                                 </div>
                                 <div class="form-group form-float">
+                                    <label> Description </label>
                                     <textarea name="description_email" cols="30" rows="5" placeholder="Description" class="form-control no-resize summernote" required>{{old('description_produit') }}</textarea>
                                 </div>
 

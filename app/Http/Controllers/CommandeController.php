@@ -288,7 +288,7 @@ class CommandeController extends Controller
     public function getAllUser()
     {
         $users = DB::table('user')
-        ->where('user.id_role', '=', null)
+        ->where('user.type_user', '=', 2)
         ->get();
 
           $villes = Ville::where(['etat_ville' =>1])->get() ;

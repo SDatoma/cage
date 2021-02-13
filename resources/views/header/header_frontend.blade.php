@@ -29,7 +29,7 @@
 	<!--//pop-up-box-->
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="{{asset('css_frontend/css/jquery-ui1.css')}}">
-	<link rel="shortcut icon" type="image/x-icon" href="{{asset('files_upload/logo1.jpeg')}}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('files_upload/LOGOT.png')}}" />
 	<!-- fonts 
 	<!-- flexslider -->
 	<link rel="stylesheet" href="{{asset('css_frontend/css/flexslider.css')}}" type="text/css" media="screen" />
@@ -52,8 +52,8 @@
 			<div class="col-md-3 logo_agile">
 				<h1>
 					<a href="/">
-					<img src="{{asset('files_upload/logo.jpeg')}}" alt=" " height="100px" widht="100px"></br>
-						<span style="font-size:25px;color:black">CAGE BÄTIMENT</span>
+					<img src="{{asset('files_upload/LOGOT.png')}}" alt=" " height="100px" widht="100px"></br>
+						<span style="font-size:20px;color:black">CAGE BÄTIMENT</span>
 					</a>
 				</h1>
 			</div>
