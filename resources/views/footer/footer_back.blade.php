@@ -78,7 +78,7 @@
                     idsArr.push($(this).attr('data-id'));
                 });
                 if (idsArr.length <= 0) {
-                    alert("Veuillez selectionner les clients concernées.");
+                    alert("Veuillez selectionner le(s) client(s) concerné(s).");
                     return false;
                 } else {
                     if (!confirm("Vous etes sur d'envoyer ce message a ce(s) clients ?")) {

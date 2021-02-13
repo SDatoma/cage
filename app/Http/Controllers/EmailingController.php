@@ -47,7 +47,9 @@ class EmailingController extends Controller
      */
     public function store(Request $request)
     {
-        $users = User::where(['id_ville' =>$request->id_ville])->get() ;
+      $i = 0;
+      foreach ($request->ville as $ville) {
+           $users = User::where(['id_ville' =>$request->ville[$i]])->get() ;
 
         foreach($users as $user){
                 $email = $user->email_user; 
@@ -73,9 +75,13 @@ class EmailingController extends Controller
        
         $email->titre_email= $request->titre_email;
         $email->description_email= $request->description_email;
-        $email->id_ville= $request->id_ville;
+        $email->id_ville= $request->ville[$i];
 
         $email->save();
+
+        $i++;
+
+    }
         
        return back()->with('success', 'Email envoyes avec succè');
     }
