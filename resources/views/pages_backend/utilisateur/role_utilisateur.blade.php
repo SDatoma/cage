@@ -39,17 +39,11 @@
                                     
                                     <tbody>
                                     @foreach($utilisateurs as $utilisateur)
-										
                                         <tr>
 										@foreach($roles as $role)
 											@if($role->id_role == $utilisateur->id_role)
-                                            <td>
-													{{$role->libelle_role}}
-											</td>
-                                            <td>
-													{{$role->code_role}}
-												
-											</td>
+                                            <td> {{$role->libelle_role}} </td>
+                                            <td> {{$role->code_role}} </td>
 											@endif
 										@endforeach
                                             <td> 

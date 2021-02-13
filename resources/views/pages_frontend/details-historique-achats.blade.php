@@ -50,8 +50,9 @@ if (Cookie::get('id_user')== null)
             <div class="col-md-12 body-main">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4"> <img class="img" alt="Invoce Template" src="{{asset('css_frontend/images/logo2.png')}}" /><p style="margin-left:20px;font-size:15px">CAGE BAT E-commerce</p>
-						 </div>
+                        <div class="col-md-4"> 
+							<img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
+						</div>
                          <div class="col-md-4">
                         @if($commande->etat_commande != 0 )  
 						<span class="badge" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php setlocale(LC_TIME, "fr_FR","French");
@@ -67,43 +68,52 @@ if (Cookie::get('id_user')== null)
                         </div>
                     </div> <br />
                     <div class="row">
-                        <?php  $annee=date('Y');
-                        $numero= $annee."/CAGE-BAT/0000".$commande->numero_facture;
+                       <?php  $annee=date('Y');
+                          $numero= $annee."/CAGE-BAT/000".$commande->numero_facture;
                         ?>
                         <div class="col-md-12 text-center float">
                             <h2><u>FACTURE N° {{$numero}}</u></h2> 
-                            </br></br></br>
-                        </div>
+                        </div><br />
+						
+						<div class="col-md-12" style="margin-top:10px">
+						
                         <div class="col-md-6 text-left">
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
+                            <p>
+                            @foreach($villes as $ville)
+                                @if($ville->id_ville==$user->id_ville)
+                                  {{$ville->libelle_ville}} 
+                                @endif
+                            @endforeach
+                            , {{$user->quartier_user}}</p>
                             <p>{{$user->email_user}}</p>
-							
-                            <p>+228 {{$user->telephone_user}}</p>
+                            <p>(+228) {{$user->telephone_user}}</p>
                         </div>
 
-                        <div class="col-md-6 text-left">
+                        <div class="col-md-6 text-right">
                             <h4 style="color: black;"><strong><u>Adresse de livraison</u></strong></h4>
                             <p> Ville : {{$adresse->ville_adresse}}</p>
                             <p> Pays : {{$adresse->pays_adresse}}</p>
                             <p> Description : {{$adresse->description_adresse}}</p>
                         </div>
+                        </div>
 
                     </div> <br />
-                    <div>
-                        <table class="table table-striped table-bordered" >
+                    <div><br />
+                        <table class="table table-bordered" style="font-size:17px">
                             <thead>
                                 <tr>
-                                    <th style="font-size:17px;">
+                                    <th>
                                        Libelle
                                     </th>
-									<th style="font-size:17px;">
-                                        Quantite
+									<th>
+                                        Quantité
                                     </th>
-									<th style="font-size:17px;">
+									<th>
                                         Prix Unitaire
                                     </th>
-                                    <th style="font-size:17px;">
-                                        Total
+                                    <th>
+                                        Montant
                                     </th>
 
                                 </tr>
@@ -111,70 +121,105 @@ if (Cookie::get('id_user')== null)
                             <tbody>
 							@foreach($commandes as $commande)
                                 <tr>
-                                    <td style="font-size:17px;">{{$commande->nom_produit}}</td>
-									<td style="font-size:17px;">{{$commande->quantite_commande}}</td>
-									<td style="font-size:17px;">{{$commande->prix_ht_produit}}</td>
-                                    <td style="font-size:17px;">{{$commande->prix_ht_produit*$commande->quantite_commande}}</td>
+                                    <td>{{$commande->nom_produit}}</td>
+									<td>{{$commande->quantite_commande}}</td>
+									<td>{{$commande->prix_ttc}}</td>
+                                    <td>{{$commande->prix_ttc*$commande->quantite_commande}}</td>
                                 </tr>
                             @endforeach 
-                                
-                               <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;"> SOUS TOTAL</th>
-									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA</th>
+                               
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3">TOTAL</th>
+									<th colspan="2"> <?php echo ceil($prix_total)?> F CFA</th>
 								</tr>
 
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;">TVA</th>
-									<th colspan="2"  style="font-size:17px;">18 %</th>
-								</tr>
-
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;">HTTC</th>
-									<th colspan="2"  style="font-size:17px;"> <?php echo $prix_total?> F CFA </th>
-								</tr>
-
-                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;">FRAIS DE LIVRAISON</th>
-									<th colspan="2"  style="font-size:17px;"> {{$commande->frais_livraison ?? '0'}} F CFA</th>
+									<th colspan="3"> MONTANT HORS TAXE</th>
+									<th colspan="2"> <?php echo ceil($prix_total_ht)?> F CFA</th>
 								</tr>
 
                                 @if($remise)
                                 <?php
                                   $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
-                                  $prix_revient= $prix_total - $remisee ;
+                                  $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
                                  ?>
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:17px;">REMISE</th>
-									<th colspan="2"  style="font-size:17px;">{{$remise->pourcentage_remise}} %</th>
+									<th colspan="3">REMISE</th>
+									<th colspan="2">{{$remise->pourcentage_remise}} %</th>
 								</tr>
+                                @endif
+
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
-									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_revient+$commande->frais_livraison?> F CFA</th>
+									<th colspan="3">MONTANT TVA</th>
+									<th colspan="2">{{$prix_total_tva}} FCFA</th>
+								</tr>
+                                @if($remise)
+                                <?php
+                                 $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                  $prix_revient= ($prix_total - $remisee) ;
+                                 ?>
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3">NET A PAYER</th>
+									<th colspan="2"> <?php echo (round($prix_revient,0))?> F CFA </th>
 								</tr>
                                 @else
-                                 
+                               
                                 <tr scope="col" colspan="5" rowspan="1" class="text-center">
-									<th colspan="3"  style="font-size:20px; color:red"> TOTAL A PAYER</th>
-									<th colspan="2"  style="font-size:20px;"> <?php echo $prix_total+$commande->frais_livraison?> F CFA</th>
+									<th colspan="3">NET A PAYER</th>
+									<th colspan="2"> <?php echo (round($prix_total,0))?> F CFA </th>
 								</tr>
 
                                 @endif
-                            </tbody>
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3">FRAIS DE LIVRAISON</th>
+									<th colspan="2"> {{$commande->frais_livraison ?? '0'}} F CFA</th>
+								</tr>
+                                
+                                @if($remise)
+                                <?php
+                                  $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                  $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
+                                 ?>
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3" style="color:red"> TOTAL A PAYER</th>
+									<th colspan="2" style="color:red"> <?php echo (round($prix_revient,0))?> F CFA</th>
+								</tr>
+                                @else
+                                <tr scope="col" colspan="5" rowspan="1" class="text-center">
+									<th colspan="3" style="color:red"> TOTAL A PAYER</th>
+									<th colspan="2" style="color:red"> <?php echo (round($prix_total+$commande->frais_livraison+$prix_total_tva,0)) ?> F CFA</th>
+								</tr>
+                                @endif
+
+                              </tbody>
                         </table>
                     </div>
                     <div>
                         <div class="col-md-12">
-                                    <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
-									 <i>La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red; ">
+                              
+                                     <p  class="text-left" style="font-size:18px; text-align: right; margin-top:40px">
+									 La présente facture est arrêtée à la somme de <b style="font-size:20px;color:red; ">
                                      @if($remise)
-                                     <?php echo int2str($prix_revient+$commande->frais_livraison)?> F CFA</b> </i></p>
+                                     <?php
+                                      $remisee= ($prix_total*$remise->pourcentage_remise)/100 ;
+                                      $prix_revient= ($prix_total - $remisee)+$commande->frais_livraison ;
+                                      echo int2str((round($prix_revient,0)))
+                                      ?> F CFA</b>
                                      @else
-                                     <?php echo int2str($prix_total+$commande->frais_livraison)?> F CFA</b> </i></p>
+                                     <?php echo int2str((round($prix_total+$commande->frais_livraison,0)))?> F CFA</b>
+                                     </p>
 									 @endif	
-									<p  class="text-right" style="text-align: right; margin-top:40px">
+
+                                    <p  class="text-right" style="text-align: right; margin-top:40px">
 									 Fait à Lomé, le <?php setlocale(LC_TIME, "fr_FR","French");
-										echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?> </p>
+									echo $date = utf8_encode(strftime("%d %B %Y", strtotime($commande->date_commande))); ?>b</p>
 									<p class="text-right" style="text-align: right; margin-top:40px"><b>Signature</b></p>
+
+                                @if($commande->etat_commande != 0 )  
+						        <span class="text-right" style="background-color:#06d755; font-size:15px;color:black"><b> Commande livrée le <?php echo $newDate = date("d/n/Y", strtotime($commande->date_livraison));?> 
+                                    </b> 
+                                </span>
+						        @endif 
                         </div>
                     </div>
                 </div>
@@ -204,6 +249,9 @@ if (Cookie::get('id_user')== null)
  function int2str($a)
 {
 $convert = explode('.',$a);
+if (isset($convert[1]) && $convert[1]!=''){
+return int2str($convert[0]).'Dinars'.' et '.int2str($convert[1]).'Centimes' ;
+}
 if ($a<0) return 'moins '.int2str(-$a);
 if ($a<17){
 switch ($a){

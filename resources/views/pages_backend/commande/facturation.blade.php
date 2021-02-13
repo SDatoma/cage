@@ -49,7 +49,8 @@
             <div class="col-md-12 body-main">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6"> <img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
+                        <div class="col-md-6"> 
+						<img class="img" alt="Invoce Template" src="{{asset('files_upload/logo.jpeg')}}"  width="120px" height="120px"/><p style="margin-left:20px;font-size:15px">E-commerce</p>
 						 </div>
 						
                         <div class="col-md-6 text-right">
@@ -65,8 +66,9 @@
                         ?>
                         <div class="col-md-12 text-center float">
                             <h2><u>FACTURE N° {{$numero}}</u></h2> 
-                        </div>
-                        <div class="col-md-6 text-left">
+                        </div><br/>
+                        
+						<div class="col-md-6 text-left">
                             <h4 style="color: black;"><strong>{{$user->nom_user}} {{$user->prenom_user}}</strong></h4>
                             <p>
                             @foreach($villes as $ville)
@@ -85,7 +87,7 @@
                             <p> Pays : {{$adresse->pays_adresse}}</p>
                             <p> Description : {{$adresse->description_adresse}}</p>
                         </div>
-
+                        
                     </div> <br />
                     <div>
                         <table class="table table-striped table-bordered">

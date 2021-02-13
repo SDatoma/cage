@@ -239,6 +239,8 @@ class CommandeController extends Controller
 	public function detail_historique($id,$reference_commande)
     {
         $user = User::where(['id_user' =>$id])->first() ;
+		
+		$villes = Ville::all() ;
 
         $commande = Commande::where(['reference_commande' =>$reference_commande])->first() ;
 
@@ -262,7 +264,23 @@ class CommandeController extends Controller
         ->where('commande.reference_commande', '=', $reference_commande)
         ->sum('ligne_commande.prix_commande');
 
-        return view('pages_frontend/details-historique-achats',compact('commandes','user','prix_total','adresse','commande','remise'));
+        $prix_total_ht = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->sum('ligne_commande.prix_ht');
+
+         $prix_total_tva = DB::table('ligne_commande')
+        ->join('commande', 'ligne_commande.id_commande', '=', 'commande.id_commande')
+        //->join('user', 'user.id_user', '=', 'commande.id_user')
+        ->join('produit', 'produit.id_produit', '=', 'ligne_commande.id_produit')
+        ->where('commande.id_user', '=', $id)
+        ->where('commande.reference_commande', '=', $reference_commande)
+        ->sum('ligne_commande.montant_tva');
+
+        return view('pages_frontend/details-historique-achats',compact('villes','prix_total_tva','prix_total_ht','commandes','user','prix_total','adresse','commande','remise'));
 
     }
  

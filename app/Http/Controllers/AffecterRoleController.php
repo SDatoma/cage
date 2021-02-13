@@ -44,35 +44,20 @@ class AffecterRoleController extends Controller
      */
     public function store(Request $request)
     {
+		$roles = $request["libelle_role"];
+        $userID = $request->email_user;
         
-        $affecter_role = new AffecterRoles();
-
-		$affecter_role->id_role = $request->libelle_role;
-		$affecter_role->id_user = $request->email_user;
-		
-        $affecter_role->save();
+		foreach($roles as $roleID){
+			$affecter_role = new AffecterRoles();
+			$affecter_role->id_role = $roleID;
+			$affecter_role->id_user = $userID;
+			
+			$affecter_role->save();
+		}
 
         return back()->with('success', 'Enregistrement effectué avec succè');
     }
 
-//List des villes
-     public function UtilisateurRole($id)
-     {
-         $utilisateurs = DB::table('affecter_roles')->get();
-
-         $roles = DB::table('role')
-		 ->join('affecter_roles', 'role.id_role', '=', 'affecter_roles.id_role')
-        ->where('affecter_roles.id_role', '!=', 'role.id_role')
-		//->where('affecter_roles.id_user', '=', $id)
-		->get();
-		  
-		 $users = DB::table('user')
-        ->where('user.type_user', '!=', 1)
-        ->get();
- 
-         return view('modals/ajout/affecte_role',compact('utilisateurs','users', 'roles'));
-                 
-     }
 
     /**
      * Display the specified resource.
