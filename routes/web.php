@@ -26,6 +26,7 @@ Route::get('/tri-sous-categorie-{id_categorie}-produit-{id_sous_categorie}-{libe
 Route::get('/detail-produit /{id}','ProduitController@detail_produit')->name('detail-produit.produit');
 
 Route::post('/recherche','IndexController@recherche_produit')->name('recherche.produit');
+Route::get('/recherche','IndexController@recherche_produit');
 
 Route::get('/contact','IndexController@page_contact');
 
@@ -56,6 +57,8 @@ Route::get('/nouveau-mot-de-passe/{id}','ForgetPasseController@edit');
 ****************************/
 Route::group(['middleware' => ['connexion']], function () {
 
+    // Route pour le client
+    
     Route::get('/detail-profil-client','InscriptionController@show_profil_client')->name('profil.client');
 
     Route::get('/info_personel','InscriptionController@show_profil_client')->name('info.client');
@@ -72,14 +75,10 @@ Route::group(['middleware' => ['connexion']], function () {
 
     Route::get('/détail_historique/{id}/{reference_commande}', 'CommandeController@detail_historique')->name('voir.detail');
     
-    //Route::get('/affiche-adresse','AdresseController@show_adresse_client')
-    
     Route::get('/modifier-adresse/{id}','AdresseController@modifier_adresse_client')->name('client.adresse');
 
-});
 
 Route::get('/admin', 'AdminController@index');
-
 //Boutique
 Route::get('/add/boutique', 'FournisseurController@create');
 Route::get('/list/boutique', 'FournisseurController@getBoutique');
@@ -123,11 +122,16 @@ Route::get('/list/role', 'RoleController@getAllRole');
 
 //Utilisateur
 Route::get('/list/utilisateur', 'UtilisateurController@getAllUtilisateur');
+Route::get('/affecte/role/{id}', 'UtilisateurController@utilisateurRole')->name('affecte.role');
 
 //Emailing
 Route::get('/list/email', 'EmailingController@getAllEmail');
 Route::get('/envoi/email/{id}', 'EmailingController@reenvoiMail')->name('reenvoi.mail');
 Route::post('/envoi/email/personnaliser', 'EmailingController@EmailPersonnaliser');
+
+});
+
+
 
 //cart
 Route::get('/empty', 'CartController@emptyCart');
@@ -155,4 +159,5 @@ Route::resource('news', 'NewsController');
 Route::resource('adresse', 'AdresseController');
 Route::resource('message', 'ContactController');
 Route::resource('password', 'ForgetPasseController');
+Route::resource('affectation', 'AffecterRoleController');
 
